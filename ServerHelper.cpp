@@ -1390,8 +1390,8 @@ Json OServerHelper::EnergyEffiencyTrendsInThePastYear(Json InData)
 	double Area = lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
 
 	FMysqlResult RegionEnergyEffiencyResult = MaraidbConnector.Query(str(boost::format("SELECT YEAR(CreateDate),MONTH(CreateDate),EnergyConsumUnitArea,OutputValue,EnergyEcnoValueAdd,SynEnergyConsum FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' ORDER BY CreateDate;") % RegionID % StartTime % EndTime));
-	std::string Title[3] = { FIELDIFNULL("单位面积能耗"),FIELDIFNULL("万元产值能耗"),FIELDIFNULL("度电经济增加值") };
-	std::string Unit[3] = { FIELDIFNULL("tce/km²"),FIELDIFNULL("tce/万元"),FIELDIFNULL("万元/kW·h") };
+	std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
+	std::string Unit[3] = { TCHAR_TO_UTF8("tce/km²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false,
 		'.', EXLabelStepDateIterator::Month);
@@ -2219,13 +2219,13 @@ Json OServerHelper::ListOfAbnormalEvents(Json InData)
 	FMysqlResult AbnormalEventsList = MaraidbConnector.Query(AbnormalEventsListCommand);
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"异常编码\",\"width\":\"15\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"企业简称\",\"width\":\"15\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"用户电号\",\"width\":\"10\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"行业分类\",\"width\":\"10\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"预判原因\",\"width\":\"5\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"确认原因\",\"width\":\"5\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"识别日期\",\"width\":\"8\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"异常编码\",\"width\":\"15\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业简称\",\"width\":\"15\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"用户电号\",\"width\":\"10\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"行业分类\",\"width\":\"10\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预判原因\",\"width\":\"5\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"确认原因\",\"width\":\"5\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"识别日期\",\"width\":\"8\"}")));
 
 	std::vector<Json> TableDatas;
 	for (auto AbnormalEventsListRow : AbnormalEventsList.DataTable)
@@ -2634,7 +2634,7 @@ Json OServerHelper::ReportOrderService_IndustryComparison(Json InData) {
 
 	for (auto ChildIndustry : ChildIndustryList.DataTable)
 	{
-		FMysqlResult Count = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply,BaseEnteElecMeterInfo WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND ServerApply.EnteID=BaseEnteElecMeterInfo.EnteID AND IndustryID ='%3%'") % StartTime % EndTime % ChildIndustry[0]));
+		FMysqlResult Count = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply,BaseEnteElecMeterInfo WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND ServerApply.EnteID=BaseEnteElecMeterInfo.EnteID AND IndustryID ='%3%'") % StartTime % EndTime % ChildIndustry[0])));
 
 		Json CategoryData;
 		CategoryData["xLabel"] = ChildIndustry[1];
@@ -4157,9 +4157,9 @@ Json OServerHelper::EnergyAnalyze_EnterpriseProfile(Json InData)
 
 	std::vector<Json> Table;
 	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"行业类型\", \"value\": \"----\" }")));
-	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"所属区域\", \"value\": \"----\" }"));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"所属区域\", \"value\": \"----\" }")));
 	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"电压等级\", \"value\": \"----\" }")));
-	Table.push_back("{\"name\": \"入驻日期\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"入驻日期\", \"value\": \"----\" }")));
 
 	for (auto EnteIndustryRow : EnteIndustry.DataTable)
 		Table[0]["value"] = EnteIndustryRow[0];
