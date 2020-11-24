@@ -7059,11 +7059,11 @@ Json OServerHelper::ReportOrderServiceList(Json InData) {
 
 
 
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"订单金额\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单金额\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")));
 
 
 
@@ -7192,11 +7192,11 @@ Json OServerHelper::CustomizedServiceList(Json InData) {
 
 
 
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"预算\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预算\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")));
 
 
 
@@ -7394,13 +7394,13 @@ Json OServerHelper::AccessDetail(Json InData) {
 	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 	FMysqlResult ReportOrderServiceList = MaraidbConnector.Query(str(boost::format("SELECT  AccPlace.EnteShortName, BaseIndustryInfo.IndustryName, AccPlace.Address, AccPlace.Area, AccPlace.ElecMetID, AccPlace.WaterMetID, AccPlace.GasMetID FROM BaseIndustryInfo, AccPlace WHERE AccPlace.ApplyCode in(SELECT ApplyCode FROM AccApply WHERE AccApply.ApplyEnteID = (SELECT ApplyEnteID From AccApply WHERE AccApply.ApplyCode = '%1%')) AND BaseIndustryInfo.IndustryID = AccPlace.IndustryGbCode") % ApplyCode));
 	std::vector<Json> RowHeader;
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"站点\",\"width\":\"14.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"所属行业\",\"width\":\"10.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"详细地址\",\"width\":\"24.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"建筑面积(㎡)\",\"width\":\"14.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"电系户号\",\"width\":\"12.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"水销根号\",\"width\":\"12.27\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"水销根号\",\"width\":\"12.27\"}")_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"站点\",\"width\":\"14.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"所属行业\",\"width\":\"10.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"详细地址\",\"width\":\"24.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"建筑面积(㎡)\",\"width\":\"14.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"电系户号\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"水销根号\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"水销根号\",\"width\":\"12.27\"}")));
 
 
 
@@ -7467,11 +7467,11 @@ Json OServerHelper::AccessServiceList(Json InData) {
 
 	std::vector<Json> RowHeader;
 
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"报价金额\",\"width\":\"20\"}")_json);
-	RowHeader.push_back(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报价金额\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"20\"}")));
 
 
 	std::vector<Json> TableDatas;
