@@ -297,7 +297,7 @@ Json OServerHelper::BMap(Json InData)
 		table.push_back(tableJson);
 	}
 	dataJson["data"] = table;
-	dataJson["title"] = "行业";
+	dataJson["title"] = TCHAR_TO_UTF8("行业");
 	data.push_back(dataJson);
 
 	std::map<std::string, std::vector<Json>> Types;
@@ -369,7 +369,7 @@ Json OServerHelper::BMap(Json InData)
 
 	}
 	EntedataJson["data"] = EnteTable;
-	EntedataJson["title"] = "企业";
+	EntedataJson["title"] = TCHAR_TO_UTF8("企业");
 	data.push_back(EntedataJson);
 	tableData["data"] = data;
 	return tableData;
@@ -424,19 +424,19 @@ Json OServerHelper::CaseInfoBuildTrend(Json InData)
 		categoryData.push_back(list2);
 	}
 
-	data1Json["categoryName"] = "用能诊断";
+	data1Json["categoryName"] = TCHAR_TO_UTF8("用能诊断");
 	data1Json["start_color"] = "rgba(97,174,255,0.35)";
 	data1Json["end_color"] = "rgba(97,174,255,0.35)";
 	data1Json["high_color1"] = "#5ceaff";
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
-	tableJson["title"] = "总";
+	tableJson["title"] = TCHAR_TO_UTF8("总");
 	tableJson["x_unit"] = "(月)";
 	tableJson["y_unit"] = "(位)";
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
-	dataJson["title"] = "成功案例建设趋势";
+	dataJson["title"] = TCHAR_TO_UTF8("成功案例建设趋势");
 	dataJson["table"] = table;
 	data.push_back(dataJson);
 	tableData["data"] = data;
@@ -487,7 +487,7 @@ Json OServerHelper::CaseInfoRank(Json InData)
 	}
 	Json data;
 	data["table"] = table;
-	data["title"] = "成功案例排行";
+	data["title"] = TCHAR_TO_UTF8("成功案例排行");
 	std::vector<Json> dataArray;
 	dataArray.push_back(data);
 	Json ReturnData;
@@ -539,7 +539,7 @@ Json OServerHelper::FinanceRank(Json InData)
 	}
 	Json data;
 	data["table"] = table;
-	data["title"] = "各类金融类排行";
+	data["title"] = TCHAR_TO_UTF8("各类金融类排行");
 	std::vector<Json> dataArray;
 	dataArray.push_back(data);
 	Json ReturnData;
@@ -585,7 +585,7 @@ Json OServerHelper::EnergyClubRank(Json InData)
 
 	std::vector<Json> table;
 	Json CurDataJson;
-	CurDataJson["type"] = "全部";
+	CurDataJson["type"] = TCHAR_TO_UTF8("全部");
 	CurDataJson["data"] = All;
 	table.push_back(CurDataJson);
 	for (auto TypesIter : Types)
@@ -597,7 +597,7 @@ Json OServerHelper::EnergyClubRank(Json InData)
 	}
 	Json data;
 	data["table"] = table;
-	data["title"] = "能源俱乐部事件排行";
+	data["title"] = TCHAR_TO_UTF8("能源俱乐部事件排行");
 	std::vector<Json> dataArray;
 	dataArray.push_back(data);
 	Json ReturnData;
@@ -642,7 +642,7 @@ Json OServerHelper::ExpertRank(Json InData)
 
 	std::vector<Json> table;
 	Json CurDataJson;
-	CurDataJson["type"] = "全部";
+	CurDataJson["type"] = TCHAR_TO_UTF8("全部");
 	CurDataJson["data"] = All;
 	table.push_back(CurDataJson);
 
@@ -655,7 +655,7 @@ Json OServerHelper::ExpertRank(Json InData)
 	}
 	Json data;
 	data["table"] = table;
-	data["title"] = "专家排行";
+	data["title"] = TCHAR_TO_UTF8("专家排行");
 	std::vector<Json> dataArray;
 	dataArray.push_back(data);
 	Json ReturnData;
@@ -711,19 +711,19 @@ Json OServerHelper::FinanceAccess(Json InData)
 		categoryData.push_back(list2);
 	}
 
-	data1Json["categoryName"] = "用能诊断";//类别一
+	data1Json["categoryName"] = TCHAR_TO_UTF8("用能诊断");//类别一
 	data1Json["start_color"] = "rgba(97,174,255,0.35)";
 	data1Json["end_color"] = "rgba(97,174,255,0.35)";
 	data1Json["high_color1"] = "#5ceaff";
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
-	tableJson["title"] = "总";//总
+	tableJson["title"] = TCHAR_TO_UTF8("总");//总
 	tableJson["x_unit"] = "(月)";//(万元/tce)
 	tableJson["y_unit"] = "(个)";
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
-	dataJson["title"] = "金融产品接入趋势";//各行业万元产值能耗
+	dataJson["title"] = TCHAR_TO_UTF8("金融产品接入趋势");//各行业万元产值能耗
 	dataJson["table"] = table;
 	data.push_back(dataJson);
 	tableData["data"] = data;
@@ -745,11 +745,11 @@ Json OServerHelper::FinanceType(Json InData)
 	{
 		tableJson["title"] = resultData[0];
 		tableJson["xLabel"] = "";
-		tableJson["yLabel"] = resultData[1]+"款";
+		tableJson["yLabel"] = resultData[1]+TCHAR_TO_UTF8("款");
 		table.push_back(tableJson);
 	}
 	dataJson["table"] = table;
-	dataJson["title"] = "金融渠道类型分布";
+	dataJson["title"] = TCHAR_TO_UTF8("金融渠道类型分布");
 	data.push_back(dataJson);
 	tableData["data"] = data;
 	return tableData;
@@ -838,19 +838,19 @@ Json OServerHelper::ExpertField(Json InData)
 		categoryData.push_back(list2);
 
 	}
-	data1Json["categoryName"] = "类别一";
+	data1Json["categoryName"] = TCHAR_TO_UTF8("类别一");
 	data1Json["start_color"] = "rgba(255,255,255,0.31)";
 	data1Json["end_color"] = "rgba(255,255,255,0.74)";
 	data1Json["high_color1"] = "#F2F2F2";
 	data1Json["high_color2"] = "#fce700";
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
-	tableJson["title"] = "总";
-	tableJson["unit"] = "位";
+	tableJson["title"] = TCHAR_TO_UTF8("总");
+	tableJson["unit"] = TCHAR_TO_UTF8("位");
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
-	dataJson["title"] = "领域入驻专家";
+	dataJson["title"] = TCHAR_TO_UTF8("领域入驻专家");
 	dataJson["table"] = table;
 	data.push_back(dataJson);
 	tableData["data"] = data;
@@ -865,7 +865,7 @@ Json OServerHelper::EnergyClubType(Json InData)
 
 	auto ClubResult = MaraidbConnector.Query("Select ClubType,COUNT(ClubType) FROM EnergyClub GROUP BY ClubType");
 
-	std::string Keys[5] = { "会展","会议","活动","培训","沙龙" };
+	std::string Keys[5] = { TCHAR_TO_UTF8("会展"),TCHAR_TO_UTF8("会议"),TCHAR_TO_UTF8("活动"),TCHAR_TO_UTF8("培训"),TCHAR_TO_UTF8("沙龙") };
 
 	std::vector<Json> XLabelRang;
 	for (auto Key:Keys)
@@ -904,7 +904,7 @@ Json OServerHelper::EnergyClubType(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "能源俱乐部类型统计";
+	Data["title"] = TCHAR_TO_UTF8("能源俱乐部类型统计");
 	Data["table"] = Tables;
 	std::vector<Json> Datas;
 	Datas.push_back(Data);
@@ -936,7 +936,7 @@ Json OServerHelper::CaseInfoProjectType(Json InData)
 		Json list2;
 		std::string Label;
 		std::string YLabel;
-		if (resultData[0] == "优秀成果" || resultData[0] == "孵化项目")
+		if (resultData[0] == TCHAR_TO_UTF8("优秀成果") || resultData[0] == TCHAR_TO_UTF8("孵化项目"))
 		{
 			Label = resultData[0];
 			YLabel = resultData[1];
@@ -947,19 +947,19 @@ Json OServerHelper::CaseInfoProjectType(Json InData)
 			categoryData.push_back(list2);
 		}
 	}
-	data1Json["categoryName"] = "类别一";
+	data1Json["categoryName"] = TCHAR_TO_UTF8("类别一");
 	data1Json["start_color"] = "rgba(255,255,255,0.31)";
 	data1Json["end_color"] = "rgba(255,255,255,0.74)";
 	data1Json["high_color1"] = "#F2F2F2";
 	data1Json["high_color2"] = "#fce700";
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
-	tableJson["title"] = "总";
-	tableJson["unit"] = "位";
+	tableJson["title"] = TCHAR_TO_UTF8("总");
+	tableJson["unit"] = TCHAR_TO_UTF8("位");
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
-	dataJson["title"] = "优秀成果及孵化项目";
+	dataJson["title"] = TCHAR_TO_UTF8("优秀成果及孵化项目");
 	dataJson["table"] = table;
 	data.push_back(dataJson);
 	tableData["data"] = data;
@@ -1013,18 +1013,18 @@ Json OServerHelper::ExpertTrend(Json InData)
 		categoryData.push_back(list2);
 	}
 
-	data1Json["categoryName"] = "用能诊断";
+	data1Json["categoryName"] = TCHAR_TO_UTF8("用能诊断");
 	data1Json["start_color"] = "rgba(97,174,255,0.35)";
 	data1Json["end_color"] = "rgba(97,174,255,0.35)";
 	data1Json["high_color1"] = "#5ceaff";
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
-	tableJson["title"] = "总";
-	tableJson["unit"] = "月";
+	tableJson["title"] = TCHAR_TO_UTF8("总");
+	tableJson["unit"] = TCHAR_TO_UTF8("月");
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
-	dataJson["title"] = "专家入驻趋势";
+	dataJson["title"] = TCHAR_TO_UTF8("专家入驻趋势");
 	dataJson["table"] = table;
 	data.push_back(dataJson);
 	tableData["data"] = data;
@@ -1039,7 +1039,7 @@ Json OServerHelper::NewEventList(Json InData)
 	
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT ClubName,ClubType,ClubDate FROM EnergyClub ORDER BY EnergyClub.ClubDate DESC;")));
 
-	std::vector<std::string > RowHeader = { "活动名称" ,"活动类型","举办时间" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("活动名称") ,TCHAR_TO_UTF8("活动类型"),TCHAR_TO_UTF8("举办时间") };
 	std::vector<std::string > RowWidth = { "18.27" ,"14.27" ,"24.27" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, Result.DataTable, 6);
@@ -1048,7 +1048,7 @@ Json OServerHelper::NewEventList(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"]="最新事件列表";
+	Data["title"]=TCHAR_TO_UTF8("最新事件列表");
 	Data["table"]= Tables;
 	std::vector<Json> Datas;
 	Datas.push_back(Data);
@@ -1082,7 +1082,7 @@ Json OServerHelper::ListOfLabelCompanies(Json InData) {
 		}
 	}
 
-	TableData["title"] = "标签企业列表";
+	TableData["title"] = TCHAR_TO_UTF8("标签企业列表");
 	TableData["data"] = Data;
 	return TableData;
 }
@@ -1157,7 +1157,7 @@ Json OServerHelper::EnterpriseLabelEvolutionTrend(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -1165,7 +1165,7 @@ Json OServerHelper::EnterpriseLabelEvolutionTrend(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "企业标签演变趋势";
+	Data["title"] = TCHAR_TO_UTF8("企业标签演变趋势");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -1198,13 +1198,13 @@ Json OServerHelper::EnterpriseProfile(Json InData) {
 	if (EnteInfo.ResultIsNotNull())
 	{
 		Json Data;
-		Data["行业类型"] = EnteInfo.DataTable[0][1];
-		Data["电压等级"] = EnteInfo.DataTable[0][2];
-		Data["入驻日期"] = FillPlaceholderIfNull(EnteInfo.DataTable[0][3],6);
-		Data["所属区域"] = EnteInfo.DataTable[0][4];
-		Data["运行容量"] = EnteInfo.DataTable[0][5] + "kVA";
-		Data["用电地址"] = EnteInfo.DataTable[0][6];
-		Data["标签"] = EnteLabels;
+		Data[TCHAR_TO_UTF8("行业类型")] = EnteInfo.DataTable[0][1];
+		Data[TCHAR_TO_UTF8("电压等级")] = EnteInfo.DataTable[0][2];
+		Data[TCHAR_TO_UTF8("入驻日期")] = FillPlaceholderIfNull(EnteInfo.DataTable[0][3],6);
+		Data[TCHAR_TO_UTF8("所属区域")] = EnteInfo.DataTable[0][4];
+		Data[TCHAR_TO_UTF8("运行容量")] = EnteInfo.DataTable[0][5] + "kVA";
+		Data[TCHAR_TO_UTF8("用电地址")] = EnteInfo.DataTable[0][6];
+		Data[TCHAR_TO_UTF8("标签")] = EnteLabels;
 
 		Json ReturnData;
 		ReturnData["title"] = EnteInfo.DataTable[0][0];
@@ -1215,13 +1215,13 @@ Json OServerHelper::EnterpriseProfile(Json InData) {
 	else
 	{
 		Json Data;
-		Data["行业类型"] = "----";
-		Data["电压等级"] = "----";
-		Data["入驻日期"] = "----";
-		Data["所属区域"] = "----";
-		Data["运行容量"] = "----";
-		Data["用电地址"] = "----";
-		Data["标签"] = EnteLabels;
+		Data[TCHAR_TO_UTF8("行业类型")] = "----";
+		Data[TCHAR_TO_UTF8("电压等级")] = "----";
+		Data[TCHAR_TO_UTF8("入驻日期")] = "----";
+		Data[TCHAR_TO_UTF8("所属区域")] = "----";
+		Data[TCHAR_TO_UTF8("运行容量")] = "----";
+		Data[TCHAR_TO_UTF8("用电地址")] = "----";
+		Data[TCHAR_TO_UTF8("标签")] = EnteLabels;
 
 		Json ReturnData;
 		ReturnData["title"] = "----";
@@ -1278,7 +1278,7 @@ Json OServerHelper::ProportionOfIndustrialEnergyConsumption(Json InData) {
 		list["yLabel"] = resultData[1];
 		categoryData.push_back(list);
 	}
-	data2Json["categoryName"] = "需";//需
+	data2Json["categoryName"] = TCHAR_TO_UTF8("需");//需
 	data2Json["start_color"] = "#8FC31F";
 	data2Json["end_color"] = "#8FC31F";
 	data2Json["high_color"] = "#5ceaff";
@@ -1287,9 +1287,9 @@ Json OServerHelper::ProportionOfIndustrialEnergyConsumption(Json InData) {
 	data2.push_back(data2Json);
 	tableJson["unit"] = "万tce";//万tce
 	tableJson["data"] = data2;
-	tableJson["title"] = "总";//总
+	tableJson["title"] = TCHAR_TO_UTF8("总");//总
 	table.push_back(tableJson);
-	data1Json["title"] = "产业能源消费占比";//产业能源消费占比
+	data1Json["title"] = TCHAR_TO_UTF8("产业能源消费占比");//产业能源消费占比
 	data1Json["table"] = table;
 	data1.push_back(data1Json);
 	tableData["data"] = data1;
@@ -1313,7 +1313,7 @@ Json OServerHelper::EnergyEfficiencyInVariousIndustries(Json InData)
 
 
 
-	std::string Title[3] = { "单位面积能耗","万元产值能耗","度电经济增加值" };
+	std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
 	std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false,
@@ -1358,11 +1358,11 @@ Json OServerHelper::EnergyEfficiencyInVariousIndustries(Json InData)
 
 	if (RegionNameResult.ResultIsNotNull())
 	{
-		Data["title"] = "各行业能效"+ RegionNameResult.DataTable[0][0];
+		Data["title"] = TCHAR_TO_UTF8("各行业能效")+ RegionNameResult.DataTable[0][0];
 	}
 	else
 	{
-		Data["title"] = "各行业能效";
+		Data["title"] = TCHAR_TO_UTF8("各行业能效");
 	}
 	Data["table"] = Tables;
 
@@ -1390,7 +1390,7 @@ Json OServerHelper::EnergyEffiencyTrendsInThePastYear(Json InData)
 	double Area = lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
 
 	FMysqlResult RegionEnergyEffiencyResult = MaraidbConnector.Query(str(boost::format("SELECT YEAR(CreateDate),MONTH(CreateDate),EnergyConsumUnitArea,OutputValue,EnergyEcnoValueAdd,SynEnergyConsum FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' ORDER BY CreateDate;") % RegionID % StartTime % EndTime));
-	std::string Title[3] = { "单位面积能耗","万元产值能耗","度电经济增加值" };
+	std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
 	std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false,
@@ -1445,7 +1445,7 @@ Json OServerHelper::EnergyEffiencyTrendsInThePastYear(Json InData)
 		ChartDatas.push_back(ChartData);
 	}
 	Json ReturnData;
-	ReturnData["chartName"] = "近一年能效趋势";
+	ReturnData["chartName"] = TCHAR_TO_UTF8("近一年能效趋势");
 	ReturnData["chartData"] = ChartDatas;
 	return ReturnData;
 }
@@ -1517,7 +1517,7 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 	}
 
 	Json OutputValueTableData;
-	OutputValueTableData["categoryName"] = "类别一";
+	OutputValueTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	OutputValueTableData["start_color"] = "rgba(209,246,255,1)";
 	OutputValueTableData["end_color"] = "rgba(209,246,255,1)";
 	OutputValueTableData["high_color"] = "#5ceaff";
@@ -1525,14 +1525,14 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 
 	std::sort(EnergyConsumUnitAreaCategoryDatas.begin(), EnergyConsumUnitAreaCategoryDatas.end(), SortCategoryDatasReverse);
 	Json EnergyConsumUnitAreaTableData;
-	EnergyConsumUnitAreaTableData["categoryName"] = "类别一";
+	EnergyConsumUnitAreaTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumUnitAreaTableData["start_color"] = "rgba(209,246,255,1)";
 	EnergyConsumUnitAreaTableData["end_color"] = "rgba(209,246,255,1)";
 	EnergyConsumUnitAreaTableData["high_color"] = "#5ceaff";
 	EnergyConsumUnitAreaTableData["categoryData"] = EnergyConsumUnitAreaCategoryDatas;
 
 	Json EnergyEcnoValueAddTableData;
-	EnergyEcnoValueAddTableData["categoryName"] = "类别一";
+	EnergyEcnoValueAddTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyEcnoValueAddTableData["start_color"] = "rgba(209,246,255,1)";
 	EnergyEcnoValueAddTableData["end_color"] = "rgba(209,246,255,1)";
 	EnergyEcnoValueAddTableData["high_color"] = "#5ceaff";
@@ -1547,19 +1547,19 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 	EnergyEcnoValueAddTableDatas.push_back(EnergyEcnoValueAddTableData);
 
 	Json OutputValueTable;
-	OutputValueTable["title"] = "万元产值综合能耗";
+	OutputValueTable["title"] = TCHAR_TO_UTF8("万元产值综合能耗");
 	OutputValueTable["unit"] = "tce/万元";
 	OutputValueTable["xLabelRang"] = XLabelRangs;
 	OutputValueTable["data"] = OutputValueTableDatas;
 
 	Json EnergyConsumUnitAreaTable;
-	EnergyConsumUnitAreaTable["title"] = "单位建筑面积能耗";
+	EnergyConsumUnitAreaTable["title"] = TCHAR_TO_UTF8("单位建筑面积能耗");
 	EnergyConsumUnitAreaTable["unit"] = "tce/km²";
 	EnergyConsumUnitAreaTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumUnitAreaCategoryDatas);
 	EnergyConsumUnitAreaTable["data"] = EnergyConsumUnitAreaTableDatas;
 
 	Json EnergyEcnoValueAddTable;
-	EnergyEcnoValueAddTable["title"] = "度电经济增加值";
+	EnergyEcnoValueAddTable["title"] = TCHAR_TO_UTF8("度电经济增加值");
 	EnergyEcnoValueAddTable["unit"] = "元/kW·h";
 	EnergyEcnoValueAddTable["xLabelRang"] = XLabelRangs;
 	EnergyEcnoValueAddTable["data"] = EnergyEcnoValueAddTableDatas;
@@ -1573,7 +1573,7 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "各区能效";
+	Data["title"] = TCHAR_TO_UTF8("各区能效");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -1610,7 +1610,7 @@ Json OServerHelper::CarbonEmissionsByRegion(Json InData) {
 	std::sort(CarbonEmissionCategoryDatas.begin(), CarbonEmissionCategoryDatas.end(), SortCategoryDatasReverse);
 
 	Json CarbonEmissionTableData;
-	CarbonEmissionTableData["categoryName"] = "类别一";
+	CarbonEmissionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	CarbonEmissionTableData["start_color"] = "rgba(209,246,255,1)";
 	CarbonEmissionTableData["end_color"] = "rgba(209,246,255,1)";
 	CarbonEmissionTableData["high_color"] = "#5ceaff";
@@ -1622,7 +1622,7 @@ Json OServerHelper::CarbonEmissionsByRegion(Json InData) {
 	CarbonEmissionTableDatas.push_back(CarbonEmissionTableData);
 
 	Json CarbonEmissionTable;
-	CarbonEmissionTable["title"] = "总";
+	CarbonEmissionTable["title"] = TCHAR_TO_UTF8("总");
 	CarbonEmissionTable["unit"] = "万t";
 	CarbonEmissionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(CarbonEmissionCategoryDatas);
 	CarbonEmissionTable["data"] = CarbonEmissionTableDatas;
@@ -1635,7 +1635,7 @@ Json OServerHelper::CarbonEmissionsByRegion(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "各区域碳排放";
+	Data["title"] = TCHAR_TO_UTF8("各区域碳排放");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -1671,7 +1671,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	std::sort(EnergyConsumptionCategoryDatas.begin(), EnergyConsumptionCategoryDatas.end(), SortCategoryDatasReverse);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = "类别一";
+	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["end_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["high_color"] = "#5ceaff";
@@ -1681,7 +1681,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = "总";
+	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
 	EnergyConsumptionTable["unit"] = "万tce";
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
@@ -1692,7 +1692,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "各区域综合能耗";
+	Data["title"] = TCHAR_TO_UTF8("各区域综合能耗");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -1731,7 +1731,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByIndustry(Json InData)
 	std::sort(EnergyConsumptionCategoryDatas.begin(), EnergyConsumptionCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = "类别一";
+	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(45,253,255,0.25)";
 	EnergyConsumptionTableData["end_color"] = "rgba(45,253,255,1)";
 	EnergyConsumptionTableData["high_color1"] = "#F2F2F2";
@@ -1742,7 +1742,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByIndustry(Json InData)
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = "总";
+	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
 	EnergyConsumptionTable["unit"] = "(tce)";
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
@@ -1759,7 +1759,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByIndustry(Json InData)
 	}
 	else
 	{
-		Data["title"] = "各行业综合能耗" ;
+		Data["title"] = TCHAR_TO_UTF8("各行业综合能耗") ;
 
 	}
 	Data["table"] = Tables;
@@ -1801,7 +1801,7 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 	EnergyConsumptionCategoryDatas = FiltrationSmallDataByRatio(EnergyConsumptionCategoryDatas, 0.02f);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = "类别一";
+	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(45,253,255,0.25)";
 	EnergyConsumptionTableData["end_color"] = "rgba(45,253,255,1)";
 	EnergyConsumptionTableData["high_color1"] = "#F2F2F2";
@@ -1812,7 +1812,7 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = "总";
+	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
 	EnergyConsumptionTable["unit"] = "(tce)";
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
@@ -1828,7 +1828,7 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 	}
 	else
 	{
-		Data["title"] = "行业能耗占比";
+		Data["title"] = TCHAR_TO_UTF8("行业能耗占比");
 
 	}
 	Data["table"] = Tables;
@@ -1845,10 +1845,10 @@ Json OServerHelper::EnergyConsumptionTrendsInThePast30Days(Json InData)
 	DataTitle.push_back("近30天能耗趋势");
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
-	TableTitle.push_back("电");
-	TableTitle.push_back("水");
-	TableTitle.push_back("气");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
+	TableTitle.push_back(TCHAR_TO_UTF8("电"));
+	TableTitle.push_back(TCHAR_TO_UTF8("水"));
+	TableTitle.push_back(TCHAR_TO_UTF8("气"));
 
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
@@ -1894,7 +1894,7 @@ Json OServerHelper::EnergyConsumptionTrendsInThePast30Days(Json InData)
 			std::vector<Json>TableDatas;
 
 			Json TableData;
-			TableData["categoryName"] = "供";
+			TableData["categoryName"] = TCHAR_TO_UTF8("供");
 			TableData["start_color"] = StartColor[TableIndex % StartColor.size()];
 			TableData["end_color"] = EndColor[TableIndex % EndColor.size()];
 			TableData["high_color"] = HighColor[TableIndex % HighColor.size()];
@@ -1981,10 +1981,10 @@ Json OServerHelper::KeyCompaniesMonitorEnergyConsumption(Json InData)
 	using namespace std;
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("重点监控企业能耗");
+	DataTitle.push_back(TCHAR_TO_UTF8("重点监控企业能耗"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
 	std::vector<FXLabelRangCofig> XLabelRangCofig;
@@ -2115,7 +2115,7 @@ Json OServerHelper::RegionalAnomalyRanking(Json InData)
 	}
 
 	Json ExceptionEventCountTableData;
-	ExceptionEventCountTableData["categoryName"] = "类别一";
+	ExceptionEventCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	ExceptionEventCountTableData["start_color"] = "rgba(209,246,255,1)";
 	ExceptionEventCountTableData["end_color"] = "rgba(209,246,255,1)";
 	ExceptionEventCountTableData["high_color"] = "#5ceaff";
@@ -2127,8 +2127,8 @@ Json OServerHelper::RegionalAnomalyRanking(Json InData)
 	ExceptionEventCountTableDatas.push_back(ExceptionEventCountTableData);
 
 	Json ExceptionEventCountTable;
-	ExceptionEventCountTable["title"] = "总";
-	ExceptionEventCountTable["unit"] = "次";
+	ExceptionEventCountTable["title"] = TCHAR_TO_UTF8("总");
+	ExceptionEventCountTable["unit"] = TCHAR_TO_UTF8("次");
 	ExceptionEventCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(ExceptionEventCountCategoryDatas);
 	ExceptionEventCountTable["data"] = ExceptionEventCountTableDatas;
 
@@ -2138,7 +2138,7 @@ Json OServerHelper::RegionalAnomalyRanking(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "区域异常排名";
+	Data["title"] = TCHAR_TO_UTF8("区域异常排名");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -2173,7 +2173,7 @@ Json OServerHelper::IndustryAnomalyRanking(Json InData) {
 	}
 
 	Json ExceptionEventCountTableData;
-	ExceptionEventCountTableData["categoryName"] = "类别一";
+	ExceptionEventCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	ExceptionEventCountTableData["start_color"] = "rgba(209,246,255,1)";
 	ExceptionEventCountTableData["end_color"] = "rgba(209,246,255,1)";
 	ExceptionEventCountTableData["high_color"] = "#5ceaff";
@@ -2185,8 +2185,8 @@ Json OServerHelper::IndustryAnomalyRanking(Json InData) {
 	ExceptionEventCountTableDatas.push_back(ExceptionEventCountTableData);
 
 	Json ExceptionEventCountTable;
-	ExceptionEventCountTable["title"] = "总";
-	ExceptionEventCountTable["unit"] = "次";
+	ExceptionEventCountTable["title"] = TCHAR_TO_UTF8("总");
+	ExceptionEventCountTable["unit"] = TCHAR_TO_UTF8("次");
 	ExceptionEventCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(ExceptionEventCountCategoryDatas);
 	ExceptionEventCountTable["data"] = ExceptionEventCountTableDatas;
 
@@ -2196,7 +2196,7 @@ Json OServerHelper::IndustryAnomalyRanking(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "行业异常排名";
+	Data["title"] = TCHAR_TO_UTF8("行业异常排名");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -2248,7 +2248,7 @@ Json OServerHelper::ListOfAbnormalEvents(Json InData)
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "异常用能事件列表";
+	Data["title"] = TCHAR_TO_UTF8("异常用能事件列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -2281,7 +2281,7 @@ Json OServerHelper::AIJudgmentOfAbnormalCause(Json InData)
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "异常原因";
+	TableData["categoryName"] = TCHAR_TO_UTF8("异常原因");
 	TableData["start_color"] = "#8FC31F";
 	TableData["end_color"] = "#8FC31F";
 	TableData["high_color"] = "#5ceaff";
@@ -2292,7 +2292,7 @@ Json OServerHelper::AIJudgmentOfAbnormalCause(Json InData)
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "";
 	Table["data"] = TableDatas;
 
@@ -2377,7 +2377,7 @@ Json OServerHelper::AnnualAbnormalCauseChangeAnalysis(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "(次)";
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
@@ -2386,7 +2386,7 @@ Json OServerHelper::AnnualAbnormalCauseChangeAnalysis(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "年度异常原因变化分析";
+	Data["title"] = TCHAR_TO_UTF8("年度异常原因变化分析");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -2435,7 +2435,7 @@ Json OServerHelper::EnterpriseAnomalies(Json InData) {
 
 	Json Data;
 	std::vector<Json> Datas;
-	Data["title"] = "企业异常事件";
+	Data["title"] = TCHAR_TO_UTF8("企业异常事件");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -2452,25 +2452,25 @@ Json OServerHelper::ManualReviewResults(Json InData) {
 	std::string Command = "SELECT ContactPerson,ContactPhone,ConfirmReasonName,ConfirmUser,ReviewDate,ReviewEnteName,ConfirmRemark FROM AbnormalEnergyEvent LEFT JOIN BaseEnteElecMeterInfo ON BaseEnteElecMeterInfo.ElecMetID=AbnormalEnergyEvent.ElecMetID LEFT JOIN BaseEnteInfo ON BaseEnteInfo.ElecMetID=BaseEnteElecMeterInfo.ElecMetID WHERE AbnormalEnergyEvent.ExceptionEventId='" + ExceptionEventId + "';";
 	FMysqlResult Result = MaraidbConnector.Query(Command);
 	Json Data;
-	Data["联系人"] = "";
-	Data["联系方式"] = "";
-	Data["确认原因"] = "";
-	Data["复查人"] = "";
-	Data["复查日期"] = "";
-	Data["核查单位"] = "";
-	Data["备注说明"] = "";
+	Data[TCHAR_TO_UTF8("联系人")] = "";
+	Data[TCHAR_TO_UTF8("联系方式")] = "";
+	Data[TCHAR_TO_UTF8("确认原因")] = "";
+	Data[TCHAR_TO_UTF8("复查人")] = "";
+	Data[TCHAR_TO_UTF8("复查日期")] = "";
+	Data[TCHAR_TO_UTF8("核查单位")] = "";
+	Data[TCHAR_TO_UTF8("备注说明")] = "";
 	for (auto ResultRow : Result.DataTable)
 	{
-		Data["联系人"] = ResultRow[0];
-		Data["联系方式"] = ResultRow[1];
-		Data["确认原因"] = ResultRow[2];
-		Data["复查人"] = ResultRow[3];
-		Data["复查日期"] = ResultRow[4];
-		Data["核查单位"] = ResultRow[5];
-		Data["备注说明"] = ResultRow[6];
+		Data[TCHAR_TO_UTF8("联系人")] = ResultRow[0];
+		Data[TCHAR_TO_UTF8("联系方式")] = ResultRow[1];
+		Data[TCHAR_TO_UTF8("确认原因")] = ResultRow[2];
+		Data[TCHAR_TO_UTF8("复查人")] = ResultRow[3];
+		Data[TCHAR_TO_UTF8("复查日期")] = ResultRow[4];
+		Data[TCHAR_TO_UTF8("核查单位")] = ResultRow[5];
+		Data[TCHAR_TO_UTF8("备注说明")] = ResultRow[6];
 	}
 	Json ReturnData;
-	ReturnData["title"] = "人工复检结果";
+	ReturnData["title"] = TCHAR_TO_UTF8("人工复检结果");
 	ReturnData["data"] = Data;
 
 	return ReturnData;
@@ -2491,12 +2491,12 @@ Json OServerHelper::ReportOrderService(Json InData) {
 
 	if (OrderCountAndMoney.ResultIsNotNull())
 	{
-		RowHeaders.push_back({ {"headerName","本月订单"},{"value",OrderCountAndMoney.DataTable[0][0]} });
-		RowHeaders.push_back({ {"headerName","本月金额"},{"value",ConvertToTenThousand(OrderCountAndMoney.DataTable[0][1])} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月订单")},{"value",OrderCountAndMoney.DataTable[0][0]} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月金额")},{"value",ConvertToTenThousand(OrderCountAndMoney.DataTable[0][1])} });
 	}
 	if (PendingToAduitOrderCount.ResultIsNotNull())
 	{
-		RowHeaders.push_back({ {"headerName","待付款订单"},{"value",PendingToAduitOrderCount.DataTable[0][0]} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("待付款订单")},{"value",PendingToAduitOrderCount.DataTable[0][0]} });
 	}
 	std::vector<Json> Tables;
 	Json Table;
@@ -2505,7 +2505,7 @@ Json OServerHelper::ReportOrderService(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务概况";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务概况");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2582,7 +2582,7 @@ Json OServerHelper::ReportOrderServiceResult(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "报告订单成果";
+	Data["title"] = TCHAR_TO_UTF8("报告订单成果");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -2595,7 +2595,7 @@ Json OServerHelper::ReportOrderService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[7] = { "待付款","已付款，编制中","已上传成果","已到期","已关闭","退款申请审核中","退款成功,已关闭" };
+	std::string Status[7] = { TCHAR_TO_UTF8("待付款"),"已付款，编制中",TCHAR_TO_UTF8("已上传成果"),TCHAR_TO_UTF8("已到期"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功,已关闭" };
 
 	std::vector<Json> TableDatas;
 
@@ -2609,7 +2609,7 @@ Json OServerHelper::ReportOrderService_OrderStatus(Json InData) {
 		TableDatas.push_back(TableData);
 	}
 	Json Data;
-	Data["title"] = "订单状态";
+	Data["title"] = TCHAR_TO_UTF8("订单状态");
 	Data["data"] = TableDatas;
 
 	std::vector<Json> Datas;
@@ -2707,7 +2707,7 @@ Json OServerHelper::ReportOrderService_TypeDistribution(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务状态分布";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务状态分布");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2815,7 +2815,7 @@ Json OServerHelper::ReportOrderServiceTrend(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务趋势";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务趋势");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2861,7 +2861,7 @@ Json OServerHelper::ReportOrderService_MonthlyConsumption(Json InData) {
 
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT (@i:=@i+1)i,EnteName,Money FROM (select @i:=0) AS A,(SELECT EnteName,SUM(OrderMoney) AS Money FROM ServerApply,BaseEnteInfo  WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND BaseEnteInfo.EnteID=ServerApply.EnteID GROUP BY EnteName ORDER BY SUM(OrderMoney)DESC) AS T;") % StartTime % EndTime));
 
-	std::vector<std::string > RowHeader = { "排名" ,"企业名称","月消费" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("排名") ,TCHAR_TO_UTF8("企业名称"),TCHAR_TO_UTF8("月消费") };
 	std::vector<std::string > RowWidth = { "10" ,"10" ,"10" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, Result.DataTable,8);
@@ -2869,7 +2869,7 @@ Json OServerHelper::ReportOrderService_MonthlyConsumption(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务消费月排行";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务消费月排行");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2941,7 +2941,7 @@ Json OServerHelper::ReportOrderService_UserHistory(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "用户历史订单";
+	Data["title"] = TCHAR_TO_UTF8("用户历史订单");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -2966,12 +2966,12 @@ Json OServerHelper::CustomizedService(Json InData)
 
 	if (OrderCountAndMoney.ResultIsNotNull())
 	{
-		RowHeaders.push_back({ {"headerName","本月订单"},{"value",OrderCountAndMoney.DataTable[0][0]} });
-		RowHeaders.push_back({ {"headerName","本月金额"},{"value",ConvertToTenThousand(OrderCountAndMoney.DataTable[0][1])} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月订单")},{"value",OrderCountAndMoney.DataTable[0][0]} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月金额")},{"value",ConvertToTenThousand(OrderCountAndMoney.DataTable[0][1])} });
 	}
 	if (PendingToAduitOrderCount.ResultIsNotNull())
 	{
-		RowHeaders.push_back({ {"headerName","待受理订单"},{"value",PendingToAduitOrderCount.DataTable[0][0]} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("待受理订单")},{"value",PendingToAduitOrderCount.DataTable[0][0]} });
 	}
 	std::vector<Json> Tables;
 	Json Table;
@@ -2980,7 +2980,7 @@ Json OServerHelper::CustomizedService(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "定制服务概况";
+	Data["title"] = TCHAR_TO_UTF8("定制服务概况");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3058,7 +3058,7 @@ Json OServerHelper::CustomizedService_OrderResults(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "订单成果";
+	Data["title"] = TCHAR_TO_UTF8("订单成果");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -3071,7 +3071,7 @@ Json OServerHelper::CustomizedService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[7] = { "受理中","待付款","已付款，编制中","编制完成","已关闭","退款申请审核中","退款成功，已关闭" };
+	std::string Status[7] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),"已付款，编制中",TCHAR_TO_UTF8("编制完成"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功，已关闭" };
 
 	std::vector<Json> TableDatas;
 
@@ -3085,7 +3085,7 @@ Json OServerHelper::CustomizedService_OrderStatus(Json InData) {
 		TableDatas.push_back(TableData);
 	}
 	Json Data;
-	Data["title"] = "订单状态";
+	Data["title"] = TCHAR_TO_UTF8("订单状态");
 	Data["data"] = TableDatas;
 
 	std::vector<Json> Datas;
@@ -3130,7 +3130,7 @@ Json OServerHelper::CustomizedService_TypeDistribution(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "个性化定制服务状态分布";
+	Data["title"] = TCHAR_TO_UTF8("个性化定制服务状态分布");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3184,7 +3184,7 @@ Json OServerHelper::CustomizedServiceTrend(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "个性化定制服务趋势";
+	Data["title"] = TCHAR_TO_UTF8("个性化定制服务趋势");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3258,7 +3258,7 @@ Json OServerHelper::CustomizedService_UserHistory(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "用户历史订单";
+	Data["title"] = TCHAR_TO_UTF8("用户历史订单");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -3282,7 +3282,7 @@ Json OServerHelper::AnnualComparisonOfServiceAmount(Json InData) {
 
 	FMysqlResult Result[3] = { CustServiceNum,OrderServiceNum };
 
-	std::string CategoryNames[2] = { "个性化定制服务","报告订单服务" };
+	std::string CategoryNames[2] = { TCHAR_TO_UTF8("个性化定制服务"),TCHAR_TO_UTF8("报告订单服务") };
 	std::string StartColor[2] = { "rgba(255,255,255,0)","rgba(65,141,255,0)" };
 	std::string EndColor[2] = { "rgba(255,255,255,1)","rgba(65,141,255,1)" };
 
@@ -3313,7 +3313,7 @@ Json OServerHelper::AnnualComparisonOfServiceAmount(Json InData) {
 		TableData["high_color1"] = "#F2F2F2";
 		TableData["high_color2"] = "#fce700";
 		TableData["totals"] = ConvertToTenThousand(std::to_string(Totle));
-		TableData["unit"] = "万元";
+		TableData["unit"] = TCHAR_TO_UTF8("万元");
 		TableData["categoryData"] = FillCategoryData(XLabelRangs, CategoryDatas);
 
 		TableDatas.push_back(TableData);
@@ -3329,7 +3329,7 @@ Json OServerHelper::AnnualComparisonOfServiceAmount(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "服务金额年度对比";
+	Data["title"] = TCHAR_TO_UTF8("服务金额年度对比");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -3355,7 +3355,7 @@ Json OServerHelper::AnnualComparisonOfNumberOfServices(Json InData) {
 
 	FMysqlResult Result[3] = { AccServiceNum,CustServiceNum,OrderServiceNum };
 
-	std::string CategoryNames[3] = { "数据接入服务","个性化定制服务","报告订单服务" };
+	std::string CategoryNames[3] = { TCHAR_TO_UTF8("数据接入服务"),TCHAR_TO_UTF8("个性化定制服务"),TCHAR_TO_UTF8("报告订单服务") };
 	std::string StartColor[3] = { "rgba(1,254,234,0)","rgba(255,255,255,0)","rgba(65,141,255,0)" };
 	std::string EndColor[3] = { "rgba(1,254,234,1)","rgba(255,255,255,1)","rgba(65,141,255,1)" };
 
@@ -3386,7 +3386,7 @@ Json OServerHelper::AnnualComparisonOfNumberOfServices(Json InData) {
 		TableData["high_color1"] = "#F2F2F2";
 		TableData["high_color2"] = "#fce700";
 		TableData["totals"] = std::to_string(Totle);
-		TableData["unit"] = "次";
+		TableData["unit"] = TCHAR_TO_UTF8("次");
 		TableData["categoryData"] = FillCategoryData(XLabelRangs, CategoryDatas);
 
 		TableDatas.push_back(TableData);
@@ -3402,7 +3402,7 @@ Json OServerHelper::AnnualComparisonOfNumberOfServices(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "服务数量年度对比";
+	Data["title"] = TCHAR_TO_UTF8("服务数量年度对比");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -3417,7 +3417,7 @@ Json OServerHelper::AccessService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[8] = { "受理中","待付款","已付款，实施中","已开通","已拒绝","已关闭","退款申请审核中","退款成功，已关闭" };
+	std::string Status[8] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),"已付款，实施中",TCHAR_TO_UTF8("已开通"),TCHAR_TO_UTF8("已拒绝"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功，已关闭" };
 
 	std::vector<Json> TableDatas;
 
@@ -3432,7 +3432,7 @@ Json OServerHelper::AccessService_OrderStatus(Json InData) {
 		TableDatas.push_back(TableData);
 	}
 	Json Data;
-	Data["title"] = "订单状态";
+	Data["title"] = TCHAR_TO_UTF8("订单状态");
 	Data["data"] = TableDatas;
 
 	std::vector<Json> Datas;
@@ -3529,7 +3529,7 @@ Json OServerHelper::AccessService_TypeDistribution(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "本月数据接入服务状态分布";
+	Data["title"] = TCHAR_TO_UTF8("本月数据接入服务状态分布");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3611,7 +3611,7 @@ Json OServerHelper::AccessService(Json InData) {
 
 	if (EnteCount.ResultIsNotNull())
 	{
-		RowHeaders.push_back({ {"headerName","本月接入企业"},{"value",EnteCount.DataTable[0][0]} });
+		RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月接入企业")},{"value",EnteCount.DataTable[0][0]} });
 	}
 	int MetIDCount = 0;
 	std::vector<std::string> ElecMetIDs;
@@ -3624,7 +3624,7 @@ Json OServerHelper::AccessService(Json InData) {
 	std::set<std::string>ElecMetIDSet(ElecMetIDs.begin(), ElecMetIDs.end());
 	ElecMetIDs.assign(ElecMetIDSet.begin(), ElecMetIDSet.end());
 
-	RowHeaders.push_back({ {"headerName","本月接入户号"},{"value",ElecMetIDs.size()} });
+	RowHeaders.push_back({ {"headerName",TCHAR_TO_UTF8("本月接入户号")},{"value",ElecMetIDs.size()} });
 
 	std::vector<Json> Tables;
 	Json Table;
@@ -3633,7 +3633,7 @@ Json OServerHelper::AccessService(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "数据接入服务概况";
+	Data["title"] = TCHAR_TO_UTF8("数据接入服务概况");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3687,7 +3687,7 @@ Json OServerHelper::AccessServiceTrend(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "数据接入服务趋势";
+	Data["title"] = TCHAR_TO_UTF8("数据接入服务趋势");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3708,7 +3708,7 @@ Json OServerHelper::AccessServiceLatest(Json InData) {
 
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT DISTINCT ApplyEnteName,ApplyAccName FROM AccApply WHERE ApplyStatus='已开通' Order By AccApply.PayTime DESC Limit 50 ;")));
 
-	std::vector<std::string > RowHeader = { "企业名称" ,"服务名称" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("企业名称") ,TCHAR_TO_UTF8("服务名称") };
 	std::vector<std::string > RowWidth = { "10" ,"10" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, Result.DataTable,8);
@@ -3716,7 +3716,7 @@ Json OServerHelper::AccessServiceLatest(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "最新接入企业";
+	Data["title"] = TCHAR_TO_UTF8("最新接入企业");
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -3825,7 +3825,7 @@ Json OServerHelper::EventCompletion(Json InData) {
 
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 			EnteCount++;
 	}
 	if (EventOverview.ResultIsNotNull())
@@ -3834,12 +3834,12 @@ Json OServerHelper::EventCompletion(Json InData) {
 		TotalComplete = FillPlaceholderIfNull(EventOverview.DataTable[0][1], 2);
 	}
 	std::vector<Json> Tables;
-	Tables.push_back({ {"title","计划总量"},{"xLabel","kW"},{"yLabel",TotlePlan} });
-	Tables.push_back({ {"title","参与企业"},{"xLabel","家"},{"yLabel",std::to_string(EnteCount)} });
-	Tables.push_back({ {"title","完成总量"},{"xLabel","kW"},{"yLabel",TotalComplete} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8("计划总量")},{"xLabel","kW"},{"yLabel",TotlePlan} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8("参与企业")},{"xLabel",TCHAR_TO_UTF8("家")},{"yLabel",std::to_string(EnteCount)} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8("完成总量")},{"xLabel","kW"},{"yLabel",TotalComplete} });
 
 	Json Data;
-	Data["title"] = "事件完成情况";
+	Data["title"] = TCHAR_TO_UTF8("事件完成情况");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3860,8 +3860,8 @@ Json OServerHelper::PeakCutandValleyFillingDetails(Json InData) {
 	FMysqlResult EventDetailsResult = MaraidbConnector.Query(EventDetails);
 	std::vector<Json> Datas;
 
-	std::string Keys[10] = { "事件编号","事件状态","事件类型","准备时长","价格策略","总激励金","计划总量","完成总量","开始时间","结束时间" };
-	std::string Units[10] = { "","","","h","","元","kW","kW","","" };
+	std::string Keys[10] = { TCHAR_TO_UTF8("事件编号"),TCHAR_TO_UTF8("事件状态"),TCHAR_TO_UTF8("事件类型"),TCHAR_TO_UTF8("准备时长"),TCHAR_TO_UTF8("价格策略"),TCHAR_TO_UTF8("总激励金"),TCHAR_TO_UTF8("计划总量"),TCHAR_TO_UTF8("完成总量"),TCHAR_TO_UTF8("开始时间"),TCHAR_TO_UTF8("结束时间") };
+	std::string Units[10] = { "","","","h","",TCHAR_TO_UTF8("元"),"kW","kW","","" };
 
 
 	for (int Index=0;Index<10;Index++)
@@ -3873,7 +3873,7 @@ Json OServerHelper::PeakCutandValleyFillingDetails(Json InData) {
 	}
 
 	Json ReturnJson;
-	ReturnJson["title"] = "削峰填谷事件详情";
+	ReturnJson["title"] = TCHAR_TO_UTF8("削峰填谷事件详情");
 	ReturnJson["data"] = Datas;
 
 	return ReturnJson;
@@ -3888,7 +3888,7 @@ Json OServerHelper::TheLatestPeakCuttingAndValleyFillingEvents(Json InData) {
 
 	FMysqlResult EventInfo = MaraidbConnector.Query(str(boost::format("SELECT EventCode,EventType,StartDate,EndDate,TotolPlan,TotalComplete,EventStatus FROM VppEvent WHERE StartDate >='%1%' AND EndDate <='%2%' Order By StartDate Desc;") % StartTime % EndTime));
 
-	std::vector<std::string > RowHeader = { "事件编码" ,"事件类型","开始时间","结束时间","计划总量","完成总量","状态" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("事件编码") ,TCHAR_TO_UTF8("事件类型"),TCHAR_TO_UTF8("开始时间"),TCHAR_TO_UTF8("结束时间"),TCHAR_TO_UTF8("计划总量"),TCHAR_TO_UTF8("完成总量"),TCHAR_TO_UTF8("状态") };
 	std::vector<std::string > RowWidth = { "15" ,"12","15","18","10","10","10" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, EventInfo.DataTable);
@@ -3897,7 +3897,7 @@ Json OServerHelper::TheLatestPeakCuttingAndValleyFillingEvents(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "最新削峰填谷事件";
+	Data["title"] = TCHAR_TO_UTF8("最新削峰填谷事件");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3921,18 +3921,18 @@ Json OServerHelper::EB_TheLatestPeakCuttingAndValleyFillingEvents(Json InData)
 
 	FMysqlResult EventInfo = MaraidbConnector.Query(str(boost::format("SELECT EventCode,EventType,StartDate,EndDate,TotolPlan,TotalComplete FROM VppEvent WHERE StartDate >='%1%' AND EndDate <='%2%';") % StartTime % EndTime));
 
-	std::vector<std::string > RowHeader = { "事件编码" ,"事件类型","开始时间","结束时间","计划总量","完成总量" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("事件编码") ,TCHAR_TO_UTF8("事件类型"),TCHAR_TO_UTF8("开始时间"),TCHAR_TO_UTF8("结束时间"),TCHAR_TO_UTF8("计划总量"),TCHAR_TO_UTF8("完成总量") };
 	std::vector<std::string > RowWidth = { "22.66" ,"10.66","22.66","22.66","10.66","10.66" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, EventInfo.DataTable, 8);
-	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value","削峰事件"}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value","-----"}},{{"value","168.05"}} };
+	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value",TCHAR_TO_UTF8("削峰事件")}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value","-----"}},{{"value","168.05"}} };
 	Table["data"].insert(Table["data"].begin(), CurVector);
 	std::vector<Json> Tables;
 	//Tables.push_back({ {"value",""},{"value",""},{"value",""},{"value",""},{"value",""},{"value",""} });
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "削峰填谷事件回顾";
+	Data["title"] = TCHAR_TO_UTF8("削峰填谷事件回顾");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3973,7 +3973,7 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 		}
 
 		Json ElecTableData;
-		ElecTableData["categoryName"] = "电";
+		ElecTableData["categoryName"] = TCHAR_TO_UTF8("电");
 		ElecTableData["start_color"] = "rgba(255,255,255,1)";
 		ElecTableData["end_color"] = "rgba(255,255,255,1)";
 		ElecTableData["high_color"] = "rgba(255,255,255,0.3)";
@@ -3996,7 +3996,7 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 	//	}
 
 	//	Json WaterTableData;
-	//	WaterTableData["categoryName"] = "水";
+	//	WaterTableData["categoryName"] = TCHAR_TO_UTF8("水");
 	//	WaterTableData["start_color"] = "rgba(48,165,255,1)";
 	//	WaterTableData["end_color"] = "rgba(48,165,255,1)";
 	//	WaterTableData["high_color"] = "rgba(48,165,255,0.3)";
@@ -4018,7 +4018,7 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 	//}
 
 	//Json GasTableData;
-	//GasTableData["categoryName"] = "气";
+	//GasTableData["categoryName"] = TCHAR_TO_UTF8("气");
 	//GasTableData["start_color"] = "rgba(8,227,211,1)";
 	//GasTableData["end_color"] = "rgba(8,227,211,1)";
 	//GasTableData["high_color"] = "rgba(8,227,211,0.3)";
@@ -4029,7 +4029,7 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "(tce)";
 	Table["xLabelRang"] = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 	Table["data"] = TableDatas;
@@ -4037,7 +4037,7 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "本月用能趋势";
+	Data["title"] = TCHAR_TO_UTF8("本月用能趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -4085,7 +4085,7 @@ Json OServerHelper::IndustryUserClassification(Json InData) {
 	std::sort(EnteCountCategoryDatas.begin(), EnteCountCategoryDatas.end(), SortCategoryDatas);
 
 	Json ReturnData;
-	ReturnData["title"] = "行业用户分布";
+	ReturnData["title"] = TCHAR_TO_UTF8("行业用户分布");
 	ReturnData["data"] = EnteCountCategoryDatas;
 
 	return ReturnData;
@@ -4123,7 +4123,7 @@ Json OServerHelper::EnergyMonitoring_EnterpriseProfile(Json InData) {
 		Table[4]["value"] = EnteInfoRow[2];
 	}
 	std::vector<Json> Datas;
-	std::string Title = "企业概况";
+	std::string Title = TCHAR_TO_UTF8("企业概况");
 	if (EnteInfo.DataTable.size() > 0)
 	{
 		Title = EnteInfo.DataTable[0][3];
@@ -4171,7 +4171,7 @@ Json OServerHelper::EnergyAnalyze_EnterpriseProfile(Json InData)
 		Table[3]["value"] = FillPlaceholderIfNull(EnteInfoRow[1],5);
 	}
 	std::vector<Json> Datas;
-	std::string Title = "企业概况";
+	std::string Title = TCHAR_TO_UTF8("企业概况");
 	if (EnteInfo.DataTable.size() > 0)
 	{
 		Title = EnteInfo.DataTable[0][2];
@@ -4211,7 +4211,7 @@ Json OServerHelper::RegionUserClassification(Json InData) {
 	std::sort(EnteCountCategoryDatas.begin(), EnteCountCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnteCountTableData;
-	EnteCountTableData["categoryName"] = "类别一";
+	EnteCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnteCountTableData["start_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["end_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["high_color"] = "#5ceaff";
@@ -4221,8 +4221,8 @@ Json OServerHelper::RegionUserClassification(Json InData) {
 	EnteCountTableDatas.push_back(EnteCountTableData);
 
 	Json EnteCountTable;
-	EnteCountTable["title"] = "总";
-	EnteCountTable["unit"] = "家";
+	EnteCountTable["title"] = TCHAR_TO_UTF8("总");
+	EnteCountTable["unit"] = TCHAR_TO_UTF8("家");
 	EnteCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnteCountCategoryDatas);
 	EnteCountTable["data"] = EnteCountTableDatas;
 
@@ -4232,7 +4232,7 @@ Json OServerHelper::RegionUserClassification(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "区域用户分布占比";
+	Data["title"] = TCHAR_TO_UTF8("区域用户分布占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -4262,26 +4262,26 @@ Json OServerHelper::EnergyMonitoring_RegionalOverview(Json InData) {
 		{"data",
 			{
 				{
-					{"title","全区概况"},
+					{"title",TCHAR_TO_UTF8("全区概况")},
 						{"table",
 							{
 								{
-									{{"name","所在区域"},{"unit",""},{"value",RegionInfoResult.DataTable[0][0]}},
-									{{"name","行业数量"},{"unit","类"},{"value",RegionIndustryCountResult.DataTable[0][0]}},
-									{{"name","接入企业数量"},{"unit","户"},{"value",RegionEnteCountResult.DataTable[0][0]}},
-									{{"name","面积"},{"unit","km²"},{"value",SaveDecimalPlaces(RegionInfoResult.DataTable[0][1])}},
+									{{"name",TCHAR_TO_UTF8("所在区域")},{"unit",""},{"value",RegionInfoResult.DataTable[0][0]}},
+									{{"name",TCHAR_TO_UTF8("行业数量")},{"unit",TCHAR_TO_UTF8("类")},{"value",RegionIndustryCountResult.DataTable[0][0]}},
+									{{"name",TCHAR_TO_UTF8("接入企业数量")},{"unit",TCHAR_TO_UTF8("户")},{"value",RegionEnteCountResult.DataTable[0][0]}},
+									{{"name",TCHAR_TO_UTF8("面积")},{"unit","km²"},{"value",SaveDecimalPlaces(RegionInfoResult.DataTable[0][1])}},
 								},
 								{
-									{{"name","上月清洁能源消纳率"},{"unit","%"},{"value","100"}},
-									{{"name","上月清洁能源占比"},{"unit","%"},{"value",SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][0])}},
-									{{"name","上月碳排放"},{"unit","万t"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][1]))}},
-									{{"name","上月经济增加值"},{"unit","万元"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][2]))}},
+									{{"name",TCHAR_TO_UTF8("上月清洁能源消纳率")},{"unit","%"},{"value","100"}},
+									{{"name",TCHAR_TO_UTF8("上月清洁能源占比")},{"unit","%"},{"value",SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][0])}},
+									{{"name",TCHAR_TO_UTF8("上月碳排放")},{"unit","万t"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][1]))}},
+									{{"name",TCHAR_TO_UTF8("上月经济增加值")},{"unit",TCHAR_TO_UTF8("万元")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][2]))}},
 								},
 								{
-									{{"name","上月能耗总量"},{"unit","万tce"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][3]))}},
-									{{"name","上月度电经济增加值"},{"unit","万元/kW·h"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][4]))}},
-									{{"name","上月万元产值能耗"},{"unit","tce/万"},{"value",FillPlaceholderIfNull(SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][5]))}},
-									{{"name","上月单位建筑面积能耗"},{"unit","tce/km²"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(GetEnergyConsumptionUnitArea(RegionEnergyEfficiencyResult.DataTable[0][3],std::to_string(Area))))}},
+									{{"name",TCHAR_TO_UTF8("上月能耗总量")},{"unit","万tce"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][3]))}},
+									{{"name",TCHAR_TO_UTF8("上月度电经济增加值")},{"unit","万元/kW·h"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][4]))}},
+									{{"name",TCHAR_TO_UTF8("上月万元产值能耗")},{"unit","tce/万"},{"value",FillPlaceholderIfNull(SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][5]))}},
+									{{"name",TCHAR_TO_UTF8("上月单位建筑面积能耗")},{"unit","tce/km²"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(GetEnergyConsumptionUnitArea(RegionEnergyEfficiencyResult.DataTable[0][3],std::to_string(Area))))}},
 								},
 
 							}
@@ -4305,13 +4305,13 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheMonth(Json InData) {
 	MaraidbConnector.Connect();
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("当月供需对比图");
+	DataTitle.push_back(TCHAR_TO_UTF8("当月供需对比图"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
-	TableTitle.push_back("电");
-	TableTitle.push_back("水");
-	TableTitle.push_back("气");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
+	TableTitle.push_back(TCHAR_TO_UTF8("电"));
+	TableTitle.push_back(TCHAR_TO_UTF8("水"));
+	TableTitle.push_back(TCHAR_TO_UTF8("气"));
 
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
@@ -4320,8 +4320,8 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheMonth(Json InData) {
 	Unit.push_back("(m³)");
 
 	std::vector<std::string> CategoryName;
-	CategoryName.push_back("供");
-	CategoryName.push_back("需");
+	CategoryName.push_back(TCHAR_TO_UTF8("供"));
+	CategoryName.push_back(TCHAR_TO_UTF8("需"));
 
 	std::vector<FXLabelRangCofig> XLabelRangCofig;
 	XLabelRangCofig.push_back(FXLabelRangCofig(1, false, true, true,
@@ -4652,7 +4652,7 @@ Json OServerHelper::EnergyTrading_EnterpriseProfile(Json InData) {
 	}
 	Json TableData;
 	TableData["data"] = RowData;
-	TableData["title"] = "企业简介";
+	TableData["title"] = TCHAR_TO_UTF8("企业简介");
 	return TableData;
 }
 Json OServerHelper::CommodityOrderQuantityCurve(Json InData) {
@@ -4677,7 +4677,7 @@ Json OServerHelper::CommodityOrderQuantityCurve(Json InData) {
 		CategoryDatas.push_back({ {"xLabel",ResultRow[0] + "-" + ResultRow[1]},{"yLabel",ResultRow[2]} });
 	}
 	Json TableData;
-	TableData["categoryName"] = "成交趋势";
+	TableData["categoryName"] = TCHAR_TO_UTF8("成交趋势");
 	TableData["start_color"] = "rgba(209,246,255,1)";
 	TableData["end_color"] = "rgba(209,246,255,1)";
 	TableData["high_color"] = "rgba(209,246,255,0.3)";
@@ -4697,7 +4697,7 @@ Json OServerHelper::CommodityOrderQuantityCurve(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "商品订单数量曲线";
+	Data["title"] = TCHAR_TO_UTF8("商品订单数量曲线");
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -4727,7 +4727,7 @@ Json OServerHelper::ProductDetailsList(Json InData) {
 	RowHeader.push_back("{\"headerName\":\"商品ID\",\"width\":\"464\"}"_json);
 
 
-	std::vector<std::string> StatusList = { "审批中","已上架","未通过","已下架" };
+	std::vector<std::string> StatusList = { TCHAR_TO_UTF8("审批中"),TCHAR_TO_UTF8("已上架"),TCHAR_TO_UTF8("未通过"),TCHAR_TO_UTF8("已下架") };
 
 	std::vector<Json> FinalData;
 	for (auto GoodsStatus : StatusList)
@@ -4808,7 +4808,7 @@ Json OServerHelper::ProductInformation(Json InData) {
 
 	Json TableData;
 	TableData["data"] = RowData;
-	TableData["title"] = "商品信息";
+	TableData["title"] = TCHAR_TO_UTF8("商品信息");
 	return TableData;
 }
 Json OServerHelper::AbnormalEnterpriseProfile(Json InData) {
@@ -4873,7 +4873,7 @@ Json OServerHelper::DemandSide(Json InData) {
 			}
 		}
 	}
-	tableData["title"] = "供应方";
+	tableData["title"] = TCHAR_TO_UTF8("供应方");
 	tableData["data"] = data;
 	return tableData;
 }
@@ -4899,7 +4899,7 @@ Json OServerHelper::ListOfDetailedRequirements(Json InData) {
 	RowHeader.push_back("{\"headerName\":\"意向金\",\"width\":\"464\"}"_json);
 	RowHeader.push_back("{\"headerName\":\"发布时间\",\"width\":\"464\"}"_json);
 	RowHeader.push_back("{\"headerName\":\"有效时间\",\"width\":\"464\"}"_json);
-	std::vector<std::string> StatusList = { "待付款","审核中","已发布","未通过","已关闭","已发起合同" };
+	std::vector<std::string> StatusList = { TCHAR_TO_UTF8("待付款"),TCHAR_TO_UTF8("审核中"),TCHAR_TO_UTF8("已发布"),TCHAR_TO_UTF8("未通过"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("已发起合同") };
 
 	std::vector<Json> FinalData;
 	for (auto DemandStatusCountListRow : DemandStatusCountList.DataTable)
@@ -5019,7 +5019,7 @@ Json OServerHelper::ShelvingDemandList(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "待审核需求列表";
+	Data["title"] = TCHAR_TO_UTF8("待审核需求列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 	Json ReturnData;
@@ -5053,7 +5053,7 @@ Json OServerHelper::ProportionOfCustomerIndustryDistribution(Json InData) {
 	FiltrationSmallDataByRatio(EnteCountCategoryDatas, 0.02f);
 
 	Json EnteCountTableData;
-	EnteCountTableData["categoryName"] = "类别一";
+	EnteCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnteCountTableData["start_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["end_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["high_color"] = "#5ceaff";
@@ -5063,8 +5063,8 @@ Json OServerHelper::ProportionOfCustomerIndustryDistribution(Json InData) {
 	EnteCountTableDatas.push_back(EnteCountTableData);
 
 	Json EnteCountTable;
-	EnteCountTable["title"] = "总";
-	EnteCountTable["unit"] = "家";
+	EnteCountTable["title"] = TCHAR_TO_UTF8("总");
+	EnteCountTable["unit"] = TCHAR_TO_UTF8("家");
 	EnteCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnteCountCategoryDatas);
 	EnteCountTable["data"] = EnteCountTableDatas;
 
@@ -5074,7 +5074,7 @@ Json OServerHelper::ProportionOfCustomerIndustryDistribution(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "客户行业分布占比";
+	Data["title"] = TCHAR_TO_UTF8("客户行业分布占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5110,7 +5110,7 @@ Json OServerHelper::ES_ProportionOfCustomerIndustryDistribution(Json InData)
 	std::sort(EnteCountCategoryDatas.begin(), EnteCountCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnteCountTableData;
-	EnteCountTableData["categoryName"] = "类别一";
+	EnteCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnteCountTableData["start_color"] = "rgba(96,199,255,0.7)";
 	EnteCountTableData["end_color"] = "rgba(96,199,255,0.7)";
 	EnteCountTableData["high_color"] = "#F2F2F2";
@@ -5122,8 +5122,8 @@ Json OServerHelper::ES_ProportionOfCustomerIndustryDistribution(Json InData)
 	EnteCountTableDatas.push_back(EnteCountTableData);
 
 	Json EnteCountTable;
-	EnteCountTable["title"] = "总";
-	EnteCountTable["unit"] = "家";
+	EnteCountTable["title"] = TCHAR_TO_UTF8("总");
+	EnteCountTable["unit"] = TCHAR_TO_UTF8("家");
 	EnteCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnteCountCategoryDatas);
 	EnteCountTable["data"] = EnteCountTableDatas;
 
@@ -5133,7 +5133,7 @@ Json OServerHelper::ES_ProportionOfCustomerIndustryDistribution(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "客户行业分布占比";
+	Data["title"] = TCHAR_TO_UTF8("客户行业分布占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5168,7 +5168,7 @@ Json OServerHelper::CustomerAreaAnalysis(Json InData) {
 	std::sort(EnteCountCategoryDatas.begin(), EnteCountCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnteCountTableData;
-	EnteCountTableData["categoryName"] = "类别一";
+	EnteCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnteCountTableData["start_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["end_color"] = "rgba(209,246,255,1)";
 	EnteCountTableData["high_color"] = "#5ceaff";
@@ -5178,8 +5178,8 @@ Json OServerHelper::CustomerAreaAnalysis(Json InData) {
 	EnteCountTableDatas.push_back(EnteCountTableData);
 
 	Json EnteCountTable;
-	EnteCountTable["title"] = "总";
-	EnteCountTable["unit"] = "家";
+	EnteCountTable["title"] = TCHAR_TO_UTF8("总");
+	EnteCountTable["unit"] = TCHAR_TO_UTF8("家");
 	EnteCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnteCountCategoryDatas);
 	EnteCountTable["data"] = EnteCountTableDatas;
 
@@ -5189,7 +5189,7 @@ Json OServerHelper::CustomerAreaAnalysis(Json InData) {
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "客户区域分布";
+	Data["title"] = TCHAR_TO_UTF8("客户区域分布");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5225,7 +5225,7 @@ Json OServerHelper::ES_CustomerAreaAnalysis(Json InData)
 	std::sort(EnteCountCategoryDatas.begin(), EnteCountCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnteCountTableData;
-	EnteCountTableData["categoryName"] = "类别一";
+	EnteCountTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnteCountTableData["start_color"] = "rgba(96,199,255,0.3)";
 	EnteCountTableData["end_color"] = "rgba(96,199,255,1)";
 	EnteCountTableData["high_color"] = "#5ceaff";
@@ -5235,8 +5235,8 @@ Json OServerHelper::ES_CustomerAreaAnalysis(Json InData)
 	EnteCountTableDatas.push_back(EnteCountTableData);
 
 	Json EnteCountTable;
-	EnteCountTable["title"] = "总";
-	EnteCountTable["unit"] = "家";
+	EnteCountTable["title"] = TCHAR_TO_UTF8("总");
+	EnteCountTable["unit"] = TCHAR_TO_UTF8("家");
 	EnteCountTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnteCountCategoryDatas);
 	EnteCountTable["data"] = EnteCountTableDatas;
 
@@ -5246,7 +5246,7 @@ Json OServerHelper::ES_CustomerAreaAnalysis(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "客户区域分析";
+	Data["title"] = TCHAR_TO_UTF8("客户区域分析");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5293,7 +5293,7 @@ Json OServerHelper::StarMerchandiseSales(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -5301,7 +5301,7 @@ Json OServerHelper::StarMerchandiseSales(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "明星商品销量";
+	Data["title"] = TCHAR_TO_UTF8("明星商品销量");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5349,7 +5349,7 @@ Json OServerHelper::ES_StarMerchandiseSales(Json InData)
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -5357,7 +5357,7 @@ Json OServerHelper::ES_StarMerchandiseSales(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "明星商品销量";
+	Data["title"] = TCHAR_TO_UTF8("明星商品销量");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5411,7 +5411,7 @@ Json OServerHelper::ListOfEnergyServiceProviders(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "能源服务商列表";
+	Data["title"] = TCHAR_TO_UTF8("能源服务商列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -5468,13 +5468,13 @@ Json OServerHelper::RatingsAccounting(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "评分占比";
+	Data["title"] = TCHAR_TO_UTF8("评分占比");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -5539,7 +5539,7 @@ Json OServerHelper::ES_RatingsAccounting(Json InData)
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "产业联盟星级评定";
+	Data["title"] = TCHAR_TO_UTF8("产业联盟星级评定");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -5587,14 +5587,14 @@ Json OServerHelper::ProportionOfCommodityTransactionCategories(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
 
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "商品成交分类占比";
+	Data["title"] = TCHAR_TO_UTF8("商品成交分类占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -5640,7 +5640,7 @@ Json OServerHelper::PercentageOfDemandTransactionCategories(Json InData) {
 	Tables.push_back(Table);
 	std::vector<Json>Datas;
 	Json Data;
-	Data["title"] = "需求成交分类占比";
+	Data["title"] = TCHAR_TO_UTF8("需求成交分类占比");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -5699,7 +5699,7 @@ Json OServerHelper::LabelLifeCycle(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[5] = { "创建中","发布中","运行中","停用","待执行/暂停" };
+	std::string Status[5] = { TCHAR_TO_UTF8("创建中"),TCHAR_TO_UTF8("发布中"),TCHAR_TO_UTF8("运行中"),TCHAR_TO_UTF8("停用"),"待执行/暂停" };
 
 	std::vector<Json> TableDatas;
 
@@ -5727,7 +5727,7 @@ Json OServerHelper::LabelLifeCycle(Json InData)
 		TableDatas.push_back(TableData);
 	}
 	Json Data;
-	Data["title"] = "标签全生命周期";
+	Data["title"] = TCHAR_TO_UTF8("标签全生命周期");
 	Data["data"] = TableDatas;
 
 	std::vector<Json> Datas;
@@ -5757,20 +5757,20 @@ Json OServerHelper::LabelOverview(Json InData) {
 	Json TableJson_1;
 	Json TableJson_2;
 
-	TableJson_1["currentLabel"] = "标签客户";
-	TableJson_1["fullLabel"] = "客户总数";
+	TableJson_1["currentLabel"] = TCHAR_TO_UTF8("标签客户");
+	TableJson_1["fullLabel"] = TCHAR_TO_UTF8("客户总数");
 	TableJson_1["currentValue"] = LabelEnteCount.DataTable[0][0];
 	TableJson_1["fullValue"] = EnteCount.DataTable[0][0];
 
-	TableJson_2["currentLabel"] = "运行标签";
-	TableJson_2["fullLabel"] = "标签总数";
+	TableJson_2["currentLabel"] = TCHAR_TO_UTF8("运行标签");
+	TableJson_2["fullLabel"] = TCHAR_TO_UTF8("标签总数");
 	TableJson_2["currentValue"] = RunLabelCount.DataTable[0][0];
 	TableJson_2["fullValue"] = LabelCount.DataTable[0][0];
 
 	Table.push_back(TableJson_1);
 	Table.push_back(TableJson_2);
 
-	DataJson["title"] = "标签概况";
+	DataJson["title"] = TCHAR_TO_UTF8("标签概况");
 	DataJson["table"] = Table;
 
 	Data.push_back(DataJson);
@@ -5807,14 +5807,14 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	{
 		//Year
 		Json YearTabelDataJson;
-		YearTabelDataJson["categoryName"] = "单位面积能耗";
+		YearTabelDataJson["categoryName"] = TCHAR_TO_UTF8("单位面积能耗");
 		YearTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 		YearTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 		YearTabelDataJson["high_color"] = "#5ceaff";
 		YearTabelDataJson["gradient_color"] = "#8FC31F";
 
 		Json YearAdvanceTabelDataJson;
-		YearAdvanceTabelDataJson["categoryName"] = "参考指标";
+		YearAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 		YearAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 		YearAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 		YearAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -5850,8 +5850,8 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 		YearTabelData.push_back(YearAdvanceTabelDataJson);
 
 		Json YearTableJson;
-		YearTableJson["title"] = "年";
-		YearTableJson["unit"] = "月";
+		YearTableJson["title"] = TCHAR_TO_UTF8("年");
+		YearTableJson["unit"] = TCHAR_TO_UTF8("月");
 		YearTableJson["xLabelRang"] = XLabelRang;
 		YearTableJson["data"] = YearTabelData;
 
@@ -5861,14 +5861,14 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	//{
 	//	//Season
 	//	Json SeasonTabelDataJson;
-	//	SeasonTabelDataJson["categoryName"] = "单位面积能耗";
+	//	SeasonTabelDataJson["categoryName"] = TCHAR_TO_UTF8("单位面积能耗");
 	//	SeasonTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	SeasonTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	SeasonTabelDataJson["high_color"] = "#5ceaff";
 	//	SeasonTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json SeasonAdvanceTabelDataJson;
-	//	SeasonAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	SeasonAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	SeasonAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	SeasonAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	SeasonAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -5906,7 +5906,7 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	//	SeasonTabelData.push_back(SeasonAdvanceTabelDataJson);
 
 	//	Json SeasonTableJson;
-	//	SeasonTableJson["title"] = "季";
+	//	SeasonTableJson["title"] = TCHAR_TO_UTF8("季");
 	//	SeasonTableJson["unit"] = "";
 	//	SeasonTableJson["xLabelRang"] = SeasonXLabelRang;
 	//	SeasonTableJson["data"] = SeasonTabelData;
@@ -5917,14 +5917,14 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	//{
 	//	//Month
 	//	Json MonthTabelDataJson;
-	//	MonthTabelDataJson["categoryName"] = "单位面积能耗";
+	//	MonthTabelDataJson["categoryName"] = TCHAR_TO_UTF8("单位面积能耗");
 	//	MonthTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	MonthTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	MonthTabelDataJson["high_color"] = "#5ceaff";
 	//	MonthTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json MonthAdvanceTabelDataJson;
-	//	MonthAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	MonthAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	MonthAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	MonthAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	MonthAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -5962,7 +5962,7 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	//	MonthTabelData.push_back(MonthAdvanceTabelDataJson);
 
 	//	Json MonthTableJson;
-	//	MonthTableJson["title"] = "天";
+	//	MonthTableJson["title"] = TCHAR_TO_UTF8("天");
 	//	MonthTableJson["unit"] = "";
 	//	MonthTableJson["xLabelRang"] = MonthXLabelRang;
 	//	MonthTableJson["data"] = MonthTabelData;
@@ -5971,7 +5971,7 @@ Json OServerHelper::EnergyConsumptionPerUnitAreaTrend(Json InData)
 	//}
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "单位面积能耗趋势";
+	Data["title"] = TCHAR_TO_UTF8("单位面积能耗趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 	Json TableData;
@@ -6006,14 +6006,14 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	{
 		//Year
 		Json YearTabelDataJson;
-		YearTabelDataJson["categoryName"] = "度电经济产值趋势";
+		YearTabelDataJson["categoryName"] = TCHAR_TO_UTF8("度电经济产值趋势");
 		YearTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 		YearTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 		YearTabelDataJson["high_color"] = "#5ceaff";
 		YearTabelDataJson["gradient_color"] = "#8FC31F";
 
 		Json YearAdvanceTabelDataJson;
-		YearAdvanceTabelDataJson["categoryName"] = "参考指标";
+		YearAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 		YearAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 		YearAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 		YearAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6049,8 +6049,8 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 		YearTabelData.push_back(YearAdvanceTabelDataJson);
 
 		Json YearTableJson;
-		YearTableJson["title"] = "年";
-		YearTableJson["unit"] = "月";
+		YearTableJson["title"] = TCHAR_TO_UTF8("年");
+		YearTableJson["unit"] = TCHAR_TO_UTF8("月");
 		YearTableJson["xLabelRang"] = XLabelRang;
 		YearTableJson["data"] = YearTabelData;
 
@@ -6060,14 +6060,14 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	//{
 	//	//Season
 	//	Json SeasonTabelDataJson;
-	//	SeasonTabelDataJson["categoryName"] = "度电经济产值趋势";
+	//	SeasonTabelDataJson["categoryName"] = TCHAR_TO_UTF8("度电经济产值趋势");
 	//	SeasonTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	SeasonTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	SeasonTabelDataJson["high_color"] = "#5ceaff";
 	//	SeasonTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json SeasonAdvanceTabelDataJson;
-	//	SeasonAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	SeasonAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	SeasonAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	SeasonAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	SeasonAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6105,7 +6105,7 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	//	SeasonTabelData.push_back(SeasonAdvanceTabelDataJson);
 
 	//	Json SeasonTableJson;
-	//	SeasonTableJson["title"] = "季";
+	//	SeasonTableJson["title"] = TCHAR_TO_UTF8("季");
 	//	SeasonTableJson["unit"] = "";
 	//	SeasonTableJson["xLabelRang"] = SeasonXLabelRang;
 	//	SeasonTableJson["data"] = SeasonTabelData;
@@ -6116,14 +6116,14 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	//{
 	//	//Month
 	//	Json MonthTabelDataJson;
-	//	MonthTabelDataJson["categoryName"] = "度电经济产值趋势";
+	//	MonthTabelDataJson["categoryName"] = TCHAR_TO_UTF8("度电经济产值趋势");
 	//	MonthTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	MonthTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	MonthTabelDataJson["high_color"] = "#5ceaff";
 	//	MonthTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json MonthAdvanceTabelDataJson;
-	//	MonthAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	MonthAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	MonthAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	MonthAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	MonthAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6161,7 +6161,7 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	//	MonthTabelData.push_back(MonthAdvanceTabelDataJson);
 
 	//	Json MonthTableJson;
-	//	MonthTableJson["title"] = "天";
+	//	MonthTableJson["title"] = TCHAR_TO_UTF8("天");
 	//	MonthTableJson["unit"] = "";
 	//	MonthTableJson["xLabelRang"] = MonthXLabelRang;
 	//	MonthTableJson["data"] = MonthTabelData;
@@ -6170,7 +6170,7 @@ Json OServerHelper::EnteEcnoValueAddTrend(Json InData)
 	//}
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "度电经济产值趋势";
+	Data["title"] = TCHAR_TO_UTF8("度电经济产值趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 	Json TableData;
@@ -6204,14 +6204,14 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	{
 		//Year
 		Json YearTabelDataJson;
-		YearTabelDataJson["categoryName"] = "功率因数趋势";
+		YearTabelDataJson["categoryName"] = TCHAR_TO_UTF8("功率因数趋势");
 		YearTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 		YearTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 		YearTabelDataJson["high_color"] = "#5ceaff";
 		YearTabelDataJson["gradient_color"] = "#8FC31F";
 
 		Json YearAdvanceTabelDataJson;
-		YearAdvanceTabelDataJson["categoryName"] = "参考指标";
+		YearAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 		YearAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 		YearAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 		YearAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6247,8 +6247,8 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 		YearTabelData.push_back(YearAdvanceTabelDataJson);
 
 		Json YearTableJson;
-		YearTableJson["title"] = "年";
-		YearTableJson["unit"] = "月";
+		YearTableJson["title"] = TCHAR_TO_UTF8("年");
+		YearTableJson["unit"] = TCHAR_TO_UTF8("月");
 		YearTableJson["xLabelRang"] = XLabelRang;
 		YearTableJson["data"] = YearTabelData;
 
@@ -6258,14 +6258,14 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	//{
 	//	//Season
 	//	Json SeasonTabelDataJson;
-	//	SeasonTabelDataJson["categoryName"] = "功率因数趋势";
+	//	SeasonTabelDataJson["categoryName"] = TCHAR_TO_UTF8("功率因数趋势");
 	//	SeasonTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	SeasonTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	SeasonTabelDataJson["high_color"] = "#5ceaff";
 	//	SeasonTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json SeasonAdvanceTabelDataJson;
-	//	SeasonAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	SeasonAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	SeasonAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	SeasonAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	SeasonAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6302,7 +6302,7 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	//	SeasonTabelData.push_back(SeasonAdvanceTabelDataJson);
 
 	//	Json SeasonTableJson;
-	//	SeasonTableJson["title"] = "季";
+	//	SeasonTableJson["title"] = TCHAR_TO_UTF8("季");
 	//	SeasonTableJson["unit"] = "";
 	//	SeasonTableJson["xLabelRang"] = SeasonXLabelRang;
 	//	SeasonTableJson["data"] = SeasonTabelData;
@@ -6313,14 +6313,14 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	//{
 	//	//Month
 	//	Json MonthTabelDataJson;
-	//	MonthTabelDataJson["categoryName"] = "功率因数趋势";
+	//	MonthTabelDataJson["categoryName"] = TCHAR_TO_UTF8("功率因数趋势");
 	//	MonthTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	MonthTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	MonthTabelDataJson["high_color"] = "#5ceaff";
 	//	MonthTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json MonthAdvanceTabelDataJson;
-	//	MonthAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	MonthAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	MonthAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	MonthAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	MonthAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6358,7 +6358,7 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	//	MonthTabelData.push_back(MonthAdvanceTabelDataJson);
 
 	//	Json MonthTableJson;
-	//	MonthTableJson["title"] = "天";
+	//	MonthTableJson["title"] = TCHAR_TO_UTF8("天");
 	//	MonthTableJson["unit"] = "";
 	//	MonthTableJson["xLabelRang"] = MonthXLabelRang;
 	//	MonthTableJson["data"] = MonthTabelData;
@@ -6367,7 +6367,7 @@ Json OServerHelper::EntePowerFactorTrend(Json InData)
 	//}
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "功率因数趋势";
+	Data["title"] = TCHAR_TO_UTF8("功率因数趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 	Json TableData;
@@ -6402,14 +6402,14 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	{
 		//Year
 		Json YearTabelDataJson;
-		YearTabelDataJson["categoryName"] = "碳排放趋势";
+		YearTabelDataJson["categoryName"] = TCHAR_TO_UTF8("碳排放趋势");
 		YearTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 		YearTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 		YearTabelDataJson["high_color"] = "#5ceaff";
 		YearTabelDataJson["gradient_color"] = "#8FC31F";
 
 		Json YearAdvanceTabelDataJson;
-		YearAdvanceTabelDataJson["categoryName"] = "参考指标";
+		YearAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 		YearAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 		YearAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 		YearAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6445,8 +6445,8 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 		YearTabelData.push_back(YearAdvanceTabelDataJson);
 
 		Json YearTableJson;
-		YearTableJson["title"] = "年";
-		YearTableJson["unit"] = "月";
+		YearTableJson["title"] = TCHAR_TO_UTF8("年");
+		YearTableJson["unit"] = TCHAR_TO_UTF8("月");
 		YearTableJson["xLabelRang"] = XLabelRang;
 		YearTableJson["data"] = YearTabelData;
 
@@ -6456,14 +6456,14 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	//{
 	//	//Season
 	//	Json SeasonTabelDataJson;
-	//	SeasonTabelDataJson["categoryName"] = "碳排放趋势";
+	//	SeasonTabelDataJson["categoryName"] = TCHAR_TO_UTF8("碳排放趋势");
 	//	SeasonTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	SeasonTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	SeasonTabelDataJson["high_color"] = "#5ceaff";
 	//	SeasonTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json SeasonAdvanceTabelDataJson;
-	//	SeasonAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	SeasonAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	SeasonAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	SeasonAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	SeasonAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6501,7 +6501,7 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	//	SeasonTabelData.push_back(SeasonAdvanceTabelDataJson);
 
 	//	Json SeasonTableJson;
-	//	SeasonTableJson["title"] = "季";
+	//	SeasonTableJson["title"] = TCHAR_TO_UTF8("季");
 	//	SeasonTableJson["unit"] = "";
 	//	SeasonTableJson["xLabelRang"] = SeasonXLabelRang;
 	//	SeasonTableJson["data"] = SeasonTabelData;
@@ -6512,14 +6512,14 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	//{
 	//	//Month
 	//	Json MonthTabelDataJson;
-	//	MonthTabelDataJson["categoryName"] = "碳排放趋势";
+	//	MonthTabelDataJson["categoryName"] = TCHAR_TO_UTF8("碳排放趋势");
 	//	MonthTabelDataJson["start_color"] = "rgba(65,141,255,0)";
 	//	MonthTabelDataJson["end_color"] = "rgba(65,141,255,1)";
 	//	MonthTabelDataJson["high_color"] = "#5ceaff";
 	//	MonthTabelDataJson["gradient_color"] = "#8FC31F";
 
 	//	Json MonthAdvanceTabelDataJson;
-	//	MonthAdvanceTabelDataJson["categoryName"] = "参考指标";
+	//	MonthAdvanceTabelDataJson["categoryName"] = TCHAR_TO_UTF8("参考指标");
 	//	MonthAdvanceTabelDataJson["start_color"] = "rgba(0,254,233,0)";
 	//	MonthAdvanceTabelDataJson["end_color"] = "rgba(0,254,233,1)";
 	//	MonthAdvanceTabelDataJson["high_color"] = "#5ceaff";
@@ -6557,7 +6557,7 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	//	MonthTabelData.push_back(MonthAdvanceTabelDataJson);
 
 	//	Json MonthTableJson;
-	//	MonthTableJson["title"] = "天";
+	//	MonthTableJson["title"] = TCHAR_TO_UTF8("天");
 	//	MonthTableJson["unit"] = "";
 	//	MonthTableJson["xLabelRang"] = MonthXLabelRang;
 	//	MonthTableJson["data"] = MonthTabelData;
@@ -6566,7 +6566,7 @@ Json OServerHelper::CarbonEmissionsTrend(Json InData)
 	//}
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "碳排放趋势";
+	Data["title"] = TCHAR_TO_UTF8("碳排放趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 	Json TableData;
@@ -6603,7 +6603,7 @@ Json OServerHelper::EnterpriseComprehensiveEnergyConsumptionAnalysis(Json InData
 	std::vector<Json> TabelDatas;
 	{
 		Json IndustryTableData;
-		IndustryTableData["categoryName"] = "行业均值";
+		IndustryTableData["categoryName"] = TCHAR_TO_UTF8("行业均值");
 		IndustryTableData["start_color"] = "rgb(97,173,255)";
 		IndustryTableData["end_color"] = "rgba(97,173,255,0.2)";
 		IndustryTableData["high_color"] = "8EA7AD";
@@ -6621,7 +6621,7 @@ Json OServerHelper::EnterpriseComprehensiveEnergyConsumptionAnalysis(Json InData
 	}
 	{
 		Json EnteTableData;
-		EnteTableData["categoryName"] = "企业";
+		EnteTableData["categoryName"] = TCHAR_TO_UTF8("企业");
 		EnteTableData["start_color"] = "rgb(145,255,85)";
 		EnteTableData["end_color"] = "rgba(145,255,85,0.2)";
 		EnteTableData["high_color"] = "#6298E0";
@@ -6641,7 +6641,7 @@ Json OServerHelper::EnterpriseComprehensiveEnergyConsumptionAnalysis(Json InData
 
 
 	Json DataTable;
-	DataTable["title"] = "总";
+	DataTable["title"] = TCHAR_TO_UTF8("总");
 	DataTable["unit"] = "Tce";
 
 	std::vector<Json> XLabelRangs;
@@ -6652,16 +6652,16 @@ Json OServerHelper::EnterpriseComprehensiveEnergyConsumptionAnalysis(Json InData
 		switch (i)
 		{
 		case 0:
-			XLabelRang["label"] = "电";
+			XLabelRang["label"] = TCHAR_TO_UTF8("电");
 			MaxValue = 10000;
 			break;
 
 		case 1:
-			XLabelRang["label"] = "水";
+			XLabelRang["label"] = TCHAR_TO_UTF8("水");
 			MaxValue = 1000;
 			break;
 		case 2:
-			XLabelRang["label"] = "气";
+			XLabelRang["label"] = TCHAR_TO_UTF8("气");
 			MaxValue = 100;
 			break;
 		default:
@@ -6687,7 +6687,7 @@ Json OServerHelper::EnterpriseComprehensiveEnergyConsumptionAnalysis(Json InData
 	DataTables.push_back(DataTable);
 
 	Json Data;
-	Data["title"] = "企业能耗综合分析";
+	Data["title"] = TCHAR_TO_UTF8("企业能耗综合分析");
 	Data["table"] = DataTables;
 
 	std::vector<Json>Datas;
@@ -6745,7 +6745,7 @@ Json OServerHelper::ComparisonOfComprehensiveEnergyConsumption(Json InData) {
 	FMysqlResult GasInfoResult[2] = { CurrentGasInfoResult,PreYearGasInfoResult };
 
 
-	std::string Title[4] = { "总","电","水","气" };
+	std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
 	std::string Unit[4] = { "tce","kW·h","m³","m³" };
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, false, true, false, '.', EXLabelStepDateIterator::Month);
@@ -6762,7 +6762,7 @@ Json OServerHelper::ComparisonOfComprehensiveEnergyConsumption(Json InData) {
 		for (int j = 0; j < 2; j++)
 		{
 			Json TableData;
-			TableData["categoryName"] = j == 0 ? "今年" : "去年";
+			TableData["categoryName"] = j == 0 ? TCHAR_TO_UTF8("今年") : TCHAR_TO_UTF8("去年");
 			TableData["start_color"] = j == 0 ? "rgba(97,173,255,0.2)" : "rgba(209,246,255,0.3)";
 			TableData["end_color"] = j == 0 ? "rgb(97,173,255)" : "rgb(209,246,255)";
 			TableData["high_color"] = "#5ceaff";
@@ -6843,7 +6843,7 @@ Json OServerHelper::ComparisonOfComprehensiveEnergyConsumption(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "综合能耗趋势分析";
+	Data["title"] = TCHAR_TO_UTF8("综合能耗趋势分析");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -6867,7 +6867,7 @@ Json OServerHelper::AbnormalThisMonth(Json InData)
 	std::string StartTime = InData["StartTime"];
 	std::string EndTime = InData["EndTime"];
 
-	std::string Status[2] = { "未复检","已确认" };
+	std::string Status[2] = { TCHAR_TO_UTF8("未复检"),TCHAR_TO_UTF8("已确认") };
 
 	std::vector<Json>Tables;
 	int Count = 0;
@@ -6877,20 +6877,20 @@ Json OServerHelper::AbnormalThisMonth(Json InData)
 
 		Json Table;
 		Table["title"] = Status[i];
-		Table["xLabel"] = "个";
+		Table["xLabel"] = TCHAR_TO_UTF8("个");
 		Table["yLabel"] = AbnormalEventsCount.DataTable[0][0];
 		Count += boost::lexical_cast<int>(AbnormalEventsCount.DataTable[0][0]);
 		Tables.push_back(Table);
 	}
 	Json Table;
-	Table["title"] = "本月异常";
-	Table["xLabel"] = "个";
+	Table["title"] = TCHAR_TO_UTF8("本月异常");
+	Table["xLabel"] = TCHAR_TO_UTF8("个");
 	Table["yLabel"] = std::to_string(Count);
 	Tables.push_back(Table);
 
 	Json Data;
 	std::vector<Json> Datas;
-	Data["title"] = "本月异常事件";
+	Data["title"] = TCHAR_TO_UTF8("本月异常事件");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -6919,14 +6919,14 @@ Json OServerHelper::AbnormalEventDetails(Json InData)
 	}
 
 	Json Table = {
-					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel","特征提取"},{"yLabel",""}},
-					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel","异常辨识"},{"yLabel",""}},
-					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel","原因预判"},{"yLabel",""}},
-					{{"title",AbnormalEventsCount.DataTable[0][1]},{"xLabel","现场排查"},{"yLabel",""}},
+					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel",TCHAR_TO_UTF8("特征提取")},{"yLabel",""}},
+					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel",TCHAR_TO_UTF8("异常辨识")},{"yLabel",""}},
+					{{"title",AbnormalEventsCount.DataTable[0][0]},{"xLabel",TCHAR_TO_UTF8("原因预判")},{"yLabel",""}},
+					{{"title",AbnormalEventsCount.DataTable[0][1]},{"xLabel",TCHAR_TO_UTF8("现场排查")},{"yLabel",""}},
 	};
 	Json Data;
 	std::vector<Json> Datas;
-	Data["title"] = "异常事件详情";
+	Data["title"] = TCHAR_TO_UTF8("异常事件详情");
 	Data["table"] = Table;
 	Datas.push_back(Data);
 
@@ -6964,7 +6964,7 @@ Json OServerHelper::PredictAccuracyTrend(Json InData)
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "异常原因";
+	TableData["categoryName"] = TCHAR_TO_UTF8("异常原因");
 	TableData["start_color"] = "rgb(209,246,255)";
 	TableData["end_color"] = "rgba(65,141,255,0.6)";
 	TableData["high_color"] = "rgba(97,173,255,0.3)";
@@ -6985,7 +6985,7 @@ Json OServerHelper::PredictAccuracyTrend(Json InData)
 
 	Json Data;
 
-	Data["title"] = "预判准确率趋势";
+	Data["title"] = TCHAR_TO_UTF8("预判准确率趋势");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -7030,7 +7030,7 @@ Json OServerHelper::EnterpriseLabel(Json InData) {
 	}
 
 	Json TableData;
-	TableData["title"] = "企业标签";
+	TableData["title"] = TCHAR_TO_UTF8("企业标签");
 	TableData["data"] = Datas;
 
 	return TableData;
@@ -7108,7 +7108,7 @@ Json OServerHelper::ReportOrderServiceList(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "报告订单服务列表";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -7242,7 +7242,7 @@ Json OServerHelper::CustomizedServiceList(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "个性化定制服务列表";
+	Data["title"] = TCHAR_TO_UTF8("个性化定制服务列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -7341,7 +7341,7 @@ Json OServerHelper::CustomizedService_MonthlyConsumption(Json InData) {
 
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT (@i:=@i+1)i,ApplyEnteName,Money FROM (select @i:=0) AS A,(SELECT ApplyEnteName,SUM(OfferPrice) AS Money FROM CustApply  WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY ApplyEnteName ORDER BY SUM(OfferPrice)DESC) AS T;") % StartTime % EndTime));
 
-	std::vector<std::string > RowHeader = { "排名" ,"企业名称","月消费" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("排名") ,TCHAR_TO_UTF8("企业名称"),TCHAR_TO_UTF8("月消费") };
 	std::vector<std::string > RowWidth = { "10","10","10" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, Result.DataTable,8);
@@ -7349,7 +7349,7 @@ Json OServerHelper::CustomizedService_MonthlyConsumption(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "个性化定制服务消费月排行";
+	Data["title"] = TCHAR_TO_UTF8("个性化定制服务消费月排行");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -7439,7 +7439,7 @@ Json OServerHelper::AccessDetail(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "接入详情";
+	Data["title"] = TCHAR_TO_UTF8("接入详情");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -7516,7 +7516,7 @@ Json OServerHelper::AccessServiceList(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "数据接入服务列表";
+	Data["title"] = TCHAR_TO_UTF8("数据接入服务列表");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -7552,7 +7552,7 @@ Json OServerHelper::LoadCurve(Json InData) {
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "实时负载";
+	TableData["categoryName"] = TCHAR_TO_UTF8("实时负载");
 	TableData["lineStyle"] = "solid";
 	TableData["start_color"] = "RGB(209,246,255)";
 	TableData["end_color"] = "RGBA(65,141,255,0.6)";
@@ -7572,7 +7572,7 @@ Json OServerHelper::LoadCurve(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "实时全口径负荷";
+	Data["title"] = TCHAR_TO_UTF8("实时全口径负荷");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -7649,7 +7649,7 @@ Json OServerHelper::ShanghaiGeneralHeavyIndustryGroupCompany(Json InData) {
 			}
 			else if (Index == 2)
 			{
-				CurValue["value"] = "暂无";
+				CurValue["value"] = TCHAR_TO_UTF8("暂无");
 				RowData.push_back(CurValue);
 				CurValue["value"] = Value;
 				RowData.push_back(CurValue);
@@ -7679,7 +7679,7 @@ Json OServerHelper::ShanghaiGeneralHeavyIndustryGroupCompany(Json InData) {
 	}
 	Json TableData;
 	TableData["data"] = RowData;
-	TableData["title"] = "企业简介";
+	TableData["title"] = TCHAR_TO_UTF8("企业简介");
 	return TableData;
 }
 Json OServerHelper::ReviewOfEnterpriseContribution_End(Json InData) {
@@ -7695,19 +7695,19 @@ Json OServerHelper::LineRealTimeSituation(Json InData) {
 	Json HighLoadCategoryData;
 	HighLoadCategoryData["start_color"] = "rgb(255,213,176)";
 	HighLoadCategoryData["high_color"] = "rgba(255,132,0,0.6)";
-	HighLoadCategoryData["xLabel"] = "过载线路";
+	HighLoadCategoryData["xLabel"] = TCHAR_TO_UTF8("过载线路");
 	HighLoadCategoryData["yLabel"] = Result.DataTable[0][2];
 
 	Json MidLoadCategoryData;
 	MidLoadCategoryData["start_color"] = "rgb(145,255,85)";
 	MidLoadCategoryData["high_color"] = "rgba(145,255,85,0.6)";
-	MidLoadCategoryData["xLabel"] = "重载线路";
+	MidLoadCategoryData["xLabel"] = TCHAR_TO_UTF8("重载线路");
 	MidLoadCategoryData["yLabel"] = Result.DataTable[0][1];
 
 	Json LowLoadCategoryData;
 	LowLoadCategoryData["start_color"] = "rgb(209,246,255)";
 	LowLoadCategoryData["Low_color"] = "rgba(65,141,255,0.6)";
-	LowLoadCategoryData["xLabel"] = "中载线路";
+	LowLoadCategoryData["xLabel"] = TCHAR_TO_UTF8("中载线路");
 	LowLoadCategoryData["yLabel"] = Result.DataTable[0][0];
 
 	std::vector<Json>CategoryDatas;
@@ -7727,15 +7727,15 @@ Json OServerHelper::LineRealTimeSituation(Json InData) {
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "总";
-	Table["unit"] = "条";
+	Table["title"] = TCHAR_TO_UTF8("总");
+	Table["unit"] = TCHAR_TO_UTF8("条");
 	Table["data"] = TableDatas;
 
 	std::vector<Json> Tables;
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "线路实时态势";
+	Data["title"] = TCHAR_TO_UTF8("线路实时态势");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -7762,7 +7762,7 @@ Json OServerHelper::MapOfPeakCutandValleyFilling(Json InData) {
 													AND BaseRegionInfo.ParentID='zj'\
 													GROUP BY BaseRegionInfo.RegionName");
 	std::vector<Json> DataArray;
-	std::vector<std::string> RegionArray = { "原国家高新区","孙桥科创中心","张江南区","规划保留用地","康桥工业园北区","上海国际医学园区","康桥工业园南区" };
+	std::vector<std::string> RegionArray = { TCHAR_TO_UTF8("原国家高新区"),TCHAR_TO_UTF8("孙桥科创中心"),TCHAR_TO_UTF8("张江南区"),TCHAR_TO_UTF8("规划保留用地"),TCHAR_TO_UTF8("康桥工业园北区"),TCHAR_TO_UTF8("上海国际医学园区"),TCHAR_TO_UTF8("康桥工业园南区") };
 
 	for (auto CurResult : Result.DataTable)
 	{
@@ -7808,9 +7808,9 @@ Json OServerHelper::EnterpriseEnergyConsumptionStructure(Json InData) {
 
 
 	std::vector<Json> CategoryDatas;
-	CategoryDatas.push_back({ {"xLabel","电"},{"yLabel",ElecEnergyConsumResult.DataTable[0][0]} });
-	CategoryDatas.push_back({ {"xLabel","水"},{"yLabel",WaterEnergyConsumResult.DataTable[0][0]} });
-	CategoryDatas.push_back({ {"xLabel","气"},{"yLabel",GasEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("电")},{"yLabel",ElecEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("水")},{"yLabel",WaterEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("气")},{"yLabel",GasEnergyConsumResult.DataTable[0][0]} });
 
 	std::vector<Json>TableDatas;
 	Json TableData;
@@ -7833,7 +7833,7 @@ Json OServerHelper::EnterpriseEnergyConsumptionStructure(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "企业上月用能结构";
+	Data["title"] = TCHAR_TO_UTF8("企业上月用能结构");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -7859,9 +7859,9 @@ Json OServerHelper::EnergyAnalyze_EnterpriseEnergyConsumptionStructure(Json InDa
 	FMysqlResult GasEnergyConsumResult = MaraidbConnector.Query(str(boost::format("SELECT SUM(EnergyConsum) FROM EnteGasInfo,EnteGas_EnteElec WHERE EnteGas_EnteElec.GasMetID=EnteGasInfo.GasMetID AND EnteGas_EnteElec.ElecMetID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%'") % ElecMetID % StartTime % EndTime));
 
 	std::vector<Json> CategoryDatas;
-	CategoryDatas.push_back({ {"xLabel","电"},{"yLabel",ElecEnergyConsumResult.DataTable[0][0]} });
-	CategoryDatas.push_back({ {"xLabel","水"},{"yLabel",WaterEnergyConsumResult.DataTable[0][0]} });
-	CategoryDatas.push_back({ {"xLabel","气"},{"yLabel",GasEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("电")},{"yLabel",ElecEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("水")},{"yLabel",WaterEnergyConsumResult.DataTable[0][0]} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("气")},{"yLabel",GasEnergyConsumResult.DataTable[0][0]} });
 
 	std::vector<Json>TableDatas;
 	Json TableData;
@@ -7884,7 +7884,7 @@ Json OServerHelper::EnergyAnalyze_EnterpriseEnergyConsumptionStructure(Json InDa
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "企业月度用能结构";
+	Data["title"] = TCHAR_TO_UTF8("企业月度用能结构");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -7899,10 +7899,10 @@ Json OServerHelper::KeyMonitoringOfEnergyConsumptionInTheMonth(Json InData) {
 	using namespace std;
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("当月能源消费重点监测");
+	DataTitle.push_back(TCHAR_TO_UTF8("当月能源消费重点监测"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
 	std::vector<FXLabelRangCofig> XLabelRangCofig;
@@ -7958,7 +7958,7 @@ Json OServerHelper::KeyMonitoringOfEnergyConsumptionInTheMonth(Json InData) {
 			for (auto EnteTopListRow : EnteTopList.DataTable)
 			{
 				Json TableData;
-				TableData["categoryName"] = "企业";
+				TableData["categoryName"] = TCHAR_TO_UTF8("企业");
 				TableData["categoryName"] = EnteTopListRow[1];
 				TableData["start_color"] = StartColor[CategoryIndex % StartColor.size()];
 				TableData["end_color"] = EndColor[CategoryIndex % EndColor.size()];
@@ -8067,7 +8067,7 @@ Json OServerHelper::ContractEvaluation(Json InData) {
 	}
 	Json TableData;
 	TableData["data"] = RowData;
-	TableData["title"] = "合同评价";
+	TableData["title"] = TCHAR_TO_UTF8("合同评价");
 	return TableData;
 }
 Json OServerHelper::CommodityTradingOverview(Json InData) {
@@ -8088,7 +8088,7 @@ Json OServerHelper::CommodityTradingOverview(Json InData) {
 	}
 	Json TableData;
 	TableData["table"] = RowData;
-	TableData["title"] = "商品交易概况";
+	TableData["title"] = TCHAR_TO_UTF8("商品交易概况");
 	std::vector<Json> FillaDate;
 	FillaDate.push_back(TableData);
 	Json TableDatas;
@@ -8165,7 +8165,7 @@ Json OServerHelper::EquipmentPurchaseContract(Json InData) {
 	}
 	Json TableData;
 	TableData["data"] = RowData;
-	TableData["title"] = "设备购买合同";
+	TableData["title"] = TCHAR_TO_UTF8("设备购买合同");
 	return TableData;
 }
 
@@ -8220,7 +8220,7 @@ Json OServerHelper::VariousCommodityTransactionTrends(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "次";
+	Table["unit"] = TCHAR_TO_UTF8("次");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -8228,7 +8228,7 @@ Json OServerHelper::VariousCommodityTransactionTrends(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "各类商品成交趋势";
+	Data["title"] = TCHAR_TO_UTF8("各类商品成交趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -8288,7 +8288,7 @@ Json OServerHelper::ES_VariousCommodityTransactionTrends(Json InData)
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "次";
+	Table["unit"] = TCHAR_TO_UTF8("次");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -8296,7 +8296,7 @@ Json OServerHelper::ES_VariousCommodityTransactionTrends(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "各类商品成交趋势";
+	Data["title"] = TCHAR_TO_UTF8("各类商品成交趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -8363,7 +8363,7 @@ Json OServerHelper::ES_ContractTendency(Json InData)
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "单";
+	Table["unit"] = TCHAR_TO_UTF8("单");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -8371,7 +8371,7 @@ Json OServerHelper::ES_ContractTendency(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "合同数量变化趋势";
+	Data["title"] = TCHAR_TO_UTF8("合同数量变化趋势");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -8419,7 +8419,7 @@ Json OServerHelper::AccumulatedDemandDrainPercentage(Json InData) {
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -8427,7 +8427,7 @@ Json OServerHelper::AccumulatedDemandDrainPercentage(Json InData) {
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "累计需求流失分类占比";
+	Data["title"] = TCHAR_TO_UTF8("累计需求流失分类占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -8476,7 +8476,7 @@ Json OServerHelper::ES_AccumulatedDemandDrainPercentage(Json InData)
 	std::vector<Json> Tables;
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "个";
+	Table["unit"] = TCHAR_TO_UTF8("个");
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -8484,7 +8484,7 @@ Json OServerHelper::ES_AccumulatedDemandDrainPercentage(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "累计需求流失分类占比";
+	Data["title"] = TCHAR_TO_UTF8("累计需求流失分类占比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -8514,17 +8514,17 @@ Json OServerHelper::PixelOnTheLeftSideOfEnergyTrading(Json InData) {
 
 	std::vector<Json> Tables;
 	Tables.push_back({
-					  {"title","待审核需求数量"},
+					  {"title",TCHAR_TO_UTF8("待审核需求数量")},
 					  {"xLabel",""},
 					  {"yLabel",PendingToAuditDemand.DataTable[0][0]}
 		});
 	Tables.push_back({
-					  {"title","待审核商品数量"},
+					  {"title",TCHAR_TO_UTF8("待审核商品数量")},
 					  {"xLabel",""},
 					  {"yLabel",PendingToAuditGoods.DataTable[0][0]}
 		});
 	Tables.push_back({
-					  {"title","近一月成交合同数"},
+					  {"title",TCHAR_TO_UTF8("近一月成交合同数")},
 					  {"xLabel",""},
 					  {"yLabel",std::to_string(lexical_cast<int>(DemandDealInfo.DataTable[0][0]) + lexical_cast<int>(GoodsDealInfo.DataTable[0][0]))}
 		});
@@ -8532,13 +8532,13 @@ Json OServerHelper::PixelOnTheLeftSideOfEnergyTrading(Json InData) {
 	double Money = lexical_cast<double>(SaveDecimalPlaces(DemandDealInfo.DataTable[0][1])) + lexical_cast<double>(SaveDecimalPlaces(GoodsDealInfo.DataTable[0][1]));
 
 	Tables.push_back({
-					  {"title","近一月成交金额"},
-					  {"xLabel","万元"},
+					  {"title",TCHAR_TO_UTF8("近一月成交金额")},
+					  {"xLabel",TCHAR_TO_UTF8("万元")},
 					  {"yLabel",ConvertToTenThousand(std::to_string(Money))}
 		});
 
 	Json Data;
-	Data["title"] = "能源交易概览";
+	Data["title"] = TCHAR_TO_UTF8("能源交易概览");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -8583,11 +8583,11 @@ Json OServerHelper::CommodityTransactionConversionRate(Json InData) {
 					DealPersent = boost::lexical_cast<double>(GoodsSaleCount.DataTable[0][0]) / boost::lexical_cast<double>(GoodsViewCount.DataTable[0][0]);
 				}
 				Datas.push_back({ { "value",GoodsTypeInfoRow[0]} });
-				Datas.push_back({ { "value","访客" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("访客") } });
 				Datas.push_back({ { "value","100" } });
-				Datas.push_back({ { "value","意向" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("意向") } });
 				Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(IntentPersent * 100))} });
-				Datas.push_back({ { "value","成交" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("成交") } });
 				Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(DealPersent * 100)) } });
 				TableDatas.push_back(Datas);
 			}
@@ -8599,7 +8599,7 @@ Json OServerHelper::CommodityTransactionConversionRate(Json InData) {
 		}
 	}
 	Json ReturnData;
-	ReturnData["title"] = "商品成交转换率";
+	ReturnData["title"] = TCHAR_TO_UTF8("商品成交转换率");
 	ReturnData["data"] = TableDatas;
 
 	return ReturnData;
@@ -8637,11 +8637,11 @@ Json OServerHelper::DemandTransactionConversionRate(Json InData) {
 					DealPersent = boost::lexical_cast<double>(DemandSaleCount.DataTable[0][0]) / boost::lexical_cast<double>(DemandViewCount.DataTable[0][0]);
 				}
 				Datas.push_back({ { "value",DemandTypeInfoRow[0] } });
-				Datas.push_back({ { "value","访客" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("访客") } });
 				Datas.push_back({ { "value","100" } });
-				Datas.push_back({ { "value","意向" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("意向") } });
 				Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(IntentPersent * 100))} });
-				Datas.push_back({ { "value","成交" } });
+				Datas.push_back({ { "value",TCHAR_TO_UTF8("成交") } });
 				Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(DealPersent * 100)) } });
 				TableDatas.push_back(Datas);
 			}
@@ -8653,7 +8653,7 @@ Json OServerHelper::DemandTransactionConversionRate(Json InData) {
 		}
 	}
 	Json ReturnData;
-	ReturnData["title"] = "需求成交转换率";
+	ReturnData["title"] = TCHAR_TO_UTF8("需求成交转换率");
 	ReturnData["data"] = TableDatas;
 
 	return ReturnData;
@@ -8695,11 +8695,11 @@ Json OServerHelper::ES_TransactionConversionRate(Json InData)
 						DealPersent = boost::lexical_cast<double>(GoodsSaleCount.DataTable[0][0]) / boost::lexical_cast<double>(GoodsViewCount.DataTable[0][0]);
 					}
 					Datas.push_back({ { "value",GoodsTypeInfoRow[0]} });
-					Datas.push_back({ { "value","访客" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("访客") } });
 					Datas.push_back({ { "value","100" } });
-					Datas.push_back({ { "value","意向" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("意向") } });
 					Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(IntentPersent * 100))} });
-					Datas.push_back({ { "value","成交" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("成交") } });
 					Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(DealPersent * 100)) } });
 					TableDatas.push_back(Datas);
 				}
@@ -8711,7 +8711,7 @@ Json OServerHelper::ES_TransactionConversionRate(Json InData)
 			}
 		}
 		Json Data;
-		Data["title"] = "商品成交转换率";
+		Data["title"] = TCHAR_TO_UTF8("商品成交转换率");
 		Data["data"] = TableDatas;
 		Datas.push_back(Data);
 	}
@@ -8742,11 +8742,11 @@ Json OServerHelper::ES_TransactionConversionRate(Json InData)
 					}
 
 					Datas.push_back({ { "value",DemandTypeInfoRow[0] } });
-					Datas.push_back({ { "value","访客" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("访客") } });
 					Datas.push_back({ { "value","100" } });
-					Datas.push_back({ { "value","意向" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("意向") } });
 					Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(IntentPersent * 100))} });
-					Datas.push_back({ { "value","成交" } });
+					Datas.push_back({ { "value",TCHAR_TO_UTF8("成交") } });
 					Datas.push_back({ { "value",SaveDecimalPlaces(std::to_string(DealPersent * 100)) } });
 					TableDatas.push_back(Datas);
 
@@ -8759,7 +8759,7 @@ Json OServerHelper::ES_TransactionConversionRate(Json InData)
 			}
 		}
 		Json Data;
-		Data["title"] = "需求成交转换率";
+		Data["title"] = TCHAR_TO_UTF8("需求成交转换率");
 		Data["data"] = TableDatas;
 		Datas.push_back(Data);
 	}
@@ -8809,13 +8809,13 @@ Json OServerHelper::ES_ProportionTransactionCategories(Json InData)
 		std::vector<Json> Tables;
 		Json Table;
 		Table["title"] = "";
-		Table["unit"] = "个";
+		Table["unit"] = TCHAR_TO_UTF8("个");
 		Table["data"] = TableDatas;
 		Tables.push_back(Table);
 
 		Json Data;
 
-		Data["title"] = "商品成交分类占比";
+		Data["title"] = TCHAR_TO_UTF8("商品成交分类占比");
 		Data["table"] = Tables;
 
 		Datas.push_back(Data);
@@ -8852,7 +8852,7 @@ Json OServerHelper::ES_ProportionTransactionCategories(Json InData)
 		Tables.push_back(Table);
 
 		Json Data;
-		Data["title"] = "需求成交分类占比";
+		Data["title"] = TCHAR_TO_UTF8("需求成交分类占比");
 		Data["table"] = Tables;
 		Datas.push_back(Data);
 	}
@@ -8888,7 +8888,7 @@ Json OServerHelper::EnergyUseTrends_Year(Json InData)
 
 
 	int CategoryIndex[4] = { 1,5,6,7 };
-	std::string CategoryNames[4] = { "总","电","水","气" };
+	std::string CategoryNames[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
 	Json Data;
 	for (int Index=0;Index<4;Index++)
 	{
@@ -8936,7 +8936,7 @@ Json OServerHelper::EnergyUseTrends_Month(Json InData)
 	{
 		CategoryData.push_back({ {"xLabel",ConvertDateToDay(EnergyConsumResultRow[0],'-')},{"yLabel",EnergyConsumResultRow[5]} });
 	}
-	Data["电"] = FillCategoryData(XLabelRangsCurrentTime, CategoryData);
+	Data[TCHAR_TO_UTF8("电")] = FillCategoryData(XLabelRangsCurrentTime, CategoryData);
 
 
 	Json ReturnData;
@@ -9066,13 +9066,13 @@ Json OServerHelper::AreaOverView(Json InData)
 		{"data",
 			{
 				{
-					{"title","区域概况"},
+					{"title",TCHAR_TO_UTF8("区域概况")},
 					{"table",
 						{
-							{{"title","面积"},{"xLabel","km²"},{"yLabel",SavePrecision(SaveDecimalPlaces(RegionAreaResult.DataTable[0][0]),4)}},
-							{{"title","接入企业"},{"xLabel","户"},{"yLabel",RegionEnteCountResult.DataTable[0][0]}},
-							{{"title","覆盖行业"},{"xLabel","类"},{"yLabel",RegionIndustryCountResult.DataTable[0][0]}},
-							{{"title","清洁能源占比"},{"xLabel","%"},{"yLabel",SaveDecimalPlaces(RegionClearEnergyRationResult.DataTable[0][0])}},
+							{{"title",TCHAR_TO_UTF8("面积")},{"xLabel","km²"},{"yLabel",SavePrecision(SaveDecimalPlaces(RegionAreaResult.DataTable[0][0]),4)}},
+							{{"title",TCHAR_TO_UTF8("接入企业")},{"xLabel",TCHAR_TO_UTF8("户")},{"yLabel",RegionEnteCountResult.DataTable[0][0]}},
+							{{"title",TCHAR_TO_UTF8("覆盖行业")},{"xLabel",TCHAR_TO_UTF8("类")},{"yLabel",RegionIndustryCountResult.DataTable[0][0]}},
+							{{"title",TCHAR_TO_UTF8("清洁能源占比")},{"xLabel","%"},{"yLabel",SaveDecimalPlaces(RegionClearEnergyRationResult.DataTable[0][0])}},
 						}
 					}
 				}
@@ -9092,13 +9092,13 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheYear(Json InData)
 	MaraidbConnector.Connect();
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("年度供需对比");
+	DataTitle.push_back(TCHAR_TO_UTF8("年度供需对比"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
-	TableTitle.push_back("电");
-	TableTitle.push_back("水");
-	TableTitle.push_back("气");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
+	TableTitle.push_back(TCHAR_TO_UTF8("电"));
+	TableTitle.push_back(TCHAR_TO_UTF8("水"));
+	TableTitle.push_back(TCHAR_TO_UTF8("气"));
 
 	std::vector<std::string> Unit;
 	Unit.push_back("(万tce)");
@@ -9107,8 +9107,8 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheYear(Json InData)
 	Unit.push_back("(万m³)");
 
 	std::vector<std::string> CategoryName;
-	CategoryName.push_back("供");
-	CategoryName.push_back("需");
+	CategoryName.push_back(TCHAR_TO_UTF8("供"));
+	CategoryName.push_back(TCHAR_TO_UTF8("需"));
 
 	std::vector<FXLabelRangCofig> XLabelRangCofig;
 	XLabelRangCofig.push_back(FXLabelRangCofig(1, true, true, false,
@@ -9214,13 +9214,13 @@ Json OServerHelper::EnergyEvaluateIndicator(Json InData)
 	date D_PreYearEndTime = D_EndTime - years(1);
 	FMysqlResult PreYearResult = MaraidbConnector.Query(str(boost::format("SELECT SUM(SynEnergyConsum),SUM(OutputValue),SUM(EnergyConsumUnitArea),SUM(CarbonEmission) FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%';") % RegionID % to_iso_extended_string(D_PreYearStartTime) % to_iso_extended_string(D_PreYearEndTime)));
 
-	string RowHeaderName[4] = { "总能耗","万元产值能耗","单位建筑面积能耗","碳排放" };
+	string RowHeaderName[4] = { TCHAR_TO_UTF8("总能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("单位建筑面积能耗"),TCHAR_TO_UTF8("碳排放") };
 	string Unit[4] = { "万tce","tce/万元","tce/km²","万t·CO₂" };
 	std::vector<Json> Tables;
 	for (int i = 0; i < 4; i++)
 	{
 		Json Table;
-		Json RowHeader = { {{{"headerName",RowHeaderName[i]}},{{"headerName","同比"}},{{"headerName","环比"}},{{"headerName",i == 0 ? "------" : "先进水平"}}} };
+		Json RowHeader = { {{{"headerName",RowHeaderName[i]}},{{"headerName",TCHAR_TO_UTF8("同比")}},{{"headerName",TCHAR_TO_UTF8("环比")}},{{"headerName",i == 0 ? "------" : TCHAR_TO_UTF8("先进水平")}}} };
 		double YearGrowth = 100;
 		double MonthGrowth = 100;
 
@@ -9246,7 +9246,7 @@ Json OServerHelper::EnergyEvaluateIndicator(Json InData)
 		Tables.push_back(Table);
 	}
 	Json Data;
-	Data["title"] = "能级评价指标";
+	Data["title"] = TCHAR_TO_UTF8("能级评价指标");
 	Data["table"] = Tables;
 	std::vector<Json> Datas;
 	Datas.push_back(Data);
@@ -9303,13 +9303,13 @@ Json OServerHelper::EnergyEvaluateIndicator_AIIsland(Json InData)
 
 	FMysqlResult PreYearResults[4] = { PreYearResult_SynEnergyConsum ,PreYearResult_OutputValue ,PreYearResult_EnergyConsumUnitArea ,PreYearResult_CarbonEmission };
 
-	string RowHeaderName[4] = { "总能耗","万元产值能耗","单位建筑面积能耗","碳排放" };
+	string RowHeaderName[4] = { TCHAR_TO_UTF8("总能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("单位建筑面积能耗"),TCHAR_TO_UTF8("碳排放") };
 	string Unit[4] = { "万tce","tce/万元","tce/m²","t·CO₂" };
 	std::vector<Json> Tables;
 	for (int i = 0; i < 4; i++)
 	{
 		Json Table;
-		Json RowHeader = { {{{"headerName",RowHeaderName[i]}},{{"headerName","同比"}},{{"headerName","环比"}},{{"headerName",i == 0 ? "------" : "先进水平"}}} };
+		Json RowHeader = { {{{"headerName",RowHeaderName[i]}},{{"headerName",TCHAR_TO_UTF8("同比")}},{{"headerName",TCHAR_TO_UTF8("环比")}},{{"headerName",i == 0 ? "------" : TCHAR_TO_UTF8("先进水平")}}} };
 		double YearGrowth = 0;
 		double MonthGrowth = 0;
 		if ((boost::lexical_cast<double>(ConvertEmptyStringToZero(PreYearResults[i].DataTable[0][0]))) != 0)
@@ -9334,7 +9334,7 @@ Json OServerHelper::EnergyEvaluateIndicator_AIIsland(Json InData)
 		Tables.push_back(Table);
 	}
 	Json Data;
-	Data["title"] = "能级评价指标";
+	Data["title"] = TCHAR_TO_UTF8("能级评价指标");
 	Data["table"] = Tables;
 	std::vector<Json> Datas;
 	Datas.push_back(Data);
@@ -9388,7 +9388,7 @@ Json OServerHelper::SynEnergyConsumLinkRatio(Json InData)
 
 	std::vector<Json> Tables;
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "万tce";
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
@@ -9397,7 +9397,7 @@ Json OServerHelper::SynEnergyConsumLinkRatio(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "年度综合能耗环比";
+	Data["title"] = TCHAR_TO_UTF8("年度综合能耗环比");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -9457,7 +9457,7 @@ Json OServerHelper::SynEnergyConsumLinkRatio_AIIsland(Json InData)
 
 	std::vector<Json> Tables;
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "万tce";
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
@@ -9482,12 +9482,12 @@ Json OServerHelper::EnergyEfficiencyLinkRatio_AIIsland(Json InData)
 	using namespace std;
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("万元产值能耗");
-	DataTitle.push_back("单位面积能耗");
-	DataTitle.push_back("度电经济增加值");
+	DataTitle.push_back(TCHAR_TO_UTF8("万元产值能耗"));
+	DataTitle.push_back(TCHAR_TO_UTF8("单位面积能耗"));
+	DataTitle.push_back(TCHAR_TO_UTF8("度电经济增加值"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
 
 	std::vector<std::string> CategoryName;
 	CategoryName.push_back("");
@@ -9536,7 +9536,7 @@ Json OServerHelper::EnergyEfficiencyLinkRatio_AIIsland(Json InData)
 
 			for (int CategoryIndex = 0; CategoryIndex < CategoryName.size(); CategoryIndex++)
 			{
-				if (DataTitle[DataIndex] != "单位面积能耗")
+				if (DataTitle[DataIndex] != TCHAR_TO_UTF8("单位面积能耗"))
 				{
 					continue;
 				}
@@ -9589,12 +9589,12 @@ Json OServerHelper::EnergyEfficiencyLinkRatio(Json InData)
 	using namespace std;
 
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("万元产值能耗");
-	DataTitle.push_back("单位面积能耗");
-	DataTitle.push_back("度电经济增加值");
+	DataTitle.push_back(TCHAR_TO_UTF8("万元产值能耗"));
+	DataTitle.push_back(TCHAR_TO_UTF8("单位面积能耗"));
+	DataTitle.push_back(TCHAR_TO_UTF8("度电经济增加值"));
 
 	std::vector<std::string> TableTitle;
-	TableTitle.push_back("总");
+	TableTitle.push_back(TCHAR_TO_UTF8("总"));
 
 	std::vector<std::string> CategoryName;
 	CategoryName.push_back("");
@@ -9699,9 +9699,9 @@ Json OServerHelper::AreaEnergyConsumStructure(Json InData)
 	FMysqlResult EnergyConsumStructureResult = MaraidbConnector.Query(str(boost::format("SELECT SUM(ElecConsum),SUM(WaterConsum),SUM(GasConsum) FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' ORDER BY CreateDate;") % RegionID % StartTime % EndTime));
 
 	std::vector<Json> CategoryDatas;
-	CategoryDatas.push_back({ {"xLabel","电"},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][0])} });
-	CategoryDatas.push_back({ {"xLabel","水"},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][1])} });
-	CategoryDatas.push_back({ {"xLabel","气"},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][2])} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("电")},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][0])} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("水")},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][1])} });
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8("气")},{"yLabel",ConvertToTenThousand(EnergyConsumStructureResult.DataTable[0][2])} });
 
 	std::vector<Json> TableDatas;
 	Json TableData;
@@ -9715,7 +9715,7 @@ Json OServerHelper::AreaEnergyConsumStructure(Json InData)
 
 	std::vector<Json> Tables;
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "万tce";
 	Table["data"] = TableDatas;
 	Tables.push_back(Table);
@@ -9723,7 +9723,7 @@ Json OServerHelper::AreaEnergyConsumStructure(Json InData)
 	std::vector<Json> Datas;
 	Json Data;
 
-	Data["title"] = "区域能源消费结构";
+	Data["title"] = TCHAR_TO_UTF8("区域能源消费结构");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -9758,7 +9758,7 @@ Json OServerHelper::AreaEnergyConsumRatio(Json InData)
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "类别一";
+	TableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	TableData["start_color"] = "#8FC31F";
 	TableData["end_color"] = "#8FC31F";
 	TableData["high_color"] = "#5ceaff";
@@ -9772,7 +9772,7 @@ Json OServerHelper::AreaEnergyConsumRatio(Json InData)
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "万tce";
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
@@ -9783,7 +9783,7 @@ Json OServerHelper::AreaEnergyConsumRatio(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "区域能源消费比例";
+	Data["title"] = TCHAR_TO_UTF8("区域能源消费比例");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -9827,7 +9827,7 @@ Json OServerHelper::AreaEnteEnergyConsumRank(Json InData)
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = "tce";
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
@@ -9838,7 +9838,7 @@ Json OServerHelper::AreaEnteEnergyConsumRank(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "企业能耗排行";
+	Data["title"] = TCHAR_TO_UTF8("企业能耗排行");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -9882,7 +9882,7 @@ Json OServerHelper::AreaEnteEnergyEfficiencyRank(Json InData)
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "企业单位面积能耗";
+	Table["title"] = TCHAR_TO_UTF8("企业单位面积能耗");
 	Table["unit"] = "(tce/m²)";
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
@@ -9931,7 +9931,7 @@ Json OServerHelper::AreaIndustryEnergyConsumRank(Json InData)
 	std::sort(EnergyConsumptionCategoryDatas.begin(), EnergyConsumptionCategoryDatas.end(), SortCategoryDatas);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = "类别一";
+	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(96,199,255,0.3)";
 	EnergyConsumptionTableData["end_color"] = "rgba(96,199,255,1)";
 	EnergyConsumptionTableData["high_color"] = "#5ceaff";
@@ -9941,7 +9941,7 @@ Json OServerHelper::AreaIndustryEnergyConsumRank(Json InData)
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = "总";
+	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
 	EnergyConsumptionTable["unit"] = "tce";
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
@@ -9952,7 +9952,7 @@ Json OServerHelper::AreaIndustryEnergyConsumRank(Json InData)
 	Json Data;
 	std::vector<Json> Datas;
 
-	Data["title"] = "行业能耗排行";
+	Data["title"] = TCHAR_TO_UTF8("行业能耗排行");
 	Data["table"] = Tables;
 
 	Datas.push_back(Data);
@@ -9968,7 +9968,7 @@ Json OServerHelper::AreaEnergyConsumEfficiencyRank(Json InData)
 	MaraidbConnector.Connect();
 
 	std::string SelectType[] = { "EnergyConsumUnitArea","SynEnergyConsum","EnergyEcnoValueAdd","OutputValue" , "ClearEnergyRation" , "CarbonEmission" };
-	std::string Title[] = { "单位面积能耗","综合能耗","度电经济增加值","万元产值能耗" , "清洁能源占比" , "碳排放" };
+	std::string Title[] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("综合能耗"),TCHAR_TO_UTF8("度电经济增加值"),TCHAR_TO_UTF8("万元产值能耗") , TCHAR_TO_UTF8("清洁能源占比") , TCHAR_TO_UTF8("碳排放") };
 	std::string Unit[] = { "tce/km²" , "万tce" , "元/kW·h" , "tce/万元" , "%" , "t·CO₂" };
 
 
@@ -9996,7 +9996,7 @@ Json OServerHelper::AreaEnergyConsumEfficiencyRank(Json InData)
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "类别一";
+	TableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	TableData["start_color"] = "rgba(96,199,255,0.3)";
 	TableData["end_color"] = "rgba(96,199,255,1)";
 	TableData["high_color1"] = "#ed5f00";
@@ -10009,7 +10009,7 @@ Json OServerHelper::AreaEnergyConsumEfficiencyRank(Json InData)
 	TableDatas.push_back(TableData);
 
 	Json Table;
-	Table["title"] = "总";
+	Table["title"] = TCHAR_TO_UTF8("总");
 	Table["unit"] = Unit[EnergyType];
 	Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 	Table["data"] = TableDatas;
@@ -10036,17 +10036,17 @@ Json OServerHelper::AreaAbnormalEvents(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult AbnormalEventsList = MaraidbConnector.Query(str(boost::format("SELECT ExceptionEventId,AiResult,FilterDate,Status FROM AbnormalEnergyEvent,BaseEnteElecMeterInfo WHERE AbnormalEnergyEvent.ElecMetID=BaseEnteElecMeterInfo.ElecMetID AND FIND_IN_SET(RegionID,GetChildrenRegion('%1%')) AND FilterDate BETWEEN '%2%' AND '%3%' ORDER BY FilterDate DESC LIMIT 30;") % RegionID % StartTime % EndTime));
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"异常事件编号\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"预判原因\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"发生时间\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"状态\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"异常事件编号\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预判原因\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发生时间\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"状态\"}")));
 
 	std::vector<Json> TableDatas;
 	for (auto AbnormalEventsListRow : AbnormalEventsList.DataTable)
@@ -10080,7 +10080,7 @@ Json OServerHelper::AreaAbnormalEvents(Json InData)
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "最新异常用能事件";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("最新异常用能事件"));
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -10104,13 +10104,13 @@ Json OServerHelper::MarketplaceOverview(Json InData)
 	FMysqlResult EnteNum = MaraidbConnector.Query("SELECT COUNT(EnteEvalvate.EnteID) FROM EnteEvalvate ;");
 
 	std::vector<Json> Tables;
-	Tables.push_back({ {"title","交易金额"},{"xLabel","万元"},{"yLabel",ConvertToTenThousand(std::to_string(lexical_cast<double>(DemandContractInfo.DataTable[0][0]) + lexical_cast<double>(GoodsContractInfo.DataTable[0][0])))} });
-	Tables.push_back({ {"title","订单数目"},{"xLabel","笔"},{"yLabel",std::to_string((int)(lexical_cast<double>(DemandContractInfo.DataTable[0][1]) + lexical_cast<double>(GoodsContractInfo.DataTable[0][1])))} });
-	Tables.push_back({ {"title","联盟企业"},{"xLabel","家"},{"yLabel",EnteNum.DataTable[0][0]} });
-	Tables.push_back({ {"title","商品数量"},{"xLabel","件"},{"yLabel",GoodNum.DataTable[0][0]} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("交易金额"))},{"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("万元"))},{"yLabel",ConvertToTenThousand(std::to_string(lexical_cast<double>(DemandContractInfo.DataTable[0][0]) + lexical_cast<double>(GoodsContractInfo.DataTable[0][0])))} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("订单数目"))},{"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("笔"))},{"yLabel",std::to_string((int)(lexical_cast<double>(DemandContractInfo.DataTable[0][1]) + lexical_cast<double>(GoodsContractInfo.DataTable[0][1])))} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("联盟企业"))},{"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("家"))},{"yLabel",EnteNum.DataTable[0][0]} });
+	Tables.push_back({ {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("商品数量"))},{"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("件"))},{"yLabel",GoodNum.DataTable[0][0]} });
 
 	Json Data;
-	Data["title"] = "能源服务市场概况";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("能源服务市场概况"));
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -10129,7 +10129,7 @@ Json OServerHelper::GetBusinessList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	FMysqlResult EnteList = MaraidbConnector.Query(str(boost::format("SELECT ElecMetID,EnteName,Address,ContactPhone,Coordinate FROM BaseEnteInfo WHERE FIND_IN_SET(RegionID,GetChildrenRegion('%1%'));") % RegionID));
 	std::vector<Json> SymbolList;
@@ -10174,7 +10174,7 @@ Json OServerHelper::GetRegionBusinessInfo(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	FMysqlResult RegionList = MaraidbConnector.Query(str(boost::format("SELECT RegionID,Area FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='%1%';") % RegionID));
 
@@ -10207,7 +10207,7 @@ Json OServerHelper::GetPowerStationList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	//std::string RegionID = InData["RegionID"];
+	//std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	FMysqlResult EnteList = MaraidbConnector.Query("SELECT StatElecID,ElecName,Address,Type,Coordinates FROM DistributionFacilties WHERE FIND_IN_SET(RegionID,GetChildrenRegion('zj')) AND Type LIKE 'elecs%'");
 	std::vector<Json> SymbolList;
@@ -10273,29 +10273,29 @@ Json OServerHelper::GetAreaScore(Json InData)
 
 	std::vector<Json> Tables;
 	Tables.push_back({
-						 {"title","最大设备利用率"},
-						 {"选中企业",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUse"])))},
-						 {"行业均值",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
-						 {"行业标杆",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("最大设备利用率"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUse"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
 						 {"unit","%"}
 		});
 	Tables.push_back({
-						 {"title","电量峰谷比"},
-						 {"选中企业",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValley"])))},
-						 {"行业均值",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
-						 {"行业标杆",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("电量峰谷比"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValley"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
 						 {"unit",""}
 		});
 	Tables.push_back({
-						 {"title","力率奖惩电费"},
-						 {"选中企业",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCost"])))},
-						 {"行业均值",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
-						 {"行业标杆",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
-						 {"unit","万元"}
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("力率奖惩电费"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCost"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
+						 {"unit",TCHAR_TO_UTF8(TCHAR_TO_UTF8("万元"))}
 		});
 
 	Json Data;
-	Data["title"] = "用能经济性指标";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("用能经济性指标"));
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -10318,19 +10318,19 @@ Json OServerHelper::PendingToAduitOrder(Json InData)
 	FMysqlResult ServerApplyResult = MaraidbConnector.Query(str(boost::format("SELECT OrderCode,OrderName,EnteName,OrderMoney,OrderDate,ContactPerson FROM ServerApply,BaseEnteInfo WHERE ServerApply.EnteID=BaseEnteInfo.EnteID AND OrderStatus='待付款' GROUP BY CreateDate;")));
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"订单编号\",\"width\":\"14\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"服务名称\",\"width\":\"24\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"企业名称\",\"width\":\"26\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"金额\",\"width\":\"12\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"日期\",\"width\":\"12\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"业务负责人\",\"width\":\"12\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单编号\",\"width\":\"14\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"24\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业名称\",\"width\":\"26\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"金额\",\"width\":\"12\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"日期\",\"width\":\"12\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"业务负责人\",\"width\":\"12\"}")));
 
 	std::vector<Json> TableDatas;
 	for (auto AccApplyResultRow : AccApplyResult.DataTable)
 	{
 		std::vector<Json> TableData;
 		Json Value;
-		Value["value"] = "数据接入服务";
+		Value["value"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("数据接入服务"));
 		TableData.push_back(Value);
 		for (auto AccApplyResultRowValue : AccApplyResultRow)
 		{
@@ -10345,7 +10345,7 @@ Json OServerHelper::PendingToAduitOrder(Json InData)
 	{
 		std::vector<Json> TableData;
 		Json Value;
-		Value["value"] = "定制服务";
+		Value["value"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("定制服务"));
 		TableData.push_back(Value);
 		for (auto CustApplyResultRowValue : CustApplyResultRow)
 		{
@@ -10358,7 +10358,7 @@ Json OServerHelper::PendingToAduitOrder(Json InData)
 	{
 		std::vector<Json> TableData;
 		Json Value;
-		Value["value"] = "数据分析服务";
+		Value["value"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("数据分析服务"));
 		TableData.push_back(Value);
 		for (auto ServerApplyResultRowValue : ServerApplyResultRow)
 		{
@@ -10371,7 +10371,7 @@ Json OServerHelper::PendingToAduitOrder(Json InData)
 	{
 		std::vector<Json> TableData;
 		Json Value;
-		Value["value"] = "全部订单";
+		Value["value"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("全部订单"));
 		TableData.push_back(Value);
 		for (auto RowValue : RowHeader)
 		{
@@ -10392,7 +10392,7 @@ Json OServerHelper::PendingToAduitOrder(Json InData)
 
 
 	Json Data;
-	Data["title"] = "待处理服务订单";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("待处理服务订单"));
 	Data["table"] = Table;
 
 	Json ReturnData;
@@ -10414,7 +10414,7 @@ Json OServerHelper::PendingToAduitGoodsAndDemand(Json InData)
 	{
 		Json Data;
 
-		std::vector<std::string > RowHeader = { "需求名称" ,"需求类型","发布时间","预算金额","发布企业" };
+		std::vector<std::string > RowHeader = { TCHAR_TO_UTF8(TCHAR_TO_UTF8("需求名称")) ,TCHAR_TO_UTF8(TCHAR_TO_UTF8("需求类型")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("发布时间")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("预算金额")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("发布企业")) };
 		std::vector<std::string > RowWidth = { "14","24","26","12","24" };
 
 		Json Table = FillTableJson(RowHeader, RowWidth, DemandResult.DataTable);
@@ -10423,7 +10423,7 @@ Json OServerHelper::PendingToAduitGoodsAndDemand(Json InData)
 		Tables.push_back(Table);
 
 
-		Data["title"] = "需求";
+		Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("需求"));
 		Data["table"] = Tables;
 
 		Datas.push_back(Data);
@@ -10432,21 +10432,21 @@ Json OServerHelper::PendingToAduitGoodsAndDemand(Json InData)
 	{
 		Json Data;
 
-		std::vector<std::string > RowHeader = { "商品名称" ,"商品类型","发布时间","金额","发布企业" };
+		std::vector<std::string > RowHeader = { TCHAR_TO_UTF8(TCHAR_TO_UTF8("商品名称")) ,TCHAR_TO_UTF8(TCHAR_TO_UTF8("商品类型")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("发布时间")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("金额")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("发布企业")) };
 		std::vector<std::string > RowWidth = { "14","24","26","12","24" };
 
 		Json Table = FillTableJson(RowHeader, RowWidth, GoodsResult.DataTable);
 		std::vector<Json>Tables;
 		Tables.push_back(Table);
 
-		Data["title"] = "商品";
+		Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("商品"));
 		Data["table"] = Tables;
 
 		Datas.push_back(Data);
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "待审核需求和待审核商品";
+	ReturnData["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("待审核需求和待审核商品"));
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -10455,8 +10455,8 @@ Json OServerHelper::WorkResumptionIndex(Json InData)
 {
 	using namespace cinatra;
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string RequestAPI = HTTP_URL("/rework/region");
 	std::string RequsetData = "?startDate=" + StartTime + "&endDate=" + EndTime + "&regionId=zj";
@@ -10475,7 +10475,7 @@ Json OServerHelper::WorkResumptionIndex(Json InData)
 		std::vector<Json> ElecPercentCategoryDatas;
 		for (auto DataRow : HttpReceiveInfo["data"])
 		{
-			if ((FIELDIFNULL(DataRow["modelName"])) == "20200330_复工复产模型v2.4.2.2" && (FIELDIFNULL(DataRow["regionId"])) == "zj")
+			if ((FIELDIFNULL(DataRow["modelName"])) == TCHAR_TO_UTF8("20200330_复工复产模型v2.4.2.2") && (FIELDIFNULL(DataRow["regionId"])) == "zj")
 			{
 				boost::gregorian::date CurrentDate = boost::gregorian::from_string(FIELDIFNULL(DataRow["createDate"]));
 				std::string  Date = std::to_string(CurrentDate.month()) + "." + std::to_string(CurrentDate.day());
@@ -10486,7 +10486,7 @@ Json OServerHelper::WorkResumptionIndex(Json InData)
 		}
 
 		std::vector<Json> CategoryDatas[3] = { EntePercentCategoryDatas ,EnteIndexCategoryDatas ,ElecPercentCategoryDatas };
-		std::string CategoryNames[3] = { "复工企业占比","复工电力指数","复工电量占比" };
+		std::string CategoryNames[3] = { TCHAR_TO_UTF8(TCHAR_TO_UTF8("复工企业占比")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("复工电力指数")),TCHAR_TO_UTF8(TCHAR_TO_UTF8("复工电量占比")) };
 		std::string Color[3] = { "rgba(65,141,255,1)","rgba(0,254,233,1)","rgba(255,255,255,1)" };
 
 		std::vector<Json> TableDatas;
@@ -10512,7 +10512,7 @@ Json OServerHelper::WorkResumptionIndex(Json InData)
 		Tables.push_back(Table);
 
 		Json Data;
-		Data["title"] = "复工电力指数";
+		Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("复工电力指数"));
 		Data["table"] = Tables;
 
 		std::vector<Json> Datas;
@@ -10535,9 +10535,9 @@ Json OServerHelper::HighNetWorthRatio(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionEnteCountResult = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT ElecMetID) FROM BaseEnteElecMeterInfo WHERE FIND_IN_SET(BaseEnteElecMeterInfo.RegionID,GetChildrenRegion('%1%'));") % RegionID));
 
@@ -10560,14 +10560,14 @@ Json OServerHelper::HighNetWorthRatio(Json InData)
 	int NormalUser = lexical_cast<int>(RegionEnteCountResult.DataTable[0][0]) - GeneralLargeUsers - KeyUserI - KeyUserII;
 
 	std::vector<Json> Datas;
-	Datas.push_back({ {"key","普通用户"},{"value",std::to_string(NormalUser)} });
-	Datas.push_back({ {"key","高净值用户"},{"value",std::to_string(GeneralLargeUsers + KeyUserI + KeyUserII)} });
-	Datas.push_back({ {"key","一般大用户"},{"value",std::to_string(GeneralLargeUsers)} });
-	Datas.push_back({ {"key","关键用户"},{"value",std::to_string(KeyUserI + KeyUserII)} });
+	Datas.push_back({ {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("普通用户"))},{"value",std::to_string(NormalUser)} });
+	Datas.push_back({ {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("高净值用户"))},{"value",std::to_string(GeneralLargeUsers + KeyUserI + KeyUserII)} });
+	Datas.push_back({ {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("一般大用户"))},{"value",std::to_string(GeneralLargeUsers)} });
+	Datas.push_back({ {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("关键用户"))},{"value",std::to_string(KeyUserI + KeyUserII)} });
 
 	Json ReturnData;
 
-	ReturnData["title"] = "高净值用户构成";
+	ReturnData["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("高净值用户构成"));
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -10580,9 +10580,9 @@ Json OServerHelper::ElecEconomyIndex(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ElecMetID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string RequestAPI = HTTP_URL("/baseInfo/ente/report/num");
 	std::string RequsetData = "?startMonth=" + StartTime.substr(0, StartTime.length() - 3) + "&endMonth=" + EndTime.substr(0, EndTime.length() - 3) + "&elecNum=" + ElecMetID;
@@ -10593,29 +10593,29 @@ Json OServerHelper::ElecEconomyIndex(Json InData)
 
 	std::vector<Json> Tables;
 	Tables.push_back({
-						 {"title","最大设备利用率"},
-						 {"选中企业",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUse"])))},
-						 {"行业均值",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
-						 {"行业标杆",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("最大设备利用率"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUse"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
 						 {"unit","%"}
 		});
 	Tables.push_back({
-						 {"title","电量峰谷比"},
-						 {"选中企业",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValley"])))},
-						 {"行业均值",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
-						 {"行业标杆",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("电量峰谷比"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValley"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
 						 {"unit",""}
 		});
 	Tables.push_back({
-						 {"title","力率奖惩电费"},
-						 {"选中企业",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCost"])))},
-						 {"行业均值",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
-						 {"行业标杆",ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
-						 {"unit","万元"}
+						 {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("力率奖惩电费"))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("选中企业")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCost"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
+						 {TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业标杆")),ConvertToTenThousand(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
+						 {"unit",TCHAR_TO_UTF8(TCHAR_TO_UTF8("万元"))}
 		});
 
 	Json Data;
-	Data["title"] = "用能经济性指标";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("用能经济性指标"));
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -10635,8 +10635,8 @@ Json OServerHelper::ElecEconomyIndex_AIIsland(Json InData)
 	MaraidbConnector.Connect();
 
 	std::string ElecMetID = "1352958966";
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string RequestAPI = HTTP_URL("/baseInfo/ente/report/num");
 	std::string RequsetData = "?startMonth=" + StartTime.substr(0, StartTime.length() - 3) + "&endMonth=" + EndTime.substr(0, EndTime.length() - 3) + "&elecNum=" + ElecMetID;
@@ -10646,13 +10646,13 @@ Json OServerHelper::ElecEconomyIndex_AIIsland(Json InData)
 	auto HttpReceiveInfo = Json::parse(Result);
 
 	Json CategoryDatas;
-	CategoryDatas.push_back({ {"xLabel","最大设备利用率"},
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("最大设备利用率"))},
 							{"y1Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUseIndex"])))},
 							{"y2Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["deviceUse"])))} });
-	CategoryDatas.push_back({ {"xLabel","电量峰谷比"},
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("电量峰谷比"))},
 							{"y1Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValleyIndex"])))},
 							{"y2Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["peakValley"])))} });
-	CategoryDatas.push_back({ {"xLabel","力率奖惩电费"},
+	CategoryDatas.push_back({ {"xLabel",TCHAR_TO_UTF8(TCHAR_TO_UTF8("力率奖惩电费"))},
 							{"y1Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCostIndex"])))},
 							{"y2Label",SaveDecimalPlaces(std::to_string(FIELDIFNULL_FLOAT(HttpReceiveInfo["data"][0]["rewardCost"])))} });
 
@@ -10676,7 +10676,7 @@ Json OServerHelper::ElecEconomyIndex_AIIsland(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "用电经济性指标同行对比";
+	Data["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("用电经济性指标同行对比"));
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -10697,8 +10697,8 @@ Json OServerHelper::PercentageTransactionCategories(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 	std::vector<Json> Tables;
 
 	{
@@ -10726,8 +10726,8 @@ Json OServerHelper::PercentageTransactionCategories(Json InData)
 		TableDatas.push_back(TableData);
 
 		Json Table;
-		Table["title"] = "商品";
-		Table["unit"] = "个";
+		Table["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("商品"));
+		Table["unit"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("个"));
 		Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 		Table["data"] = TableDatas;
 		Tables.push_back(Table);
@@ -10757,8 +10757,8 @@ Json OServerHelper::PercentageTransactionCategories(Json InData)
 		TableDatas.push_back(TableData);
 
 		Json Table;
-		Table["title"] = "需求";
-		Table["unit"] = "个";
+		Table["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("需求"));
+		Table["unit"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("个"));
 		Table["xLabelRang"] = GetXLabelRangFromCategoryDatas(CategoryDatas);
 		Table["data"] = TableDatas;
 		Tables.push_back(Table);
@@ -10767,7 +10767,7 @@ Json OServerHelper::PercentageTransactionCategories(Json InData)
 
 	std::vector<Json>Datas;
 	Json Data;
-	Data["title"] = "近30天成交分类统计";
+	Data["title"] = TCHAR_TO_UTF8("近30天成交分类统计");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -10786,9 +10786,9 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ElecMetID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult EnteInfoResult = MaraidbConnector.Query(str(boost::format("SELECT EnteShortName,Area,EnteName FROM BaseEnteInfo WHERE ElecMetID='%1%';") % ElecMetID));
 
@@ -10807,7 +10807,7 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 	std::vector<Json> Datas;
 
 	Datas.push_back({
-				   {"title","企业名称"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("企业名称"))},
 				   {"content",{{
 						 {"key",EnteInfoResult.DataTable[0][2]},
 						 {"value",""}
@@ -10815,7 +10815,7 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 		});
 
 	Datas.push_back({
-					   {"title","企业简称"},
+					   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("企业简称"))},
 					   {"content",{{
 							 {"key",EnteInfoResult.DataTable[0][0]},
 							 {"value",""}
@@ -10823,15 +10823,15 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 		});
 
 	Datas.push_back({
-				   {"title","总能耗"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("总能耗"))},
 				   {"content",
 					   {
 						   {
-								 {"key","指标值"},
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("指标值"))},
 								 {"value", SaveDecimalPlaces(EnteEnergyConsumption.DataTable[0][3]) + " tce"}
 						   },
 						  {
-								 {"key","行业均值"},
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值"))},
 								 {"value", SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][0])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0])))) + " tce"}
 						   }
 					   }
@@ -10839,48 +10839,48 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 		});
 
 	Datas.push_back({
-				   {"title","万元产值能耗"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("万元产值能耗"))},
 				   {"content",
 					   {
 						   {
-								 {"key","指标值"},
-								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(EnteOutputValue.DataTable[0][0])) + " tce/万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("指标值"))},
+								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(EnteOutputValue.DataTable[0][0])) + TCHAR_TO_UTF8(" tce/万元")}
 						   },
 						  {
-								 {"key","行业均值"},
-								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][1])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + " tce/万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值"))},
+								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][1])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + TCHAR_TO_UTF8(" tce/万元")}
 						   }
 					   }
 				   }
 		});
 
 	Datas.push_back({
-				   {"title","单位建筑面积能耗"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("单位建筑面积能耗"))},
 				   {"content",
 					   {
 						   {
-								 {"key","指标值"},
-								 {"value",FillPlaceholderIfNull(GetEnergyConsumptionUnitArea(EnteEnergyConsumption.DataTable[0][3],EnteInfoResult.DataTable[0][1])) + " tce/m²"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("指标值"))},
+								 {"value",FillPlaceholderIfNull(GetEnergyConsumptionUnitArea(EnteEnergyConsumption.DataTable[0][3],EnteInfoResult.DataTable[0][1])) + TCHAR_TO_UTF8(" tce/m²")}
 						   },
 						  {
-								 {"key","行业均值"},
-								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][2])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + " tce/m²"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值"))},
+								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][2])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + TCHAR_TO_UTF8(" tce/m²")}
 						   }
 					   }
 				   }
 		});
 
 	Datas.push_back({
-				   {"title","碳排放"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("碳排放"))},
 				   {"content",
 					   {
 						   {
-								 {"key","指标值"},
-								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(EnteCarbonEmission.DataTable[0][0])) + " t·CO₂"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("指标值"))},
+								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(EnteCarbonEmission.DataTable[0][0])) + TCHAR_TO_UTF8(" t·CO₂")}
 						   },
 						  {
-								 {"key","行业均值"},
-								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][3])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + " t·CO₂"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("行业均值"))},
+								 {"value",FillPlaceholderIfNull(SaveDecimalPlaces(std::to_string(lexical_cast<double>(ConvertEmptyStringToZero(IndustryEnergyEffiency.DataTable[0][3])) / lexical_cast<double>(ConvertEmptyStringToZero(IndustryRegionEnteCount.DataTable[0][0]))))) + TCHAR_TO_UTF8(" t·CO₂")}
 						   }
 					   }
 				   }
@@ -10905,31 +10905,31 @@ Json OServerHelper::MainPageEnteInfo(Json InData)
 
 
 	Datas.push_back({
-				   {"title","用能支出"},
+				   {"title",TCHAR_TO_UTF8(TCHAR_TO_UTF8("用能支出"))},
 				   {"content",
 					   {
 						   {
-								 {"key","总费用"},
-								 {"value",FillPlaceholderIfNull(FullCost) + " 万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("总费用"))},
+								 {"value",FillPlaceholderIfNull(FullCost) + TCHAR_TO_UTF8(" 万元")}
 						   },
 						  {
-								 {"key","电费"},
-								 {"value",FillPlaceholderIfNull(ElecCost) + " 万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("电费"))},
+								 {"value",FillPlaceholderIfNull(ElecCost) + TCHAR_TO_UTF8(" 万元")}
 						   },
 						  {
-								 {"key","气费"},
-								 {"value",FillPlaceholderIfNull(GasCost) + " 万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("气费"))},
+								 {"value",FillPlaceholderIfNull(GasCost) + TCHAR_TO_UTF8(" 万元")}
 						   },
 						  {
-								 {"key","水费"},
-								 {"value",FillPlaceholderIfNull(WaterCost) + " 万元"}
+								 {"key",TCHAR_TO_UTF8(TCHAR_TO_UTF8("水费"))},
+								 {"value",FillPlaceholderIfNull(WaterCost) + TCHAR_TO_UTF8(" 万元")}
 						   }
 					   }
 				   }
 		});
 
 	Json ReturnData;
-	ReturnData["title"] = "企业基本信息";
+	ReturnData["title"] = TCHAR_TO_UTF8(TCHAR_TO_UTF8("企业基本信息"));
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -10944,9 +10944,9 @@ Json OServerHelper::EnteEnergyEfficiencyTrend(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ElecMetID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false, '.', EXLabelStepDateIterator::Month);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, Config);
@@ -10963,8 +10963,8 @@ Json OServerHelper::EnteEnergyEfficiencyTrend(Json InData)
 	std::vector<Json> ChartDatas;
 
 	{
-		std::string Title[4] = { "总","电","水","气" };
-		std::string Unit[4] = { "tce","kW·h","m³","m³" };
+		std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+		std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
 
 		std::vector<Json> Datas;
 
@@ -10997,7 +10997,7 @@ Json OServerHelper::EnteEnergyEfficiencyTrend(Json InData)
 			Datas.push_back(Data);
 		}
 		Json ChartData;
-		ChartData["title"] = "能耗趋势";
+		ChartData["title"] = TCHAR_TO_UTF8("能耗趋势");
 		ChartData["data"] = Datas;
 
 		ChartDatas.push_back(ChartData);
@@ -11005,8 +11005,8 @@ Json OServerHelper::EnteEnergyEfficiencyTrend(Json InData)
 
 
 	{
-		std::string Title[3] = { "单位面积能耗","万元产值能耗","度电经济增加值" };
-		std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
+		std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
+		std::string Unit[3] = { TCHAR_TO_UTF8("tce/km²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 		FMysqlResult Result[3] = { EnteConsumUnitArea,EnteOutputValue,EnteEnergyEcnoValueAdd };
 
 		for (int Index = 0; Index < 3; Index++)
@@ -11046,7 +11046,7 @@ Json OServerHelper::EnteEnergyEfficiencyTrend(Json InData)
 	}
 
 	Json ReturnData;
-	ReturnData["chartName"] = "企业用能变化趋势";
+	ReturnData["chartName"] = TCHAR_TO_UTF8("企业用能变化趋势");
 	ReturnData["chartData"] = ChartDatas;
 
 	return ReturnData;
@@ -11061,9 +11061,9 @@ Json OServerHelper::RegionIndustryEnteList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	date D_StartTime = from_string(StartTime);
 	date D_EndTime = from_string(EndTime);
@@ -11094,7 +11094,7 @@ Json OServerHelper::RegionIndustryEnteList(Json InData)
 		RegionTableDatas.push_back(TableData);
 	}
 	Json RegionTable;
-	RegionTable["title"] = "区域";
+	RegionTable["title"] = TCHAR_TO_UTF8("区域");
 	RegionTable["data"] = RegionTableDatas;
 	Tables.push_back(RegionTable);
 
@@ -11120,7 +11120,7 @@ Json OServerHelper::RegionIndustryEnteList(Json InData)
 		IndustryTableDatas.push_back(TableData);
 	}
 	Json IndustryTable;
-	IndustryTable["title"] = "行业";
+	IndustryTable["title"] = TCHAR_TO_UTF8("行业");
 	IndustryTable["data"] = IndustryTableDatas;
 	Tables.push_back(IndustryTable);
 
@@ -11146,12 +11146,12 @@ Json OServerHelper::RegionIndustryEnteList(Json InData)
 		EnteTableDatas.push_back(TableData);
 	}
 	Json EnteTable;
-	EnteTable["title"] = "企业";
+	EnteTable["title"] = TCHAR_TO_UTF8("企业");
 	EnteTable["data"] = EnteTableDatas;
 	Tables.push_back(EnteTable);
 
 	Json ReturnData;
-	ReturnData["title"] = "区域、行业及重点企业用能分析";
+	ReturnData["title"] = TCHAR_TO_UTF8("区域、行业及重点企业用能分析");
 	ReturnData["tables"] = Tables;
 
 	return ReturnData;
@@ -11159,16 +11159,16 @@ Json OServerHelper::RegionIndustryEnteList(Json InData)
 }
 Json OServerHelper::EnergyEfficiencyAnalysis(Json InData)
 {
-	std::string Type = InData["Type"];
-	if (Type == "区域")
+	std::string Type = FIELDIFNULL(InData["Type"]);
+	if (Type == TCHAR_TO_UTF8("区域"))
 	{
 		return RegionEnergyEfficiencyAnalysis(InData);
 	}
-	if (Type == "行业")
+	if (Type == TCHAR_TO_UTF8("行业"))
 	{
 		return IndustryEnergyEfficiencyAnalysis(InData);
 	}
-	if (Type == "企业")
+	if (Type == TCHAR_TO_UTF8("企业"))
 	{
 		return EnteEnergyEfficiencyAnalysis(InData);
 	}
@@ -11184,10 +11184,10 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string IndustryID = InData["ID"];
-	std::string YearStartTime = InData["YearStartTime"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string IndustryID = FIELDIFNULL(InData["ID"]);
+	std::string YearStartTime = FIELDIFNULL(InData["YearStartTime"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	date D_StartTime = from_string(StartTime);
 	date D_EndTime = from_string(EndTime);
@@ -11226,8 +11226,8 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 				for (int Index = 0; Index < 4; Index++)
 					CategoryDatas[Index].push_back({ {"xLabel",std::to_string(SelectStartDate.year())},{"yLabel",SaveDecimalPlaces(MonthIndustryEnergyConsumption.DataTable[0][Index],5)} });
 			}
-			std::string Title[4] = { "总","电","水","气" };
-			std::string Unit[4] = { "tce","kW·h","m³","m³" };
+			std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+			std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
 
 			std::vector<Json> Tables;
 			for (int Index = 0; Index < 4; Index++)
@@ -11252,7 +11252,7 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 			}
 
 			Json ChartData;
-			ChartData["title"] = "年";
+			ChartData["title"] = TCHAR_TO_UTF8("年");
 			ChartData["type"] = "line";
 			ChartData["table"] = Tables;
 
@@ -11266,9 +11266,9 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 
 			FMysqlResult IndustryEnergyConsumption[2] = { CurrIndustrynteEnergyConsumption ,PreYearIndustryEnergyConsumption };
 			{
-				std::string Title[4] = { "总","电","水","气" };
-				std::string Unit[4] = { "tce","kW·h","m³","m³" };
-				std::string CategoryName[2] = { "本年度能耗","去年同期能耗" };
+				std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+				std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
+				std::string CategoryName[2] = { TCHAR_TO_UTF8("本年度能耗"),TCHAR_TO_UTF8("去年同期能耗") };
 				std::string StartColor[2] = { "rgba(133,222,255,0)","rgba(255,255,255,0)" };
 				std::string EndColor[2] = { "rgba(133,222,255,1)","rgba(255,255,255,1)" };
 				std::string HighColor[2] = { "#5ceaff","#5ceaff" };
@@ -11307,7 +11307,7 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 					Tables.push_back(Table);
 				}
 				Json ChartData;
-				ChartData["title"] = "月";
+				ChartData["title"] = TCHAR_TO_UTF8("月");
 				ChartData["type"] = "bar";
 				ChartData["table"] = Tables;
 
@@ -11316,7 +11316,7 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 		}
 
 		Json Data;
-		Data["chartName"] = "能耗趋势";
+		Data["chartName"] = TCHAR_TO_UTF8("能耗趋势");
 		Data["chartData"] = ChartDatas;
 		Datas.push_back(Data);
 	}
@@ -11325,8 +11325,8 @@ Json OServerHelper::IndustryEnergyEfficiencyAnalysis(Json InData)
 		FMysqlResult IndustryEnergyEfficiency = MaraidbConnector.Query(str(boost::format("SELECT CreateDate,SUM(EnergyConsumUnitArea),SUM(OutputValue),AVG(EnergyEcnoValueAdd) FROM IndustryEnergyEfficiencyMonth WHERE FIND_IN_SET(RegionID,GetChildrenRegion('zj')) AND IndustryID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' GROUP BY CreateDate ORDER BY CreateDate;") % IndustryID % StartTime % EndTime));
 
 		{
-			std::string Title[3] = { "单位建筑面积能耗","万元产值能耗","度电经济增加值" };
-			std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
+			std::string Title[3] = { TCHAR_TO_UTF8("单位建筑面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
+			std::string Unit[3] = { TCHAR_TO_UTF8("tce/km²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 			for (int Index = 0; Index < 3; Index++)
 			{
 				std::vector<Json>ChartDatas;
@@ -11387,10 +11387,10 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ID"];
-	std::string YearStartTime = InData["YearStartTime"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ID"]);
+	std::string YearStartTime = FIELDIFNULL(InData["YearStartTime"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	date D_StartTime = from_string(StartTime);
 	date D_EndTime = from_string(EndTime);
@@ -11430,8 +11430,8 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 				for (int Index = 0; Index < 4; Index++)
 					CategoryDatas[Index].push_back({ {"xLabel",std::to_string(SelectStartDate.year())},{"yLabel",SaveDecimalPlaces(MonthEnteEnergyConsumption.DataTable[0][(Index + 3)],5)} });
 			}
-			std::string Title[4] = { "总","电","水","气" };
-			std::string Unit[4] = { "tce","kW·h","m³","m³" };
+			std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+			std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
 
 			std::vector<Json> Tables;
 			for (int Index = 0; Index < 4; Index++)
@@ -11456,7 +11456,7 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 			}
 
 			Json ChartData;
-			ChartData["title"] = "年";
+			ChartData["title"] = TCHAR_TO_UTF8("年");
 			ChartData["type"] = "line";
 			ChartData["table"] = Tables;
 
@@ -11473,9 +11473,9 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 
 			FMysqlResult EnteEnergyConsumption[2] = { CurrentEnteEnergyConsumption ,PreYearEnteEnergyConsumption };
 			{
-				std::string Title[4] = { "总","电","水","气" };
-				std::string Unit[4] = { "tce","kW·h","m³","m³" };
-				std::string CategoryName[2] = { "本年度能耗","去年同期能耗" };
+				std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+				std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
+				std::string CategoryName[2] = { TCHAR_TO_UTF8("本年度能耗"),TCHAR_TO_UTF8("去年同期能耗") };
 				std::string StartColor[2] = { "rgba(133,222,255,0)","rgba(255,255,255,0)" };
 				std::string EndColor[2] = { "rgba(133,222,255,1)","rgba(255,255,255,1)" };
 				std::string HighColor[2] = { "#5ceaff","#5ceaff" };
@@ -11514,7 +11514,7 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 					Tables.push_back(Table);
 				}
 				Json ChartData;
-				ChartData["title"] = "月";
+				ChartData["title"] = TCHAR_TO_UTF8("月");
 				ChartData["type"] = "bar";
 				ChartData["table"] = Tables;
 
@@ -11523,7 +11523,7 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 		}
 
 		Json Data;
-		Data["chartName"] = "能耗趋势";
+		Data["chartName"] = TCHAR_TO_UTF8("能耗趋势");
 		Data["chartData"] = ChartDatas;
 		Datas.push_back(Data);
 	}
@@ -11534,8 +11534,8 @@ Json OServerHelper::EnteEnergyEfficiencyAnalysis(Json InData)
 		FMysqlResult EnteEnergyEcnoValueAdd = MaraidbConnector.Query(str(boost::format("SELECT CreateDate, EcnoValueAdd FROM EnteEnergyEcnoValueAdd WHERE ElecMetID ='%1%' AND CreateDate BETWEEN '%2%' AND '%3%';") % ElecMetID % StartTime % EndTime));
 
 		{
-			std::string Title[3] = { "单位建筑面积能耗","万元产值能耗","度电经济增加值" };
-			std::string Unit[3] = { "tce/m²","tce/万元","万元/kW·h" };
+			std::string Title[3] = { TCHAR_TO_UTF8("单位建筑面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
+			std::string Unit[3] = { TCHAR_TO_UTF8("tce/m²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 			FMysqlResult Result[3] = { EnteConsumUnitArea,EnteOutputValue,EnteEnergyEcnoValueAdd };
 
 			for (int Index = 0; Index < 3; Index++)
@@ -11598,10 +11598,10 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["ID"];
-	std::string YearStartTime = InData["YearStartTime"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["ID"]);
+	std::string YearStartTime = FIELDIFNULL(InData["YearStartTime"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	date D_StartTime = from_string(StartTime);
 	date D_EndTime = from_string(EndTime);
@@ -11640,8 +11640,8 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 				for (int Index = 0; Index < 4; Index++)
 					CategoryDatas[Index].push_back({ {"xLabel",std::to_string(SelectStartDate.year())},{"yLabel",SaveDecimalPlaces(MonthIndustryEnergyConsumption.DataTable[0][Index],5)} });
 			}
-			std::string Title[4] = { "总","电","水","气" };
-			std::string Unit[4] = { "tce","kW·h","m³","m³" };
+			std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+			std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
 
 			std::vector<Json> Tables;
 			for (int Index = 0; Index < 4; Index++)
@@ -11666,7 +11666,7 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 			}
 
 			Json ChartData;
-			ChartData["title"] = "年";
+			ChartData["title"] = TCHAR_TO_UTF8("年");
 			ChartData["type"] = "line";
 			ChartData["table"] = Tables;
 
@@ -11680,9 +11680,9 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 
 			FMysqlResult IndustryEnergyConsumption[2] = { CurrIndustrynteEnergyConsumption ,PreYearIndustryEnergyConsumption };
 			{
-				std::string Title[4] = { "总","电","水","气" };
-				std::string Unit[4] = { "tce","kW·h","m³","m³" };
-				std::string CategoryName[2] = { "本年度能耗","去年同期能耗" };
+				std::string Title[4] = { TCHAR_TO_UTF8("总"),TCHAR_TO_UTF8("电"),TCHAR_TO_UTF8("水"),TCHAR_TO_UTF8("气") };
+				std::string Unit[4] = { TCHAR_TO_UTF8("tce"),TCHAR_TO_UTF8("kW·h"),TCHAR_TO_UTF8("m³"),TCHAR_TO_UTF8("m³") };
+				std::string CategoryName[2] = { TCHAR_TO_UTF8("本年度能耗"),TCHAR_TO_UTF8("去年同期能耗") };
 				std::string StartColor[2] = { "rgba(133,222,255,0)","rgba(255,255,255,0)" };
 				std::string EndColor[2] = { "rgba(133,222,255,1)","rgba(255,255,255,1)" };
 				std::string HighColor[2] = { "#5ceaff","#5ceaff" };
@@ -11721,7 +11721,7 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 					Tables.push_back(Table);
 				}
 				Json ChartData;
-				ChartData["title"] = "月";
+				ChartData["title"] = TCHAR_TO_UTF8("月");
 				ChartData["type"] = "bar";
 				ChartData["table"] = Tables;
 
@@ -11730,7 +11730,7 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 		}
 
 		Json Data;
-		Data["chartName"] = "能耗趋势";
+		Data["chartName"] = TCHAR_TO_UTF8("能耗趋势");
 		Data["chartData"] = ChartDatas;
 		Datas.push_back(Data);
 	}
@@ -11739,8 +11739,8 @@ Json OServerHelper::RegionEnergyEfficiencyAnalysis(Json InData)
 		FMysqlResult IndustryEnergyEfficiency = MaraidbConnector.Query(str(boost::format("SELECT CreateDate,SUM(EnergyConsumUnitArea),SUM(OutputValue),AVG(EnergyEcnoValueAdd) FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' GROUP BY CreateDate ORDER BY CreateDate;") % RegionID % StartTime % EndTime));
 
 		{
-			std::string Title[3] = { "单位建筑面积能耗","万元产值能耗","度电经济增加值" };
-			std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
+			std::string Title[3] = { TCHAR_TO_UTF8("单位建筑面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
+			std::string Unit[3] = { TCHAR_TO_UTF8("tce/km²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 			for (int Index = 0; Index < 3; Index++)
 			{
 				std::vector<Json>ChartDatas;
@@ -11801,9 +11801,9 @@ Json OServerHelper::RegionMonitoring(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionArea = MaraidbConnector.Query(str(boost::format("SELECT SUM(Area) FROM BaseEnteInfo WHERE FIND_IN_SET(RegionID,GetChildrenRegion('%1%'));") % RegionID));
 	double Area = lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
@@ -11820,22 +11820,22 @@ Json OServerHelper::RegionMonitoring(Json InData)
 		double SynEnergyConsum = lexical_cast<double>(MonthIndustryEnergyConsumption.DataTable[0][0]);
 		double EnergyConsumUnitArea = SynEnergyConsum / Area;
 
-		Data.push_back({ {"name","上月总能耗"},{"value",ConvertToTenThousand(MonthIndustryEnergyConsumption.DataTable[0][0]) + "万tce"} });
-		Data.push_back({ {"name","上月单位建筑面积能耗"},{"value",ConvertToTenThousand(std::to_string(EnergyConsumUnitArea)) + "万tce/km²"} });
-		Data.push_back({ {"name","上月清洁能源占比"},{"value",SaveDecimalPlaces(MonthIndustryEnergyConsumption.DataTable[0][1],2) + "%"} });
-		Data.push_back({ {"name","上月碳排放"},{"value",ConvertToTenThousand(RegionCarbonEmission.DataTable[0][0]) + "t·CO₂"} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月总能耗")},{"value",ConvertToTenThousand(MonthIndustryEnergyConsumption.DataTable[0][0]) + TCHAR_TO_UTF8("万tce")} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月单位建筑面积能耗")},{"value",ConvertToTenThousand(std::to_string(EnergyConsumUnitArea)) + TCHAR_TO_UTF8("万tce/km²")} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月清洁能源占比")},{"value",SaveDecimalPlaces(MonthIndustryEnergyConsumption.DataTable[0][1],2) + "%"} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月碳排放")},{"value",ConvertToTenThousand(RegionCarbonEmission.DataTable[0][0]) + TCHAR_TO_UTF8("t·CO₂")} });
 	}
 	else
 	{
-		Data.push_back({ {"name","上月总能耗"},{"value","----万tce"} });
-		Data.push_back({ {"name","上月单位建筑面积能耗"},{"value","----万tce/km²"} });
-		Data.push_back({ {"name","上月清洁能源占比"},{"value","--%"} });
-		Data.push_back({ {"name","上月碳排放"},{"value","--t·CO₂"} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月总能耗")},{"value",TCHAR_TO_UTF8("----万tce")} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月单位建筑面积能耗")},{"value",TCHAR_TO_UTF8("----万tce/km²")} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月清洁能源占比")},{"value","--%"} });
+		Data.push_back({ {"name",TCHAR_TO_UTF8("上月碳排放")},{"value",TCHAR_TO_UTF8("--t·CO₂")} });
 	}
 
 
 	Json ReturnData;
-	ReturnData["title"] = "全区数据监控";
+	ReturnData["title"] = TCHAR_TO_UTF8("全区数据监控");
 	ReturnData["data"] = Data;
 
 	return ReturnData;
@@ -11850,16 +11850,16 @@ Json OServerHelper::EnteList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	FMysqlResult EnteList = MaraidbConnector.Query(str(boost::format("SELECT EnteName,EnteShortName,IndustryName,RegionName,Address,BaseEnteInfo.ElecMetID FROM BaseEnteInfo,BaseEnteElecMeterInfo LEFT JOIN BaseIndustryInfo ON BaseIndustryInfo.IndustryID=BaseEnteElecMeterInfo.IndustryID LEFT JOIN BaseRegionInfo ON BaseEnteElecMeterInfo.RegionID = BaseRegionInfo.RegionID WHERE BaseEnteInfo.ElecMetID =BaseEnteElecMeterInfo.ElecMetID AND FIND_IN_SET(BaseEnteInfo.RegionID,GetChildrenRegion('%1%'));") % RegionID));
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"企业名称\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"企业简称\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"所属行业\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"所属区域\",\"width\":\"20\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"用电地址\",\"width\":\"25\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业名称\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业简称\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"所属行业\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"所属区域\",\"width\":\"20\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"用电地址\",\"width\":\"25\"}")));
 
 
 	std::vector<Json> TableDatas;
@@ -11933,7 +11933,7 @@ Json OServerHelper::GetExceptionEventInfo(Json InData)
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
 
 	FMysqlResult EventResult = MaraidbConnector.Query(str(boost::format("SELECT ExceptionEventId,EnteName,FilterDate,AiResult FROM AbnormalEnergyEvent WHERE FilterDate>'%1%' Order By FilterDate DESC LIMIT 10;") % StartTime));
 
@@ -11971,8 +11971,8 @@ Json OServerHelper::GetUserMonitor(Json InData)
 	using namespace cinatra;
 	using namespace boost;
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	int UserCount = 0;
 	//User
@@ -12012,21 +12012,21 @@ Json OServerHelper::GetUserMonitor(Json InData)
 	}
 
 	Json Register;
-	Register["title"] = "注册用户数量";
+	Register["title"] = TCHAR_TO_UTF8("注册用户数量");
 	Register["total"] = std::to_string(UserCount);
-	Register["unit"] = "家";
+	Register["unit"] = TCHAR_TO_UTF8("家");
 
 	Json Visit;
-	Visit["title"] = "单日访问次数";
+	Visit["title"] = TCHAR_TO_UTF8("单日访问次数");
 	Visit["total"] = std::to_string(ViewCount);
-	Visit["unit"] = "次";
+	Visit["unit"] = TCHAR_TO_UTF8("次");
 
 	Json TableData;
 	TableData["register"] = Register;
 	TableData["visit"] = Visit;
 
 	Json Data;
-	Data["title"] = "用户分布及单日访问次数统计";
+	Data["title"] = TCHAR_TO_UTF8("用户分布及单日访问次数统计");
 	Data["data"] = TableData;
 
 	std::vector<Json>Datas;
@@ -12043,9 +12043,9 @@ Json OServerHelper::UserMonitorDetails(Json InData)
 	using namespace cinatra;
 	using namespace boost;
 
-	std::string PreStartTime = InData["PreStartTime"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string PreStartTime = FIELDIFNULL(InData["PreStartTime"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string UserRequestAPI = HTTP_URL("/largeScrean/user/num");
 	auto [UserErrorCode, UserStatus, UserResult] = cinatra::get(UserRequestAPI);
@@ -12069,12 +12069,12 @@ Json OServerHelper::UserMonitorDetails(Json InData)
 	auto PreVisitHttpReceiveInfo = Json::parse(PreVisitResult);
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"客户类型\",\"width\":\"33.33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"客户数量\",\"width\":\"33.33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"单日访问量\",\"width\":\"33.33\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"客户类型\",\"width\":\"33.33\"}")));
+	RowHeader.push_back(Json::parse((TCHAR_TO_UTF8("{\"headerName\":\"客户数量\",\"width\":\"33.33\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"单日访问量\",\"width\":\"33.33\"}")));
 
 	std::string UserType[4] = { "Customer","Provider","Operate","Government" };
-	std::string UserTypeName[4] = { "能源用户","能源服务商","平台运营","政府用户" };
+	std::string UserTypeName[4] = { TCHAR_TO_UTF8("能源用户"),TCHAR_TO_UTF8("能源服务商"),TCHAR_TO_UTF8("平台运营"),TCHAR_TO_UTF8("政府用户") };
 
 	std::vector<Json>TableDatas;
 
@@ -12130,7 +12130,7 @@ Json OServerHelper::UserMonitorDetails(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "用户分布及单日访问次数";
+	Data["title"] = TCHAR_TO_UTF8("用户分布及单日访问次数");
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -12147,8 +12147,8 @@ Json OServerHelper::AttentionAnalysis(Json InData)
 	using namespace cinatra;
 	using namespace boost;
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string RequestAPI = HTTP_URL("/largeScrean/click/num");
 	std::string RequsetData = "?beginDate=" + StartTime + "&endDate=" + EndTime;
@@ -12174,15 +12174,15 @@ Json OServerHelper::AttentionAnalysis(Json InData)
 	TableDatas.push_back({ {"categoryData",CategoryDatas} });
 
 	Json Table;
-	Table["title"] = "服务";
-	Table["unit"] = "次";
+	Table["title"] = TCHAR_TO_UTF8("服务");
+	Table["unit"] = TCHAR_TO_UTF8("次");
 	Table["data"] = TableDatas;
 
 	std::vector<Json>Tables;
 	Tables.push_back(Table);
 
 	Json ReturnData;
-	ReturnData["title"] = "用户关注度分析";
+	ReturnData["title"] = TCHAR_TO_UTF8("用户关注度分析");
 	ReturnData["table"] = Tables;
 
 	return ReturnData;
@@ -12201,9 +12201,9 @@ Json OServerHelper::AgentOperation(Json InData)
 
 	if (!HttpReceiveInfo.is_null())
 	{
-		std::string KeyNames[3] = { "代运维公司","代运维客户","代运维总容量" };
+		std::string KeyNames[3] = { TCHAR_TO_UTF8("代运维公司"),TCHAR_TO_UTF8("代运维客户"),TCHAR_TO_UTF8("代运维总容量") };
 		std::string Keys[3] = { "enterpriseNum","electricNum","level" };
-		std::string Units[3] = { "家","家","kW" };
+		std::string Units[3] = { TCHAR_TO_UTF8("家"),TCHAR_TO_UTF8("家"),"kW" };
 
 
 		for (int Index=0;Index<3;Index++)
@@ -12216,7 +12216,7 @@ Json OServerHelper::AgentOperation(Json InData)
 		}
 	}
 	Json ReturnData;
-	ReturnData["title"] = "能源管家业务监控";
+	ReturnData["title"] = TCHAR_TO_UTF8("能源管家业务监控");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -12231,8 +12231,8 @@ Json OServerHelper::GetDealInfo(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult DemandContractInfo = MaraidbConnector.Query("SELECT SUM(ContractAmount),COUNT(ContractId) FROM DemandContractInfo WHERE CreateDate BETWEEN '" + StartTime + "' AND '" + EndTime + "';");
 	FMysqlResult GoodsContractInfo = MaraidbConnector.Query("SELECT SUM(ContractAmount),COUNT(ContractId) FROM GoodsContractInfo WHERE CreateDate BETWEEN '" + StartTime + "' AND '" + EndTime + "';");
@@ -12279,19 +12279,19 @@ Json OServerHelper::MainPageVppEventList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult EventList = MaraidbConnector.Query(str(boost::format("SELECT EventCode,EventType,StartDate,EndDate,TotolPlan,TotalComplete,EventStatus FROM VppEvent WHERE StartDate BETWEEN '%1%' AND '%2%' Order By StartDate DESC;") % StartTime % EndTime));
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"事件编号\",\"width\":\"18.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"事件类型\",\"width\":\"14.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"开始时间\",\"width\":\"13.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"结束时间\",\"width\":\"12.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"计划总量(kW)\",\"width\":\"12.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"完成总量(kW)\",\"width\":\"12.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"状态\",\"width\":\"12.27\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"事件编号\",\"width\":\"18.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"事件类型\",\"width\":\"14.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"开始时间\",\"width\":\"13.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"结束时间\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"计划总量(kW)\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"完成总量(kW)\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"状态\",\"width\":\"12.27\"}")));
 
 	std::vector<Json> TableDatas;
 	for (auto EventListRow : EventList.DataTable)
@@ -12329,7 +12329,7 @@ Json OServerHelper::MainPageVppEventList(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "最新削峰填谷事件";
+	Data["title"] = TCHAR_TO_UTF8("最新削峰填谷事件");
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -12348,9 +12348,9 @@ Json OServerHelper::KeyUserDistribution(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 	std::vector<Json> Tables;
 
 	{
@@ -12378,7 +12378,7 @@ Json OServerHelper::KeyUserDistribution(Json InData)
 		}
 		std::sort(Datas.begin(), Datas.end(), SortCategoryDatas);
 		Json Table;
-		Table["title"] = "区域";
+		Table["title"] = TCHAR_TO_UTF8("区域");
 		Table["data"] = Datas;
 		Tables.push_back(Table);
 	}
@@ -12412,13 +12412,13 @@ Json OServerHelper::KeyUserDistribution(Json InData)
 		}
 		std::sort(Datas.begin(), Datas.end(), SortCategoryDatas);
 		Json Table;
-		Table["title"] = "行业";
+		Table["title"] = TCHAR_TO_UTF8("行业");
 		Table["data"] = Datas;
 		Tables.push_back(Table);
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "关键用户区域行业分布";
+	ReturnData["title"] = TCHAR_TO_UTF8("关键用户区域行业分布");
 	ReturnData["tables"] = Tables;
 	return ReturnData;
 }
@@ -12433,8 +12433,8 @@ Json OServerHelper::KeyUserAnalyze(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string RegionID = InData["RegionID"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 
 	date CurrentYear = from_string(FillDate(StartTime));
@@ -12507,9 +12507,9 @@ Json OServerHelper::KeyUserAnalyze(Json InData)
 
 	}
 
-	std::string TableName[2] = { "年均峰时段电量占比","年均度电电费" };
-	std::string DataType[2] = { "区域","行业" };
-	std::string Unit[2] = { "%","元/kW·h" };
+	std::string TableName[2] = { TCHAR_TO_UTF8("年均峰时段电量占比"),TCHAR_TO_UTF8("年均度电电费") };
+	std::string DataType[2] = { TCHAR_TO_UTF8("区域"),TCHAR_TO_UTF8("行业") };
+	std::string Unit[2] = { "%",TCHAR_TO_UTF8("元/kW·h") };
 
 	std::vector<Json> ChartDatas;
 
@@ -12523,7 +12523,7 @@ Json OServerHelper::KeyUserAnalyze(Json InData)
 			for (int CategoryIndex = 0; CategoryIndex < 2; CategoryIndex++)
 			{
 				Json TableDataContent;
-				TableDataContent["title"] = TableName[TableIndex] + (CategoryIndex == 0 ? " " : "增长率");
+				TableDataContent["title"] = TableName[TableIndex] + (CategoryIndex == 0 ? " " : TCHAR_TO_UTF8("增长率"));
 				TableDataContent["unit"] = Unit[TableIndex];
 				TableDataContent["data"] = DataTypeIndex == 0 ? (CategoryIndex == 0 ? RegionContentData[TableIndex] : RegionContentData_Ratio[TableIndex]) : (CategoryIndex == 0 ? IndustryContentData[TableIndex] : IndustryContentData_Ratio[TableIndex]);
 				TableDataContents.push_back(TableDataContent);
@@ -12540,7 +12540,7 @@ Json OServerHelper::KeyUserAnalyze(Json InData)
 		ChartDatas.push_back(ChartData);
 	}
 	Json ReturnData;
-	ReturnData["chartName"] = "高净值用户区域及行业分析";
+	ReturnData["chartName"] = TCHAR_TO_UTF8("高净值用户区域及行业分析");
 	ReturnData["chartData"] = ChartDatas;
 
 	return ReturnData;
@@ -12551,8 +12551,8 @@ Json OServerHelper::LineLoad(Json InData)
 	using namespace  boost::posix_time;
 	using namespace  boost::gregorian;
 
-	std::string LineID = InData["LineID"];
-	std::string Time = InData["Time"];
+	std::string LineID = FIELDIFNULL(InData["LineID"]);
+	std::string Time = FIELDIFNULL(InData["Time"]);
 
 	std::vector<Json> XLabelRangs;
 	ptime XLabelTime = time_from_string(Time + " 00:00:00");
@@ -12587,7 +12587,7 @@ Json OServerHelper::LineLoad(Json InData)
 	}
 
 	Json TableData;
-	TableData["categoryName"] = "实时负载";
+	TableData["categoryName"] = TCHAR_TO_UTF8("实时负载");
 	TableData["icon"] = "auto";
 	TableData["lineStyle"] = "solid";
 	TableData["start_color"] = "rgba(255,255,255)";
@@ -12610,7 +12610,7 @@ Json OServerHelper::LineLoad(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "负载曲线";
+	Data["title"] = TCHAR_TO_UTF8("负载曲线");
 	Data["table"] = Tables;
 
 	std::vector<Json>Datas;
@@ -12629,8 +12629,8 @@ Json OServerHelper::PeakCuttingAndValleyFillingEvents(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult PeakClipEventInfo = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT EventCode),SUM(TotalComplete),SUM(TotolMoney) FROM VppEvent WHERE EventType='削峰事件' AND StartDate>='%1%' AND EndDate<='%2%';") % StartTime % EndTime));
 	FMysqlResult ValleyFillEventInfo = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT EventCode),SUM(TotalComplete),SUM(TotolMoney) FROM VppEvent WHERE EventType='填谷事件' AND StartDate>='%1%' AND EndDate<='%2%';") % StartTime % EndTime));
@@ -12655,29 +12655,29 @@ Json OServerHelper::PeakCuttingAndValleyFillingEvents(Json InData)
 
 	std::vector<Json> Tables;
 	Tables.push_back({
-						  {"title","本年执行事件"},
-						  {"xLabel","次"},
+						  {"title",TCHAR_TO_UTF8("本年执行事件")},
+						  {"xLabel",TCHAR_TO_UTF8("次")},
 						  {"yLabel",std::to_string(EventCount)}
 		});
 	Tables.push_back({
-						  {"title","削峰负荷总量"},
+						  {"title",TCHAR_TO_UTF8("削峰负荷总量")},
 						  {"xLabel","kw"},
 						  {"yLabel",SaveDecimalPlaces(std::to_string(PeakClip),2)}
 		});
 	Tables.push_back({
-						  {"title","填谷负荷总量"},
+						  {"title",TCHAR_TO_UTF8("填谷负荷总量")},
 						  {"xLabel","kw"},
 						  {"yLabel",SaveDecimalPlaces(std::to_string(ValleyFill),2)}
 		});
 	Tables.push_back({
-						  {"title","本年总激励金额"},
-						  {"xLabel","万元"},
+						  {"title",TCHAR_TO_UTF8("本年总激励金额")},
+						  {"xLabel",TCHAR_TO_UTF8("万元")},
 						  {"yLabel",ConvertToTenThousand(SaveDecimalPlaces(std::to_string(Money),2))}
 		});
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = "削峰填谷事件概览";
+	Data["title"] = TCHAR_TO_UTF8("削峰填谷事件概览");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -12696,7 +12696,7 @@ Json OServerHelper::PeakCuttingAndValleyFillingEventLineList(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/vpp/event/line");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -12749,7 +12749,7 @@ Json OServerHelper::PendingToResponseEnteListInVppEvent(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -12761,22 +12761,22 @@ Json OServerHelper::PendingToResponseEnteListInVppEvent(Json InData)
 	std::vector<Json> Datas;
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "等待回复")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("等待回复"))
 		{
 			FMysqlResult EnteInfo = MaraidbConnector.Query(str(boost::format("SELECT EnteName,ContactPerson,ContactPhone FROM BaseEnteInfo WHERE ElecMetID='%1%';") % DataRow["elecNum"]));
 			if (EnteInfo.ResultIsNotNull())
 			{
 				Json Data;
-				Data["企业名称"] = EnteInfo.DataTable[0][0];
-				Data["联系人"] = EnteInfo.DataTable[0][1];
-				Data["联系电话"] = EnteInfo.DataTable[0][2];
+				Data[TCHAR_TO_UTF8("企业名称")] = EnteInfo.DataTable[0][0];
+				Data[TCHAR_TO_UTF8("联系人")] = EnteInfo.DataTable[0][1];
+				Data[TCHAR_TO_UTF8("联系电话")] = EnteInfo.DataTable[0][2];
 				Datas.push_back(Data);
 			}
 		}
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "待应答企业";
+	ReturnData["title"] = TCHAR_TO_UTF8("待应答企业");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -12792,7 +12792,7 @@ Json OServerHelper::RefuseEnteListInVppEvent(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -12804,11 +12804,11 @@ Json OServerHelper::RefuseEnteListInVppEvent(Json InData)
 	std::vector<Json> TableData;
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "拒绝邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("拒绝邀约"))
 		{
 			Json Data;
-			Data["企业名称"] = DataRow["enteElecName"];
-			Data["拒绝原因"] = FIELDIFNULL(DataRow["feedbackContent"]);
+			Data[TCHAR_TO_UTF8("企业名称")] = DataRow["enteElecName"];
+			Data[TCHAR_TO_UTF8("拒绝原因")] = FIELDIFNULL(DataRow["feedbackContent"]);
 			TableData.push_back(Data);
 		}
 	}
@@ -12819,7 +12819,7 @@ Json OServerHelper::RefuseEnteListInVppEvent(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "拒绝邀约企业";
+	Data["title"] = TCHAR_TO_UTF8("拒绝邀约企业");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -12840,7 +12840,7 @@ Json OServerHelper::AgreeEnteListInVppEvent(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -12852,17 +12852,17 @@ Json OServerHelper::AgreeEnteListInVppEvent(Json InData)
 	std::vector<Json> Datas;
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 		{
 			Json Data;
-			Data["企业名称"] = FIELDIFNULL(DataRow["enteElecName"]);
-			Data["响应量"] = (FIELDIFNULL(DataRow["respFeedback"])) + "kw";
+			Data[TCHAR_TO_UTF8("企业名称")] = FIELDIFNULL(DataRow["enteElecName"]);
+			Data[TCHAR_TO_UTF8("响应量")] = (FIELDIFNULL(DataRow["respFeedback"])) + "kw";
 			Datas.push_back(Data);
 		}
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "同意邀约企业";
+	ReturnData["title"] = TCHAR_TO_UTF8("同意邀约企业");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -12877,8 +12877,8 @@ Json OServerHelper::EnteListInVppEvent(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
-	std::string SelectLineID = FIELDIFNULL(InData["LineID"]);
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
+	std::string SelectLineID = FIELDIFNULL(FIELDIFNULL(InData["LineID"]));
 
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
@@ -12918,11 +12918,11 @@ Json OServerHelper::EnteListInVppEvent(Json InData)
 		EnteInfo["PercentageComplete"] = PlanResp == 0 ? "0" : SaveDecimalPlaces(std::to_string(RealResp / PlanResp));
 		EnteInfo["IncentivesAre"] = FIELDIFNULL(DataRow["totalMoney"]);
 
-		if (EnteInfo["FeedbackStatus"] == "同意邀约")
+		if (EnteInfo["FeedbackStatus"] == TCHAR_TO_UTF8("同意邀约"))
 		{
 			Data["AgreeToInviteBusiness"].push_back(EnteInfo);
 		}
-		else if (EnteInfo["FeedbackStatus"] == "拒绝邀约")
+		else if (EnteInfo["FeedbackStatus"] == TCHAR_TO_UTF8("拒绝邀约"))
 		{
 			Data["RefuseToInviteBusiness"].push_back(EnteInfo);
 		}
@@ -12947,13 +12947,13 @@ Json OServerHelper::InviteCountDown(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult StartTime = MaraidbConnector.Query(str(boost::format("SELECT StartDate FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 
 	if (StartTime.ResultIsNotNull())
 	{
 		Json ReturnData;
-		ReturnData["title"] = "邀约倒计时";
+		ReturnData["title"] = TCHAR_TO_UTF8("邀约倒计时");
 		ReturnData["dateTime"] = StartTime.DataTable[0][0];
 		return ReturnData;
 	}
@@ -12969,7 +12969,7 @@ Json OServerHelper::InviteProgress(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult TotolPlan = MaraidbConnector.Query(str(boost::format("SELECT TotolPlan FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
@@ -12983,7 +12983,7 @@ Json OServerHelper::InviteProgress(Json InData)
 
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 		{
 			try
 			{
@@ -13004,8 +13004,8 @@ Json OServerHelper::InviteProgress(Json InData)
 			double Plan = lexical_cast<double>(TotolPlan.DataTable[0][0]);
 			Pre = SaveDecimalPlaces(std::to_string(TotleRespon / Plan * 100), 0);
 			std::vector<Json> TableValue;
-			TableValue.push_back({ {"title","计划总量"},{"value",TotolPlan.DataTable[0][0] + "kW"} });
-			TableValue.push_back({ {"title","响应量"},{"value",SaveDecimalPlaces(std::to_string(TotleRespon)) + "kW"} });
+			TableValue.push_back({ {"title",TCHAR_TO_UTF8("计划总量")},{"value",TotolPlan.DataTable[0][0] + "kW"} });
+			TableValue.push_back({ {"title",TCHAR_TO_UTF8("响应量")},{"value",SaveDecimalPlaces(std::to_string(TotleRespon)) + "kW"} });
 
 			Json Table;
 			Table["title"] = "";
@@ -13017,7 +13017,7 @@ Json OServerHelper::InviteProgress(Json InData)
 			Tables.push_back(Table);
 
 			Json Data;
-			Data["title"] = "邀约进度";
+			Data["title"] = TCHAR_TO_UTF8("邀约进度");
 			Data["table"] = Tables;
 
 			std::vector<Json> Datas;
@@ -13046,13 +13046,13 @@ Json OServerHelper::ExecuteCountDown(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult StartTime = MaraidbConnector.Query(str(boost::format("SELECT EndDate FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 
 	if (StartTime.ResultIsNotNull())
 	{
 		Json ReturnData;
-		ReturnData["title"] = "执行倒计时";
+		ReturnData["title"] = TCHAR_TO_UTF8("执行倒计时");
 		ReturnData["dateTime"] = StartTime.DataTable[0][0];
 		return ReturnData;
 	}
@@ -13068,7 +13068,7 @@ Json OServerHelper::ExecuteProgress(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult TotolPlan = MaraidbConnector.Query(str(boost::format("SELECT TotolPlan FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
@@ -13088,7 +13088,7 @@ Json OServerHelper::ExecuteProgress(Json InData)
 	EventExcuteInfo TopEnte[3];
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 		{
 			try
 			{
@@ -13141,8 +13141,8 @@ Json OServerHelper::ExecuteProgress(Json InData)
 		Json TableValue;
 
 		std::vector<Json> TRS;
-		TRS.push_back({ {"td1",TopEnte[i].EnteName},{"td2","完成量"} });
-		TRS.push_back({ {"td1","响应量: " + SaveDecimalPlaces(TopEnte[i].RealResp) + " kw"},{"td2","完成度: " + SaveDecimalPlaces(std::to_string(lexical_cast<double>(TopEnte[i].RealResp) / lexical_cast<double>(TopEnte[i].RespFeedback) * 100),2) + "%"} });
+		TRS.push_back({ {"td1",TopEnte[i].EnteName},{"td2",TCHAR_TO_UTF8("完成量")} });
+		TRS.push_back({ {"td1",TCHAR_TO_UTF8("响应量: ") + SaveDecimalPlaces(TopEnte[i].RealResp) + " kw"},{"td2",TCHAR_TO_UTF8("完成度: ") + SaveDecimalPlaces(std::to_string(lexical_cast<double>(TopEnte[i].RealResp) / lexical_cast<double>(TopEnte[i].RespFeedback) * 100),2) + "%"} });
 		TableValue["tr"] = TRS;
 		TableValues.push_back(TableValue);
 	}
@@ -13166,7 +13166,7 @@ Json OServerHelper::ExecuteProgress(Json InData)
 			Tables.push_back(Table);
 
 			Json Data;
-			Data["title"] = "执行进度";
+			Data["title"] = TCHAR_TO_UTF8("执行进度");
 			Data["table"] = Tables;
 
 			std::vector<Json> Datas;
@@ -13196,60 +13196,60 @@ Json OServerHelper::TimeLine(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult EventStatus = MaraidbConnector.Query(str(boost::format("SELECT EventStatus FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 	std::vector<Json> Datas;
 
 	if (!EventStatus.ResultIsNotNull())
 	{
 
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","未完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","未完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","未完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","未完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("未完成")} });
 		Json ReturnData;
 		ReturnData["data"] = Datas;
 
 		return ReturnData;
 	}
 
-	if (EventStatus.DataTable[0][0] == "完结")
+	if (EventStatus.DataTable[0][0] == TCHAR_TO_UTF8("完结"))
 	{
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("完成")} });
 	}
-	else if (EventStatus.DataTable[0][0] == "结算公示")
+	else if (EventStatus.DataTable[0][0] == TCHAR_TO_UTF8("结算公示"))
 	{
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","未完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("未完成")} });
 	}
-	else if (EventStatus.DataTable[0][0] == "结算中(等待计算)")
+	else if (EventStatus.DataTable[0][0] == TCHAR_TO_UTF8("结算中(等待计算)"))
 	{
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","未完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","未完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("未完成")} });
 	}
-	else if (EventStatus.DataTable[0][0] == "结算中(待冻结)")
+	else if (EventStatus.DataTable[0][0] == TCHAR_TO_UTF8("结算中(待冻结)"))
 	{
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","未完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","未完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","未完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("未完成")} });
 	}
 	else
 	{
-		Datas.push_back({ {"name","冻结负荷数据"},{"state","未完成"} });
-		Datas.push_back({ {"name","计算奖励金额"},{"state","未完成"} });
-		Datas.push_back({ {"name","公式阶段"},{"state","未完成"} });
-		Datas.push_back({ {"name","结算并执行"},{"state","未完成"} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("冻结负荷数据")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("计算奖励金额")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("公式阶段")},{"state",TCHAR_TO_UTF8("未完成")} });
+		Datas.push_back({ {"name",TCHAR_TO_UTF8("结算并执行")},{"state",TCHAR_TO_UTF8("未完成")} });
 	}
 	Json ReturnData;
-	ReturnData["title"] = "结算进度";
+	ReturnData["title"] = TCHAR_TO_UTF8("结算进度");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -13266,7 +13266,7 @@ Json OServerHelper::EnteContributeCurveByTargetID(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string TargetID = InData["TargetID"];
+	std::string TargetID = FIELDIFNULL(InData["TargetID"]);
 
 	std::vector<Json> Tables;
 	Json Data;
@@ -13309,7 +13309,7 @@ Json OServerHelper::EnteContributeCurve(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -13373,7 +13373,7 @@ Json OServerHelper::EnteContributeCurve_Execute(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -13386,7 +13386,7 @@ Json OServerHelper::EnteContributeCurve_Execute(Json InData)
 
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 		{
 			try
 			{
@@ -13423,7 +13423,7 @@ Json OServerHelper::EnteContributeCurve_Execute(Json InData)
 				}
 
 				FMysqlResult Curve[2] = { RealCurveResult ,BaseCurveResult };
-				std::string CategoryName[2] = { "实际负荷","基线" };
+				std::string CategoryName[2] = { TCHAR_TO_UTF8("实际负荷"),TCHAR_TO_UTF8("基线") };
 				std::string StartColor[2] = { "rgba(255,253,255,1)","rgba(0,253,173,1)" };
 				std::string HighColor[2] = { "rgba(255,253,255,0.3)","rgba(97,173,255,0.3)" };
 				std::string GradientColor[2] = { "rgba(0,253,173,0)","rgba(97,173,255,0)" };
@@ -13471,7 +13471,7 @@ Json OServerHelper::EnteContributeCurve_Execute(Json InData)
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "企业出力曲线";
+	ReturnData["title"] = TCHAR_TO_UTF8("企业出力曲线");
 	ReturnData["table"] = Tables;
 
 	return ReturnData;
@@ -13488,7 +13488,7 @@ Json OServerHelper::EnteContributeCurve_Finish(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
 	std::string RequsetData = "?eventCode=" + EventCode;
@@ -13514,7 +13514,7 @@ Json OServerHelper::EnteContributeCurve_Finish(Json InData)
 	std::vector<FEnteExecuteInfo> EnteExcuteInfoList;
 	for (auto DataRow : HttpReceiveInfo["data"])
 	{
-		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+		if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 		{
 			FEnteExecuteInfo EnteExecuteInfo;
 			EnteExecuteInfo.EnteName = FIELDIFNULL(DataRow["enteElecName"]);
@@ -13570,7 +13570,7 @@ Json OServerHelper::EnteContributeCurve_Finish(Json InData)
 			}
 
 			FMysqlResult Curve[2] = { RealCurveResult ,BaseCurveResult };
-			std::string CategoryName[2] = { "实际负荷","基线" };
+			std::string CategoryName[2] = { TCHAR_TO_UTF8("实际负荷"),TCHAR_TO_UTF8("基线") };
 			std::string StartColor[2] = { "rgba(255,253,255,1)","rgba(0,253,173,1)" };
 			std::string HighColor[2] = { "rgba(255,253,255,0.3)","rgba(97,173,255,0.3)" };
 			std::string GradientColor[2] = { "rgba(0,253,173,0)","rgba(97,173,255,0)" };
@@ -13602,10 +13602,10 @@ Json OServerHelper::EnteContributeCurve_Finish(Json InData)
 			Json Table;
 			Table["title"] = EnteExcuteInfoRow.EnteName;
 			Table["unit"] = "kW";
-			Table["计划量"] = EnteExcuteInfoRow.PlanResp;
-			Table["完成量"] = EnteExcuteInfoRow.RealResp;
-			Table["完成度"] = EnteExcuteInfoRow.Percent;
-			Table["出力排行"] = std::to_string(Index) + "/" + std::to_string(EnteExcuteInfoList.size());
+			Table[TCHAR_TO_UTF8("计划量")] = EnteExcuteInfoRow.PlanResp;
+			Table[TCHAR_TO_UTF8("完成量")] = EnteExcuteInfoRow.RealResp;
+			Table[TCHAR_TO_UTF8("完成度")] = EnteExcuteInfoRow.Percent;
+			Table[TCHAR_TO_UTF8("出力排行")] = std::to_string(Index) + "/" + std::to_string(EnteExcuteInfoList.size());
 			Table["xLabelRang"] = XLabelRangs;
 			Table["data"] = TableDatas;
 
@@ -13619,7 +13619,7 @@ Json OServerHelper::EnteContributeCurve_Finish(Json InData)
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "企业出力曲线";
+	ReturnData["title"] = TCHAR_TO_UTF8("企业出力曲线");
 	ReturnData["table"] = Tables;
 
 	return ReturnData;
@@ -13693,18 +13693,18 @@ Json OServerHelper::DemandSideResponse(Json InData)
 
 		for (auto DataRow : HttpReceiveInfo["data"])
 		{
-			if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+			if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 				EnteCount++;
 		}
 	}
 
 	std::vector<Json> Datas;
-	Datas.push_back({ {"name","累计削峰填谷事件"},{"value",EventCountAndResp.DataTable[0][0] + "次"} });
-	Datas.push_back({ {"name","累计参与企业"},{"value",std::to_string(EnteCount) + "家"} });
-	Datas.push_back({ {"name","累计响应量"},{"value",SaveDecimalPlaces(EventCountAndResp.DataTable[0][1]) + "kW"} });
+	Datas.push_back({ {"name",TCHAR_TO_UTF8("累计削峰填谷事件")},{"value",EventCountAndResp.DataTable[0][0] + TCHAR_TO_UTF8("次")} });
+	Datas.push_back({ {"name",TCHAR_TO_UTF8("累计参与企业")},{"value",std::to_string(EnteCount) + TCHAR_TO_UTF8("家")} });
+	Datas.push_back({ {"name",TCHAR_TO_UTF8("累计响应量")},{"value",SaveDecimalPlaces(EventCountAndResp.DataTable[0][1]) + "kW"} });
 
 	Json ReturnData;
-	ReturnData["title"] = "需求侧响应";
+	ReturnData["title"] = TCHAR_TO_UTF8("需求侧响应");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -13756,11 +13756,11 @@ Json OServerHelper::PlatformServiceOverview(Json InData)
 		Index++;
 	}
 
-	std::string CategoryNames[2] = { "累计增值服务次数","累计增值服务企业" };
+	std::string CategoryNames[2] = { TCHAR_TO_UTF8("累计增值服务次数"),TCHAR_TO_UTF8("累计增值服务企业") };
 	std::string StartColor[2] = { "rgba(1,254,234,0)","rgba(65,141,255,0)" };
 	std::string EndColor[2] = { "rgba(1,254,234,1)","rgba(65,141,255,1)" };
 	std::string Totals[2] = { std::to_string(TotleOrderCount),std::to_string(TotleEnteCount) };
-	std::string Unit[2] = { "次","家" };
+	std::string Unit[2] = { TCHAR_TO_UTF8("次"),TCHAR_TO_UTF8("家") };
 	std::vector<Json> CategoryDatas[2] = { OrderCategoryDatas ,EnteCategoryDatas };
 
 	std::vector<Json> TableDatas;
@@ -13787,7 +13787,7 @@ Json OServerHelper::PlatformServiceOverview(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "服务金额年度对比";
+	Data["title"] = TCHAR_TO_UTF8("服务金额年度对比");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -13846,11 +13846,11 @@ Json OServerHelper::PlatformMarketOverview(Json InData)
 		Index++;
 	}
 
-	std::string CategoryNames[2] = { "累计撮合交易","累计交易金额" };
+	std::string CategoryNames[2] = { TCHAR_TO_UTF8("累计撮合交易"),TCHAR_TO_UTF8("累计交易金额") };
 	std::string StartColor[2] = { "rgba(0,254,233,0)","rgba(65,141,255,0)" };
 	std::string EndColor[2] = { "rgba(65,141,255,1)","rgba(65,141,255,1)" };
 	std::string Totals[2] = { std::to_string(TotleDealCount),ConvertToTenThousand(std::to_string(TotleDealMoney)) };
-	std::string Unit[2] = { "笔","万元" };
+	std::string Unit[2] = { TCHAR_TO_UTF8("笔"),TCHAR_TO_UTF8("万元") };
 	std::vector<Json> CategoryDatas[2] = { OrderCategoryDatas ,EnteCategoryDatas };
 
 	std::vector<Json> TableDatas;
@@ -13877,7 +13877,7 @@ Json OServerHelper::PlatformMarketOverview(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "能源服务市场发展";
+	Data["title"] = TCHAR_TO_UTF8("能源服务市场发展");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -13888,8 +13888,8 @@ Json OServerHelper::PlatformMarketOverview(Json InData)
 	FMysqlResult TotleGoodsCount = MaraidbConnector.Query(str(boost::format("SELECT COUNT(GoodsID) FROM GoodsInfo WHERE GoodsStatus!='审批中';")));
 
 	std::vector<Json> Datas_1;
-	Datas_1.push_back({ {"key","产业云联盟"},{"value",TotleEnteCount.DataTable[0][0] + "家"} });
-	Datas_1.push_back({ {"key","商品总量"},{"value",TotleGoodsCount.DataTable[0][0] + "个"} });
+	Datas_1.push_back({ {"key",TCHAR_TO_UTF8("产业云联盟")},{"value",TotleEnteCount.DataTable[0][0] + TCHAR_TO_UTF8("家")} });
+	Datas_1.push_back({ {"key",TCHAR_TO_UTF8("商品总量")},{"value",TotleGoodsCount.DataTable[0][0] + TCHAR_TO_UTF8("个")} });
 
 
 	Json ReturnData;
@@ -13909,8 +13909,8 @@ Json OServerHelper::PeakCuttingAndValleyFillingEventTrend(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false, '.', EXLabelStepDateIterator::Month);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, Config);
@@ -13922,7 +13922,7 @@ Json OServerHelper::PeakCuttingAndValleyFillingEventTrend(Json InData)
 		CategoryDatas.push_back({ {"xLabel",EventTrendRow[0] + '.' + EventTrendRow[1]},{"yLabel",EventTrendRow[2]} });
 
 	Json TableData;
-	TableData["categoryName"] = "事件数量";
+	TableData["categoryName"] = TCHAR_TO_UTF8("事件数量");
 	TableData["start_color"] = "rgb(96,199,255)";
 	TableData["end_color"] = "rgb(96,199,255)";
 	TableData["high_color"] = "rgba(96,199,255,0.4)";
@@ -13934,7 +13934,7 @@ Json OServerHelper::PeakCuttingAndValleyFillingEventTrend(Json InData)
 
 	Json Table;
 	Table["title"] = "";
-	Table["unit"] = "次";
+	Table["unit"] = TCHAR_TO_UTF8("次");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 
@@ -13942,7 +13942,7 @@ Json OServerHelper::PeakCuttingAndValleyFillingEventTrend(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "近一年削峰填谷事件数量";
+	Data["title"] = TCHAR_TO_UTF8("近一年削峰填谷事件数量");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -13988,7 +13988,7 @@ Json OServerHelper::RespTopEnteList(Json InData)
 
 		for (auto DataRow : HttpReceiveInfo["data"])
 		{
-			if ((FIELDIFNULL(DataRow["feedbackStatus"])) == "同意邀约")
+			if ((FIELDIFNULL(DataRow["feedbackStatus"])) == TCHAR_TO_UTF8("同意邀约"))
 			{
 				std::string EnteName = FIELDIFNULL(DataRow["enteElecName"]);
 				float Resp = FIELDIFNULL_FLOAT(DataRow["realResp"]);
@@ -14026,7 +14026,7 @@ Json OServerHelper::RespTopEnteList(Json InData)
 	}
 
 	Json ReturnData;
-	ReturnData["title"] = "总响应量排行榜";
+	ReturnData["title"] = TCHAR_TO_UTF8("总响应量排行榜");
 	ReturnData["data"] = Datas;
 
 	return ReturnData;
@@ -14034,7 +14034,7 @@ Json OServerHelper::RespTopEnteList(Json InData)
 
 Json OServerHelper::TempTest(Json InData)
 {
-	return { {"Temp","中文"} };
+	return { {"Temp",TCHAR_TO_UTF8("中文")} };
 }
 
 Json OServerHelper::HighLoadLine(Json InData)
@@ -14050,7 +14050,7 @@ Json OServerHelper::HighLoadLine(Json InData)
 	FMysqlResult LineResult = MaraidbConnector.Query(str(boost::format("SELECT ElecLineName,VoltageLevel,StatElecName,LoadRate,YdayLoadRate,MonLoadRate FROM LineLoad WHERE LoadRate>50 AND LoadRate<150;")));
 
 
-	std::vector<std::string > RowHeader = { "线路名称" ,"电压等级","所属电站","线路负载率(%)","昨日负载(%)" ,"本月平均负载(%)" };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("线路名称") ,TCHAR_TO_UTF8("电压等级"),TCHAR_TO_UTF8("所属电站"),TCHAR_TO_UTF8("线路负载率(%)"),TCHAR_TO_UTF8("昨日负载(%)") ,TCHAR_TO_UTF8("本月平均负载(%)") };
 	std::vector<std::string > RowWidth = { "16.5","16.5","16.5","16.5","16.5","16.5" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, LineResult.DataTable, 4);
@@ -14059,7 +14059,7 @@ Json OServerHelper::HighLoadLine(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "重载线路";
+	Data["title"] = TCHAR_TO_UTF8("重载线路");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -14086,7 +14086,7 @@ Json OServerHelper::EB_High_LowLoadLine(Json InData)
 		FMysqlResult LineResult = MaraidbConnector.Query(str(boost::format("SELECT ElecLineName,VoltageLevel,StatElecName,LoadRate,MonLoadRate FROM LineLoad WHERE LoadRate>50 AND LoadRate<150;")));
 
 
-		std::vector<std::string > RowHeader = { "线路名称" ,"电压等级","所属电站","实时负载率" ,"本月平均负载" };
+		std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("线路名称") ,TCHAR_TO_UTF8("电压等级"),TCHAR_TO_UTF8("所属电站"),TCHAR_TO_UTF8("实时负载率") ,TCHAR_TO_UTF8("本月平均负载") };
 		std::vector<std::string > RowWidth = { "20","20","20","20","20" };
 
 		Json Table = FillTableJson(RowHeader, RowWidth, LineResult.DataTable, 4);
@@ -14095,7 +14095,7 @@ Json OServerHelper::EB_High_LowLoadLine(Json InData)
 		Tables.push_back(Table);
 
 		Json Data;
-		Data["title"] = "高负载线路";
+		Data["title"] = TCHAR_TO_UTF8("高负载线路");
 		Data["table"] = Tables;
 		Datas.push_back(Data);
 
@@ -14104,7 +14104,7 @@ Json OServerHelper::EB_High_LowLoadLine(Json InData)
 		FMysqlResult LineResult = MaraidbConnector.Query(str(boost::format("SELECT ElecLineName,VoltageLevel,StatElecName,LoadRate,MonLoadRate FROM LineLoad WHERE LoadRate>0 AND LoadRate<30;")));
 
 
-		std::vector<std::string > RowHeader = { "线路名称" ,"电压等级","所属电站","实时负载率" ,"本月平均负载" };
+		std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("线路名称") ,TCHAR_TO_UTF8("电压等级"),TCHAR_TO_UTF8("所属电站"),TCHAR_TO_UTF8("实时负载率") ,TCHAR_TO_UTF8("本月平均负载") };
 		std::vector<std::string > RowWidth = { "20","20","20","20","20" };
 
 		Json Table = FillTableJson(RowHeader, RowWidth, LineResult.DataTable, 4);
@@ -14113,7 +14113,7 @@ Json OServerHelper::EB_High_LowLoadLine(Json InData)
 		Tables.push_back(Table);
 
 		Json Data;
-		Data["title"] = "低负载线路";
+		Data["title"] = TCHAR_TO_UTF8("低负载线路");
 		Data["table"] = Tables;
 		Datas.push_back(Data);
 
@@ -14272,7 +14272,7 @@ std::vector<Json> OServerHelper::FiltrationSmallDataByRatio(std::vector<Json>Cat
 		}
 	}
 	Json OtherCategoryData;
-	OtherCategoryData["xLabel"] = "其他";
+	OtherCategoryData["xLabel"] = TCHAR_TO_UTF8("其他");
 	OtherCategoryData["yLabel"] = Other;
 
 	ReturnData.push_back(OtherCategoryData);
