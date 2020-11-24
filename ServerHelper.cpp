@@ -1671,7 +1671,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	std::sort(EnergyConsumptionCategoryDatas.begin(), EnergyConsumptionCategoryDatas.end(), SortCategoryDatasReverse);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = FIELDIFNULL("类别一");
+	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["end_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["high_color"] = "#5ceaff";
@@ -1681,8 +1681,8 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = FIELDIFNULL("总");
-	EnergyConsumptionTable["unit"] = FIELDIFNULL("万tce");
+	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
+	EnergyConsumptionTable["unit"] = TCHAR_TO_UTF8("万tce");
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
 
@@ -3733,7 +3733,7 @@ Json OServerHelper::RespondingEnterprise(Json InData) {
 	MaraidbConnector.Connect();
 	Json tableData;
 	std::vector<Json> data;
-	std::string sql = "SELECT EnteID FROM VppEventEnte WHERE FeedbackStatus='"+TCHAR_TO_UTF8('等待回复')+"'";
+	std::string sql = "SELECT EnteID FROM VppEventEnte WHERE FeedbackStatus='"+TCHAR_TO_UTF8("等待回复")+"'";
 	auto res1 = MaraidbConnector.Query(sql);
 	for (std::vector<std::string> r1 : res1.DataTable) {
 		Json list;
@@ -3925,7 +3925,7 @@ Json OServerHelper::EB_TheLatestPeakCuttingAndValleyFillingEvents(Json InData)
 	std::vector<std::string > RowWidth = { "22.66" ,"10.66","22.66","22.66","10.66","10.66" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, EventInfo.DataTable, 8);
-	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value",TCHAR_TO_UTF8("削峰事件")}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value",TCHAR_TO_UTF8("-----"}},{{"value","168.05"}} };
+	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value",TCHAR_TO_UTF8("削峰事件")}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value",TCHAR_TO_UTF8("-----")}},{{"value","168.05"}} };
 	Table["data"].insert(Table["data"].begin(), CurVector);
 	std::vector<Json> Tables;
 	//Tables.push_back({ {"value",""},{"value",""},{"value",""},{"value",""},{"value",""},{"value",""} });
@@ -4246,8 +4246,8 @@ Json OServerHelper::EnergyMonitoring_RegionalOverview(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
-	std::string StartTime = FIELDIFNULL(InData["StartTime"];
-	std::string EndTime = FIELDIFNULL(InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionArea = MaraidbConnector.Query(str(boost::format("SELECT SUM(Area) FROM BaseEnteInfo WHERE FIND_IN_SET(RegionID,GetChildrenRegion('%1%'));") % RegionID));
 	double Area = boost::lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
