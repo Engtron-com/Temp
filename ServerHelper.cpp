@@ -281,7 +281,7 @@ Json OServerHelper::BMap(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	Json tableData;
 	std::vector<Json> data;
@@ -344,8 +344,8 @@ Json OServerHelper::BMap(Json InData)
 		data.push_back(CurDataJson);
 	}
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	Json EntedataJson;
 	std::vector<Json>  EnteTable;
@@ -382,8 +382,8 @@ Json OServerHelper::CaseInfoBuildTrend(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	Json tableData;
 	std::vector<Json> data;
@@ -431,8 +431,8 @@ Json OServerHelper::CaseInfoBuildTrend(Json InData)
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
 	tableJson["title"] = TCHAR_TO_UTF8("总");
-	tableJson["x_unit"] = "(月)";
-	tableJson["y_unit"] = "(位)";
+	tableJson["x_unit"] = TCHAR_TO_UTF8("(月)");
+	tableJson["y_unit"] = TCHAR_TO_UTF8("(位)");
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
@@ -669,8 +669,8 @@ Json OServerHelper::FinanceAccess(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	Json tableData;
 	std::vector<Json> data;
@@ -718,8 +718,8 @@ Json OServerHelper::FinanceAccess(Json InData)
 	data1Json["categoryData"] = categoryData;
 	data1.push_back(data1Json);
 	tableJson["title"] = TCHAR_TO_UTF8("总");//总
-	tableJson["x_unit"] = "(月)";//(万元/tce)
-	tableJson["y_unit"] = "(个)";
+	tableJson["x_unit"] = TCHAR_TO_UTF8("(月)");//(万元/tce)
+	tableJson["y_unit"] = TCHAR_TO_UTF8("(个)");
 	tableJson["data"] = data1;
 	tableJson["xLabelRang"] = xLabelRang;
 	table.push_back(tableJson);
@@ -971,8 +971,8 @@ Json OServerHelper::ExpertTrend(Json InData)
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	Json tableData;
 	std::vector<Json> data;
@@ -1048,7 +1048,7 @@ Json OServerHelper::NewEventList(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"]=TCHAR_TO_UTF8("最新事件列表");
+	Data["title"]= TCHAR_TO_UTF8("最新事件列表");
 	Data["table"]= Tables;
 	std::vector<Json> Datas;
 	Datas.push_back(Data);
@@ -1063,8 +1063,8 @@ Json OServerHelper::ListOfLabelCompanies(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = InData["RegionID"];
-	std::string LabelID = InData["LabelID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string LabelID = FIELDIFNULL(InData["LabelID"]);
 
 	Json TableData;
 	std::vector<Json> Data;
@@ -1092,7 +1092,7 @@ Json OServerHelper::LabelCallRanking(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Month = InData["Month"];
+	std::string Month = FIELDIFNULL(InData["Month"]);
 
 	std::string RequestAPI = HTTP_URL("/sts/out/label/res/top");
 	std::string RequsetData = "?month=" + Month;
@@ -1129,9 +1129,9 @@ Json OServerHelper::EnterpriseLabelEvolutionTrend(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ElecMetID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult LabelEvolutionResult = MaraidbConnector.Query(str(boost::format("SELECT YEAR(SnapshotDate),MONTH(SnapshotDate),COUNT(LabelCode) FROM EnteLabelSnapshot WHERE ElecMetID='%1%' AND SnapshotDate BETWEEN '%2%' AND '%3%' GROUP BY SnapshotDate ORDER BY SnapshotDate;") % ElecMetID % StartTime % EndTime));
 
@@ -1179,7 +1179,7 @@ Json OServerHelper::EnterpriseProfile(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ElecMetID = InData["ElecMetID"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
 
 	std::string EnteInfoCommand = "SELECT BaseEnteInfo.EnteName,IFNULL(BaseIndustryInfo.IndustryName,''),BaseEnteInfo.VoltageLevel,BaseEnteInfo.JoinDate,BaseRegionInfo.RegionName,BaseEnteInfo.RunCapacity,BaseEnteInfo.Address FROM BaseEnteInfo,BaseRegionInfo,BaseEnteElecMeterInfo LEFT JOIN BaseIndustryInfo ON BaseEnteElecMeterInfo.IndustryID=BaseIndustryInfo.IndustryID WHERE BaseEnteElecMeterInfo.ElecMetID=BaseEnteInfo.ElecMetID AND BaseRegionInfo.RegionID=BaseEnteInfo.RegionID AND BaseEnteElecMeterInfo.ElecMetID='" + ElecMetID + "';";
 	auto EnteInfo = MaraidbConnector.Query(EnteInfoCommand);
@@ -1224,7 +1224,7 @@ Json OServerHelper::EnterpriseProfile(Json InData) {
 		Data[TCHAR_TO_UTF8("标签")] = EnteLabels;
 
 		Json ReturnData;
-		ReturnData["title"] = "----";
+		ReturnData["title"] = TCHAR_TO_UTF8("----");
 		ReturnData["data"] = Data;
 
 		return ReturnData;
@@ -1237,8 +1237,8 @@ Json OServerHelper::CustomerFeatureAnalysisMap(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = InData["RegionID"];
-	std::string LabelID = InData["LabelID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string LabelID = FIELDIFNULL(InData["LabelID"]);
 	std::vector<Json> Data;
 	Json TableData;
 	if (RegionID != "" && LabelID != "") {
@@ -1262,7 +1262,7 @@ Json OServerHelper::ProportionOfIndustrialEnergyConsumption(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = boost::lexical_cast<std::string>(InData["regionID"]);
+	std::string RegionID = boost::lexical_cast<std::string>(FIELDIFNULL(InData["regionID"]));
 	Json tableData;
 	std::vector<Json>data1;
 	Json data1Json;
@@ -1285,7 +1285,7 @@ Json OServerHelper::ProportionOfIndustrialEnergyConsumption(Json InData) {
 	data2Json["gradient_color"] = "#8FC31F5A";
 	data2Json["categoryData"] = categoryData;
 	data2.push_back(data2Json);
-	tableJson["unit"] = "万tce";//万tce
+	tableJson["unit"] = TCHAR_TO_UTF8("万tce");//万tce
 	tableJson["data"] = data2;
 	tableJson["title"] = TCHAR_TO_UTF8("总");//总
 	table.push_back(tableJson);
@@ -1302,9 +1302,9 @@ Json OServerHelper::EnergyEfficiencyInVariousIndustries(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildIndustryListCommand = "SELECT IndustryID,IndustryName FROM BaseIndustryInfo WHERE ParentID='' OR ISNULL(ParentID);";
 	FMysqlResult ChildIndustryList = MaraidbConnector.Query(ChildIndustryListCommand);
@@ -1314,7 +1314,7 @@ Json OServerHelper::EnergyEfficiencyInVariousIndustries(Json InData)
 
 
 	std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
-	std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
+	std::string Unit[3] = { TCHAR_TO_UTF8("tce/km²"),TCHAR_TO_UTF8("tce/万元"),TCHAR_TO_UTF8("万元/kW·h") };
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false,
 		'.', EXLabelStepDateIterator::Month);
@@ -1382,16 +1382,16 @@ Json OServerHelper::EnergyEffiencyTrendsInThePastYear(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionArea = MaraidbConnector.Query(str(boost::format("SELECT SUM(Area) FROM BaseEnteInfo WHERE FIND_IN_SET(RegionID,GetChildrenRegion('%1%'));") % RegionID));
 	double Area = lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
 
 	FMysqlResult RegionEnergyEffiencyResult = MaraidbConnector.Query(str(boost::format("SELECT YEAR(CreateDate),MONTH(CreateDate),EnergyConsumUnitArea,OutputValue,EnergyEcnoValueAdd,SynEnergyConsum FROM RegionEnergyEfficiencyMonth WHERE RegionID='%1%' AND CreateDate BETWEEN '%2%' AND '%3%' ORDER BY CreateDate;") % RegionID % StartTime % EndTime));
-	std::string Title[3] = { TCHAR_TO_UTF8("单位面积能耗"),TCHAR_TO_UTF8("万元产值能耗"),TCHAR_TO_UTF8("度电经济增加值") };
-	std::string Unit[3] = { "tce/km²","tce/万元","万元/kW·h" };
+	std::string Title[3] = { FIELDIFNULL("单位面积能耗"),FIELDIFNULL("万元产值能耗"),FIELDIFNULL("度电经济增加值") };
+	std::string Unit[3] = { FIELDIFNULL("tce/km²"),FIELDIFNULL("tce/万元"),FIELDIFNULL("万元/kW·h") };
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false,
 		'.', EXLabelStepDateIterator::Month);
@@ -1477,9 +1477,9 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -1548,19 +1548,19 @@ Json OServerHelper::EnergyConsumptionByRegion(Json InData) {
 
 	Json OutputValueTable;
 	OutputValueTable["title"] = TCHAR_TO_UTF8("万元产值综合能耗");
-	OutputValueTable["unit"] = "tce/万元";
+	OutputValueTable["unit"] = TCHAR_TO_UTF8("tce/万元");
 	OutputValueTable["xLabelRang"] = XLabelRangs;
 	OutputValueTable["data"] = OutputValueTableDatas;
 
 	Json EnergyConsumUnitAreaTable;
 	EnergyConsumUnitAreaTable["title"] = TCHAR_TO_UTF8("单位建筑面积能耗");
-	EnergyConsumUnitAreaTable["unit"] = "tce/km²";
+	EnergyConsumUnitAreaTable["unit"] = TCHAR_TO_UTF8("tce/km²");
 	EnergyConsumUnitAreaTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumUnitAreaCategoryDatas);
 	EnergyConsumUnitAreaTable["data"] = EnergyConsumUnitAreaTableDatas;
 
 	Json EnergyEcnoValueAddTable;
 	EnergyEcnoValueAddTable["title"] = TCHAR_TO_UTF8("度电经济增加值");
-	EnergyEcnoValueAddTable["unit"] = "元/kW·h";
+	EnergyEcnoValueAddTable["unit"] = TCHAR_TO_UTF8("元/kW·h");
 	EnergyEcnoValueAddTable["xLabelRang"] = XLabelRangs;
 	EnergyEcnoValueAddTable["data"] = EnergyEcnoValueAddTableDatas;
 
@@ -1587,9 +1587,9 @@ Json OServerHelper::CarbonEmissionsByRegion(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -1623,7 +1623,7 @@ Json OServerHelper::CarbonEmissionsByRegion(Json InData) {
 
 	Json CarbonEmissionTable;
 	CarbonEmissionTable["title"] = TCHAR_TO_UTF8("总");
-	CarbonEmissionTable["unit"] = "万t";
+	CarbonEmissionTable["unit"] = TCHAR_TO_UTF8("万t");
 	CarbonEmissionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(CarbonEmissionCategoryDatas);
 	CarbonEmissionTable["data"] = CarbonEmissionTableDatas;
 
@@ -1649,9 +1649,9 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -1671,7 +1671,7 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	std::sort(EnergyConsumptionCategoryDatas.begin(), EnergyConsumptionCategoryDatas.end(), SortCategoryDatasReverse);
 
 	Json EnergyConsumptionTableData;
-	EnergyConsumptionTableData["categoryName"] = TCHAR_TO_UTF8("类别一");
+	EnergyConsumptionTableData["categoryName"] = FIELDIFNULL("类别一");
 	EnergyConsumptionTableData["start_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["end_color"] = "rgba(209,246,255,1)";
 	EnergyConsumptionTableData["high_color"] = "#5ceaff";
@@ -1681,8 +1681,8 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByRegion(Json InData) {
 	EnergyConsumptionTableDatas.push_back(EnergyConsumptionTableData);
 
 	Json EnergyConsumptionTable;
-	EnergyConsumptionTable["title"] = TCHAR_TO_UTF8("总");
-	EnergyConsumptionTable["unit"] = "万tce";
+	EnergyConsumptionTable["title"] = FIELDIFNULL("总");
+	EnergyConsumptionTable["unit"] = FIELDIFNULL("万tce");
 	EnergyConsumptionTable["xLabelRang"] = GetXLabelRangFromCategoryDatas(EnergyConsumptionCategoryDatas);
 	EnergyConsumptionTable["data"] = EnergyConsumptionTableDatas;
 
@@ -1707,9 +1707,9 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByIndustry(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionNameResult = MaraidbConnector.Query(str(boost::format("SELECT RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.RegionID='%1%';") % RegionID));
 
@@ -1755,11 +1755,11 @@ Json OServerHelper::ComprehensiveEnergyConsumptionByIndustry(Json InData)
 
 	if (RegionNameResult.ResultIsNotNull())
 	{
-		Data["title"] = "各行业综合能耗-" + RegionNameResult.DataTable[0][0];
+		Data["title"] = TCHAR_TO_UTF8("各行业综合能耗-") + RegionNameResult.DataTable[0][0];
 	}
 	else
 	{
-		Data["title"] = TCHAR_TO_UTF8("各行业综合能耗") ;
+		Data["title"] = TCHAR_TO_UTF8("各行业综合能耗");
 
 	}
 	Data["table"] = Tables;
@@ -1776,9 +1776,9 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionNameResult = MaraidbConnector.Query(str(boost::format("SELECT RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.RegionID='%1%';") % RegionID));
 
@@ -1824,7 +1824,7 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 	std::vector<Json> Datas;
 	if (RegionNameResult.ResultIsNotNull())
 	{
-		Data["title"] = "行业能耗占比-" + RegionNameResult.DataTable[0][0];
+		Data["title"] = TCHAR_TO_UTF8("行业能耗占比-") + RegionNameResult.DataTable[0][0];
 	}
 	else
 	{
@@ -1842,7 +1842,7 @@ Json OServerHelper::IndustryEnergyConsumptionRatio(Json InData)
 Json OServerHelper::EnergyConsumptionTrendsInThePast30Days(Json InData)
 {
 	std::vector<std::string> DataTitle;
-	DataTitle.push_back("近30天能耗趋势");
+	DataTitle.push_back(TCHAR_TO_UTF8("近30天能耗趋势"));
 
 	std::vector<std::string> TableTitle;
 	TableTitle.push_back(TCHAR_TO_UTF8("总"));
@@ -1852,9 +1852,9 @@ Json OServerHelper::EnergyConsumptionTrendsInThePast30Days(Json InData)
 
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
-	Unit.push_back("(kW·h)");
-	Unit.push_back("(m³)");
-	Unit.push_back("(m³)");
+	Unit.push_back(TCHAR_TO_UTF8("(kW·h)"));
+	Unit.push_back(TCHAR_TO_UTF8("(m³)"));
+	Unit.push_back(TCHAR_TO_UTF8("(m³)"));
 
 	std::vector<FXLabelRangCofig> XLabelRangCofig;
 	XLabelRangCofig.push_back(FXLabelRangCofig(1, false, true, true, '.', EXLabelStepDateIterator::Day));
@@ -1875,9 +1875,9 @@ Json OServerHelper::EnergyConsumptionTrendsInThePast30Days(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string RegionEnergyConsumptionCommand = "SELECT MONTH(CreateDate),DAY(CreateDate),SynEnergyConsum,ElecConsumSelf,WaterConsumSelf,GasConsumSelf FROM RegionEnergyEfficiencyDay WHERE RegionEnergyEfficiencyDay.RegionID='" + RegionID + "' AND RegionEnergyEfficiencyDay.CreateDate BETWEEN '" + StartTime + "' AND '" + EndTime + "' ORDER BY YEAR(CreateDate),MONTH(CreateDate),DAY(CreateDate);";
 
@@ -1935,9 +1935,9 @@ Json OServerHelper::RegionalOverview(Json InData)
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string  RegionInfoCommand = "SELECT RegionName,Area FROM BaseRegionInfo WHERE BaseRegionInfo.RegionID='" + RegionID + "';";
 	FMysqlResult RegionInfo = MaraidbConnector.Query(RegionInfoCommand);
@@ -1949,19 +1949,19 @@ Json OServerHelper::RegionalOverview(Json InData)
 	FMysqlResult RegionEnergyInfo = MaraidbConnector.Query(RegionEnergyInfoCommand);
 
 	Json Data;
-	Data["value1"] = "-- km²";
-	Data["value2"] = "-- T";
-	Data["value3"] = "-- 万元";
-	Data["value6"] = "-- tce";
+	Data["value1"] = TCHAR_TO_UTF8("-- km²");
+	Data["value2"] = TCHAR_TO_UTF8("-- T");
+	Data["value3"] = TCHAR_TO_UTF8("-- 万元");
+	Data["value6"] = TCHAR_TO_UTF8("-- tce");
 	for (auto RegionEnergyInfoRow : RegionEnergyInfo.DataTable)
 	{
-		Data["value2"] = FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyInfoRow[0]), 2) + " 万t";
-		Data["value3"] = FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyInfoRow[1], 2)) + " 万元";
-		Data["value6"] = ConvertToTenThousand(RegionEnergyInfoRow[2]) + " 万tce";
+		Data["value2"] = FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyInfoRow[0]), 2) + TCHAR_TO_UTF8(" 万t");
+		Data["value3"] = FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyInfoRow[1], 2)) + TCHAR_TO_UTF8(" 万元");
+		Data["value6"] = ConvertToTenThousand(RegionEnergyInfoRow[2]) + TCHAR_TO_UTF8(" 万tce");
 	}
 	if (RegionInfo.DataTable[0][1] != "")
 	{
-		Data["value1"] = SaveDecimalPlaces(RegionInfo.DataTable[0][1]) + " km²";
+		Data["value1"] = SaveDecimalPlaces(RegionInfo.DataTable[0][1]) + TCHAR_TO_UTF8(" km²");
 	}
 
 	Data["value4"] = EnteCount.DataTable[0][0];
@@ -2023,10 +2023,10 @@ Json OServerHelper::KeyCompaniesMonitorEnergyConsumption(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
-	std::string TopCount = InData["TopCount"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
+	std::string TopCount = FIELDIFNULL(InData["TopCount"]);
 
 	std::string EnteTopListCommand = "CALL GetEnteTopListByEnergyConsumption('" + RegionID + "','" + StartTime + "','" + EndTime + "','" + TopCount + "')";
 	FMysqlResult EnteTopList = MaraidbConnector.Query(EnteTopListCommand);
@@ -2094,9 +2094,9 @@ Json OServerHelper::RegionalAnomalyRanking(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -2152,9 +2152,9 @@ Json OServerHelper::IndustryAnomalyRanking(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildIndustryListCommand = "SELECT IndustryID,IndustryName FROM BaseIndustryInfo WHERE ParentID='' OR ISNULL(ParentID);";
 	FMysqlResult ChildIndustryList = MaraidbConnector.Query(ChildIndustryListCommand);
@@ -2211,9 +2211,9 @@ Json OServerHelper::ListOfAbnormalEvents(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string AbnormalEventsListCommand = "CALL GetExceptionEventList('" + RegionID + "', '" + StartTime + "', '" + EndTime + "')";
 	FMysqlResult AbnormalEventsList = MaraidbConnector.Query(AbnormalEventsListCommand);
@@ -2300,7 +2300,7 @@ Json OServerHelper::AIJudgmentOfAbnormalCause(Json InData)
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "异常原因AI判断";
+	Data["title"] = TCHAR_TO_UTF8("异常原因AI判断");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2339,9 +2339,9 @@ Json OServerHelper::AnnualAbnormalCauseChangeAnalysis(Json InData) {
 	GradientColor.push_back("rgba(97,173,255,0.05)");
 	GradientColor.push_back("rgba(255,213,176,0.05)");
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 	std::string AiResultCommand = "SELECT AiResult FROM AbnormalEnergyEvent GROUP BY AiResult;";
 	FMysqlResult AiResultList = MaraidbConnector.Query(AiResultCommand);
 
@@ -2378,7 +2378,7 @@ Json OServerHelper::AnnualAbnormalCauseChangeAnalysis(Json InData) {
 	Json Table;
 
 	Table["title"] = TCHAR_TO_UTF8("总");
-	Table["unit"] = "(次)";
+	Table["unit"] = TCHAR_TO_UTF8("(次)");
 	Table["xLabelRang"] = XLabelRangs;
 	Table["data"] = TableDatas;
 
@@ -2399,7 +2399,7 @@ Json OServerHelper::EnterpriseAnomalies(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ExceptionEventId = InData["ExceptionEventId"];
+	std::string ExceptionEventId = FIELDIFNULL(InData["ExceptionEventId"]);
 
 	FMysqlResult ElecMetID = MaraidbConnector.Query(str(boost::format("SELECT ElecMetID FROM AbnormalEnergyEvent WHERE ExceptionEventId='%1%';") % ExceptionEventId));
 	if (ElecMetID.DataTable.size() <= 0)
@@ -2409,11 +2409,11 @@ Json OServerHelper::EnterpriseAnomalies(Json InData) {
 	FMysqlResult AbnormalEventsList = MaraidbConnector.Query(str(boost::format("SELECT ExceptionEventId,AiResult,FilterDate,ReviewDate,ConfirmReasonName FROM AbnormalEnergyEvent WHERE ElecMetID='%1%';") % ElecMetID.DataTable[0][0]));
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"异常编号\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"预判原因\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"识别日期\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"复核日期\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"复查结果\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"异常编号\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预判原因\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"识别日期\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"复核日期\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"复查结果\"}")));
 
 	std::vector<Json> TableDatas;
 
@@ -2448,7 +2448,7 @@ Json OServerHelper::ManualReviewResults(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ExceptionEventId = InData["ExceptionEventId"];
+	std::string ExceptionEventId = FIELDIFNULL(InData["ExceptionEventId"]);
 	std::string Command = "SELECT ContactPerson,ContactPhone,ConfirmReasonName,ConfirmUser,ReviewDate,ReviewEnteName,ConfirmRemark FROM AbnormalEnergyEvent LEFT JOIN BaseEnteElecMeterInfo ON BaseEnteElecMeterInfo.ElecMetID=AbnormalEnergyEvent.ElecMetID LEFT JOIN BaseEnteInfo ON BaseEnteInfo.ElecMetID=BaseEnteElecMeterInfo.ElecMetID WHERE AbnormalEnergyEvent.ExceptionEventId='" + ExceptionEventId + "';";
 	FMysqlResult Result = MaraidbConnector.Query(Command);
 	Json Data;
@@ -2481,11 +2481,11 @@ Json OServerHelper::ReportOrderService(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult OrderCountAndMoney = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT OrderCode),SUM(OrderMoney) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%';") % StartTime % EndTime));
-	FMysqlResult PendingToAduitOrderCount = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply WHERE OrderStatus='待付款';")));
+	FMysqlResult OrderCountAndMoney = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT OrderCode),SUM(OrderMoney) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%';") % StartTime % EndTime)));
+	FMysqlResult PendingToAduitOrderCount = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply WHERE OrderStatus='待付款';"))));
 
 	std::vector<Json> RowHeaders;
 
@@ -2521,7 +2521,7 @@ Json OServerHelper::ReportOrderServiceResult(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ApplyCode = InData["ApplyCode"];
+	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 
 	std::string ReportOrderServiceListCommand = "SELECT ServerApplyResult.ReportCode,ServerApplyResult.ReportName,ServerApplyResult.ReportType,ServerApplyResult.ArchDate FROM ServerApplyResult,ServerApply\
 												WHERE ServerApplyResult.OrderCode = ServerApply.OrderCode\
@@ -2534,10 +2534,10 @@ Json OServerHelper::ReportOrderServiceResult(Json InData) {
 	std::vector<Json> RowHeader;
 
 
-	RowHeader.push_back("{\"headerName\":\"报告编号\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"报告名称\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"报告类型\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"接收日期\",\"width\":\"25\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报告编号\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报告名称\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报告类型\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"接收日期\",\"width\":\"25\"}")));
 
 
 	std::vector<Json> TableDatas;
@@ -2568,7 +2568,7 @@ Json OServerHelper::ReportOrderServiceResult(Json InData) {
 		for (auto RowHeaderValue : RowHeader)
 		{
 			Json Data;
-			Data["value"] = "-----";
+			Data["value"] = TCHAR_TO_UTF8("-----");
 			Datas.push_back(Data);
 		}
 		TableDatas.push_back(Datas);
@@ -2595,7 +2595,7 @@ Json OServerHelper::ReportOrderService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[7] = { TCHAR_TO_UTF8("待付款"),"已付款，编制中",TCHAR_TO_UTF8("已上传成果"),TCHAR_TO_UTF8("已到期"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功,已关闭" };
+	std::string Status[7] = { TCHAR_TO_UTF8("待付款"),TCHAR_TO_UTF8("已付款，编制中"),TCHAR_TO_UTF8("已上传成果"),TCHAR_TO_UTF8("已到期"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),TCHAR_TO_UTF8("退款成功,已关闭")};
 
 	std::vector<Json> TableDatas;
 
@@ -2625,8 +2625,8 @@ Json OServerHelper::ReportOrderService_IndustryComparison(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult ChildIndustryList = MaraidbConnector.Query("SELECT IndustryID,IndustryName FROM BaseIndustryInfo WHERE BaseIndustryInfo.ParentID='' OR ISNULL(BaseIndustryInfo.ParentID);");
 
@@ -2663,7 +2663,7 @@ Json OServerHelper::ReportOrderService_IndustryComparison(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务-行业对比";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务-行业对比");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2677,8 +2677,8 @@ Json OServerHelper::ReportOrderService_TypeDistribution(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT OrderStatus,COUNT(DISTINCT OrderCode) FROM ServerApply WHERE OrderDate BETWEEN '%1%' AND '%2%' GROUP BY OrderStatus;") % StartTime % EndTime));
 
@@ -2723,17 +2723,17 @@ Json OServerHelper::ReportOrderService_RegionalComparison(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult ChildRegionList = MaraidbConnector.Query(str(boost::format("SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='%1%';") % RegionID));
+	FMysqlResult ChildRegionList = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='%1%';") % RegionID)));
 
 	std::vector<Json> CategoryDatas;
 
 	for (auto ChildRegion : ChildRegionList.DataTable)
 	{
-		FMysqlResult RegionEnteCount = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply,BaseEnteInfo WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND ServerApply.EnteID=BaseEnteInfo.EnteID AND FIND_IN_SET(RegionID,GetChildrenRegion('%3%'));") % StartTime % EndTime % ChildRegion[0]));
+		FMysqlResult RegionEnteCount = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT OrderCode) FROM ServerApply,BaseEnteInfo WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND ServerApply.EnteID=BaseEnteInfo.EnteID AND FIND_IN_SET(RegionID,GetChildrenRegion('%3%'));") % StartTime % EndTime % ChildRegion[0])));
 
 		Json CategoryData;
 		CategoryData["xLabel"] = ChildRegion[1];
@@ -2762,7 +2762,7 @@ Json OServerHelper::ReportOrderService_RegionalComparison(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "报告订单服务-区域对比";
+	Data["title"] = TCHAR_TO_UTF8("报告订单服务-区域对比");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -2777,13 +2777,13 @@ Json OServerHelper::ReportOrderServiceTrend(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, false, true, true, '.', EXLabelStepDateIterator::Day);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT MONTH(PayDate),DAY(PayDate),COUNT(DISTINCT PayDate) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate),DAY(PayDate) ORDER BY PayDate") % StartTime % EndTime));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT MONTH(PayDate),DAY(PayDate),COUNT(DISTINCT PayDate) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate),DAY(PayDate) ORDER BY PayDate") % StartTime % EndTime)));
 
 	std::vector<Json> CategoryDatas;
 	for (auto ResultRow : Result.DataTable)
@@ -2829,7 +2829,7 @@ Json OServerHelper::ReportOrderServiceDetail(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ApplyCode = InData["ApplyCode"];
+	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 	std::string ReportOrderServiceListCommand = "SELECT ServerApply.OrderName, BaseEnteInfo.EnteName, BaseEnteInfo.Address, ServerApply.OrderMoney, ServerApply.OrderDate, ServerApply.OrderDetail, ServerApply.OrderCode, BaseEnteInfo.ContactPerson, BaseEnteInfo.ContactPhone, ServerApply.PayDate, ServerApply.LimitDate\
 												FROM ServerApply, BaseEnteInfo\
 												WHERE ServerApply.EnteID = BaseEnteInfo.EnteID\
@@ -2856,12 +2856,12 @@ Json OServerHelper::ReportOrderService_MonthlyConsumption(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT (@i:=@i+1)i,EnteName,Money FROM (select @i:=0) AS A,(SELECT EnteName,SUM(OrderMoney) AS Money FROM ServerApply,BaseEnteInfo  WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND BaseEnteInfo.EnteID=ServerApply.EnteID GROUP BY EnteName ORDER BY SUM(OrderMoney)DESC) AS T;") % StartTime % EndTime));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT (@i:=@i+1)i,EnteName,Money FROM (select @i:=0) AS A,(SELECT EnteName,SUM(OrderMoney) AS Money FROM ServerApply,BaseEnteInfo  WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' AND BaseEnteInfo.EnteID=ServerApply.EnteID GROUP BY EnteName ORDER BY SUM(OrderMoney)DESC) AS T;") % StartTime % EndTime)));
 
-	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("排名") ,TCHAR_TO_UTF8("企业名称"),TCHAR_TO_UTF8("月消费") };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("排名"),TCHAR_TO_UTF8("企业名称"),TCHAR_TO_UTF8("月消费") };
 	std::vector<std::string > RowWidth = { "10" ,"10" ,"10" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, Result.DataTable,8);
@@ -2884,7 +2884,7 @@ Json OServerHelper::ReportOrderService_UserHistory(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ApplyCode = InData["ApplyCode"];
+	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 
 	std::string ReportOrderServiceListCommand = "SELECT ServerApply.OrderCode,ServerApply.OrderName,ServerApply.OrderDate FROM ServerApply\
 												WHERE ServerApply.EnteID = (SELECT ServerApply.EnteID FROM ServerApply WHERE ServerApply.OrderCode = '" + ApplyCode + "')\
@@ -2894,9 +2894,9 @@ Json OServerHelper::ReportOrderService_UserHistory(Json InData) {
 
 	std::vector<Json> RowHeader;
 
-	RowHeader.push_back("{\"headerName\":\"报告编码\",\"width\":\"33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"报告名称\",\"width\":\"33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"接收日期\",\"width\":\"33\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报告编码\",\"width\":\"33\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"报告名称\",\"width\":\"33\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"接收日期\",\"width\":\"33\"}")));
 
 
 	std::vector<Json> TableDatas;
@@ -2927,7 +2927,7 @@ Json OServerHelper::ReportOrderService_UserHistory(Json InData) {
 		for (auto RowHeaderValue : RowHeader)
 		{
 			Json Data;
-			Data["value"] = "-----";
+			Data["value"] = TCHAR_TO_UTF8("-----");
 			Datas.push_back(Data);
 		}
 		TableDatas.push_back(Datas);
@@ -2956,11 +2956,11 @@ Json OServerHelper::CustomizedService(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult OrderCountAndMoney = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT ApplyID),SUM(OfferPrice) FROM CustApply WHERE ApplyStatus='编制完成'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime));
-	FMysqlResult PendingToAduitOrderCount = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='受理中';")));
+	FMysqlResult OrderCountAndMoney = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT ApplyID),SUM(OfferPrice) FROM CustApply WHERE ApplyStatus='编制完成'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime)));
+	FMysqlResult PendingToAduitOrderCount = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='受理中';"))));
 
 	std::vector<Json> RowHeaders;
 
@@ -2996,7 +2996,7 @@ Json OServerHelper::CustomizedService_OrderResults(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ApplyCode = InData["ApplyCode"];
+	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 
 	std::string ReportOrderServiceListCommand = "SELECT CustApplyResult.OrderCode,CustApplyResult.PlanName,CustApplyResult.PlanType,CustApplyResult.ReceiveDate FROM CustApplyResult,BaseEnteElecMeterInfo,CustApply\
 												WHERE CustApplyResult.OrderCode = CustApply.OrderCode\
@@ -3010,10 +3010,10 @@ Json OServerHelper::CustomizedService_OrderResults(Json InData) {
 
 
 
-	RowHeader.push_back("{\"headerName\":\"成果编码\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"成果名称\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"成果类型\",\"width\":\"25\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"接收日期\",\"width\":\"25\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"成果编码\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"成果名称\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"成果类型\",\"width\":\"25\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"接收日期\",\"width\":\"25\"}")));
 
 
 	std::vector<Json> TableDatas;
@@ -3044,7 +3044,7 @@ Json OServerHelper::CustomizedService_OrderResults(Json InData) {
 		for (auto RowHeaderValue : RowHeader)
 		{
 			Json Data;
-			Data["value"] = "-----";
+			Data["value"] = TCHAR_TO_UTF8("-----");
 			Datas.push_back(Data);
 		}
 		TableDatas.push_back(Datas);
@@ -3071,7 +3071,7 @@ Json OServerHelper::CustomizedService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[7] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),"已付款，编制中",TCHAR_TO_UTF8("编制完成"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功，已关闭" };
+	std::string Status[7] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),TCHAR_TO_UTF8("已付款，编制中"),TCHAR_TO_UTF8("编制完成"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),TCHAR_TO_UTF8("退款成功，已关闭") };
 
 	std::vector<Json> TableDatas;
 
@@ -3100,10 +3100,10 @@ Json OServerHelper::CustomizedService_TypeDistribution(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT ServiceType,COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY ServiceType;") % StartTime % EndTime));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT ServiceType,COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY ServiceType;") % StartTime % EndTime)));
 
 	std::vector<Json> CategoryDatas;
 	for (auto ResultRow : Result.DataTable)
@@ -3146,13 +3146,13 @@ Json OServerHelper::CustomizedServiceTrend(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, false, true, true, '.', EXLabelStepDateIterator::Day);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT MONTH(PayTime),DAY(PayTime),COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime),DAY(PayTime) ORDER BY PayTime") % StartTime % EndTime));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT MONTH(PayTime),DAY(PayTime),COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime),DAY(PayTime) ORDER BY PayTime") % StartTime % EndTime)));
 
 	std::vector<Json> CategoryDatas;
 	for (auto ResultRow : Result.DataTable)
@@ -3198,7 +3198,7 @@ Json OServerHelper::CustomizedService_UserHistory(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ApplyCode = InData["ApplyCode"];
+	std::string ApplyCode = FIELDIFNULL(InData["ApplyCode"]);
 
 	std::string ReportOrderServiceListCommand = "SELECT CustApply.ApplyCode,CustApply.ApplyServiceName,CustApply.CreateDate FROM CustApply\
 												WHERE CustApply.ApplyEnteID = (SELECT CustApply.ApplyEnteID FROM CustApply WHERE CustApply.ApplyCode = '" + ApplyCode + "')\
@@ -3210,9 +3210,9 @@ Json OServerHelper::CustomizedService_UserHistory(Json InData) {
 
 
 
-	RowHeader.push_back("{\"headerName\":\"订单编码\",\"width\":\"33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"服务名称\",\"width\":\"33\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"接收日期\",\"width\":\"33\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"订单编码\",\"width\":\"33\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"服务名称\",\"width\":\"33\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"接收日期\",\"width\":\"33\"}")));
 
 
 	std::vector<Json> TableDatas;
@@ -3271,14 +3271,14 @@ Json OServerHelper::AnnualComparisonOfServiceAmount(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, true, true, false, '.', EXLabelStepDateIterator::Month);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 
-	FMysqlResult CustServiceNum = MaraidbConnector.Query(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),SUM(OfferPrice) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime));
-	FMysqlResult OrderServiceNum = MaraidbConnector.Query(str(boost::format("SELECT YEAR(PayDate),MONTH(PayDate),SUM(OrderMoney) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate);") % StartTime % EndTime));
+	FMysqlResult CustServiceNum = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),SUM(OfferPrice) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime)));
+	FMysqlResult OrderServiceNum = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT YEAR(PayDate),MONTH(PayDate),SUM(OrderMoney) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate);") % StartTime % EndTime)));
 
 	FMysqlResult Result[3] = { CustServiceNum,OrderServiceNum };
 
@@ -3329,7 +3329,7 @@ Json OServerHelper::AnnualComparisonOfServiceAmount(Json InData) {
 
 	std::vector<Json> Datas;
 	Json Data;
-	Data["title"] = TCHAR_TO_UTF8("服务金额年度对比");
+	Data["title"] =TCHAR_TO_UTF8("服务金额年度对比");
 	Data["table"] = Tables;
 	Datas.push_back(Data);
 
@@ -3343,15 +3343,15 @@ Json OServerHelper::AnnualComparisonOfNumberOfServices(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, true, true, false, '.', EXLabelStepDateIterator::Month);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 
-	FMysqlResult AccServiceNum = MaraidbConnector.Query(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),COUNT(DISTINCT ApplyID) FROM AccApply WHERE ApplyStatus='已开通' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime));
-	FMysqlResult CustServiceNum = MaraidbConnector.Query(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime));
-	FMysqlResult OrderServiceNum = MaraidbConnector.Query(str(boost::format("SELECT YEAR(PayDate),MONTH(PayDate),COUNT(DISTINCT OrderCode) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate);") % StartTime % EndTime));
+	FMysqlResult AccServiceNum = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),COUNT(DISTINCT ApplyID) FROM AccApply WHERE ApplyStatus='已开通' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime)));
+	FMysqlResult CustServiceNum = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT YEAR(PayTime),MONTH(PayTime),COUNT(DISTINCT ApplyID) FROM CustApply WHERE ApplyStatus='编制完成' AND PayTime BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime);") % StartTime % EndTime)));
+	FMysqlResult OrderServiceNum = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT YEAR(PayDate),MONTH(PayDate),COUNT(DISTINCT OrderCode) FROM ServerApply WHERE OrderStatus='已上传成果' AND PayDate BETWEEN '%1%' AND '%2%' GROUP BY YEAR(PayDate),MONTH(PayDate);") % StartTime % EndTime)));
 
 	FMysqlResult Result[3] = { AccServiceNum,CustServiceNum,OrderServiceNum };
 
@@ -3417,7 +3417,7 @@ Json OServerHelper::AccessService_OrderStatus(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string Status[8] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),"已付款，实施中",TCHAR_TO_UTF8("已开通"),TCHAR_TO_UTF8("已拒绝"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),"退款成功，已关闭" };
+	std::string Status[8] = { TCHAR_TO_UTF8("受理中"),TCHAR_TO_UTF8("待付款"),TCHAR_TO_UTF8("已付款，实施中"),TCHAR_TO_UTF8("已开通"),TCHAR_TO_UTF8("已拒绝"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("退款申请审核中"),TCHAR_TO_UTF8("退款成功，已关闭") };
 
 	std::vector<Json> TableDatas;
 
@@ -3448,8 +3448,8 @@ Json OServerHelper::AccessService_IndustryComparison(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime =FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult ChildIndustryList = MaraidbConnector.Query("SELECT IndustryID,IndustryName FROM BaseIndustryInfo WHERE BaseIndustryInfo.ParentID='' OR ISNULL(BaseIndustryInfo.ParentID);");
 
@@ -3457,7 +3457,7 @@ Json OServerHelper::AccessService_IndustryComparison(Json InData) {
 
 	for (auto ChildIndustry : ChildIndustryList.DataTable)
 	{
-		FMysqlResult Count = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT ApplyCode) FROM AccApply,BaseEnteElecMeterInfo WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN '%1%' AND '%2%' AND ApplyEnteID=EnteID AND IndustryID ='%3%'") % StartTime % EndTime % ChildIndustry[0]));
+		FMysqlResult Count = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT ApplyCode) FROM AccApply,BaseEnteElecMeterInfo WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN '%1%' AND '%2%' AND ApplyEnteID=EnteID AND IndustryID ='%3%'") % StartTime % EndTime % ChildIndustry[0])));
 
 		Json CategoryData;
 		CategoryData["xLabel"] = ChildIndustry[1];
@@ -3485,7 +3485,7 @@ Json OServerHelper::AccessService_IndustryComparison(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "数据接入服务-行业对比";
+	Data["title"] = TCHAR_TO_UTF8("数据接入服务-行业对比");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3499,8 +3499,8 @@ Json OServerHelper::AccessService_TypeDistribution(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT ApplyStatus,COUNT(DISTINCT ApplyID) FROM AccApply WHERE CreateDate BETWEEN '%1%' AND '%2%' OR PayTime BETWEEN '%1%' AND '%2%' GROUP BY ApplyStatus;") % StartTime % EndTime));
 
@@ -3545,9 +3545,9 @@ Json OServerHelper::AccessService_RegionalComparison(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -3556,7 +3556,7 @@ Json OServerHelper::AccessService_RegionalComparison(Json InData) {
 
 	for (auto ChildRegion : ChildRegionList.DataTable)
 	{
-		std::string RegionEnteCountCommand = "SELECT COUNT(DISTINCT ApplyCode) FROM AccApply,BaseEnteInfo WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN '" + StartTime + "' AND '" + EndTime + "' AND ApplyEnteID=EnteID AND FIND_IN_SET(RegionID,GetChildrenRegion('" + ChildRegion[0] + "'));";
+		std::string RegionEnteCountCommand = TCHAR_TO_UTF8("SELECT COUNT(DISTINCT ApplyCode) FROM AccApply,BaseEnteInfo WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN '" + StartTime + "' AND '" + EndTime + "' AND ApplyEnteID=EnteID AND FIND_IN_SET(RegionID,GetChildrenRegion('" + ChildRegion[0] + "'));");
 		FMysqlResult RegionEnteCount = MaraidbConnector.Query(RegionEnteCountCommand);
 
 		Json CategoryData;
@@ -3586,7 +3586,7 @@ Json OServerHelper::AccessService_RegionalComparison(Json InData) {
 	Tables.push_back(Table);
 
 	Json Data;
-	Data["title"] = "数据接入服务-区域对比";
+	Data["title"] = TCHAR_TO_UTF8("数据接入服务-区域对比");
 	Data["table"] = Tables;
 
 	std::vector<Json> Datas;
@@ -3602,11 +3602,11 @@ Json OServerHelper::AccessService(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult EnteCount = MaraidbConnector.Query(str(boost::format("SELECT COUNT(DISTINCT ApplyEnteID) FROM AccApply WHERE ApplyStatus='已开通'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime));
-	FMysqlResult ElecMetIDList = MaraidbConnector.Query(str(boost::format("SELECT ElecMetID FROM AccApply WHERE ApplyStatus='已开通'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime));
+	FMysqlResult EnteCount = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT COUNT(DISTINCT ApplyEnteID) FROM AccApply WHERE ApplyStatus='已开通'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime)));
+	FMysqlResult ElecMetIDList = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT ElecMetID FROM AccApply WHERE ApplyStatus='已开通'AND PayTime BETWEEN '%1%' AND '%2%';") % StartTime % EndTime)));
 	std::vector<Json> RowHeaders;
 
 	if (EnteCount.ResultIsNotNull())
@@ -3649,13 +3649,13 @@ Json OServerHelper::AccessServiceTrend(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig XLabelRangCofig = FXLabelRangCofig(1, false, true, true, '.', EXLabelStepDateIterator::Day);
 	std::vector<Json> XLabelRangs = GetXLabelRang(StartTime, EndTime, XLabelRangCofig);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT MONTH(PayTime),DAY(PayTime),COUNT(DISTINCT ApplyID) FROM AccApply WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime),DAY(PayTime) ORDER BY PayTime") % StartTime % EndTime));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT MONTH(PayTime),DAY(PayTime),COUNT(DISTINCT ApplyID) FROM AccApply WHERE ApplyStatus='已开通' AND AccApply.PayTime BETWEEN  '%1%' AND '%2%' GROUP BY YEAR(PayTime),MONTH(PayTime),DAY(PayTime) ORDER BY PayTime") % StartTime % EndTime)));
 
 	std::vector<Json> CategoryDatas;
 	for (auto ResultRow : Result.DataTable)
@@ -3703,10 +3703,10 @@ Json OServerHelper::AccessServiceLatest(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
-	FMysqlResult Result = MaraidbConnector.Query(str(boost::format("SELECT DISTINCT ApplyEnteName,ApplyAccName FROM AccApply WHERE ApplyStatus='已开通' Order By AccApply.PayTime DESC Limit 50 ;")));
+	FMysqlResult Result = MaraidbConnector.Query(TCHAR_TO_UTF8(str(boost::format("SELECT DISTINCT ApplyEnteName,ApplyAccName FROM AccApply WHERE ApplyStatus='已开通' Order By AccApply.PayTime DESC Limit 50 ;"))));
 
 	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("企业名称") ,TCHAR_TO_UTF8("服务名称") };
 	std::vector<std::string > RowWidth = { "10" ,"10" };
@@ -3733,7 +3733,7 @@ Json OServerHelper::RespondingEnterprise(Json InData) {
 	MaraidbConnector.Connect();
 	Json tableData;
 	std::vector<Json> data;
-	std::string sql = "SELECT EnteID FROM VppEventEnte WHERE FeedbackStatus='等待回复'";
+	std::string sql = "SELECT EnteID FROM VppEventEnte WHERE FeedbackStatus='"+TCHAR_TO_UTF8('等待回复')+"'";
 	auto res1 = MaraidbConnector.Query(sql);
 	for (std::vector<std::string> r1 : res1.DataTable) {
 		Json list;
@@ -3753,7 +3753,7 @@ Json OServerHelper::RealTimeFullCaliberLoad(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = boost::lexical_cast<std::string>(InData["RegionID"]);
+	std::string RegionID = boost::lexical_cast<std::string>(FIELDIFNULL(InData["RegionID"]));
 	Json tableData;
 	std::vector<Json> data;
 	Json dataJson;
@@ -3809,7 +3809,7 @@ Json OServerHelper::EventCompletion(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 	FMysqlResult EventOverview = MaraidbConnector.Query(str(boost::format("SELECT TotolPlan,TotalComplete FROM VppEvent WHERE EventCode='%1%';") % EventCode));
 
 	std::string RequestAPI = HTTP_URL("/energyManage/getVppEventEnte");
@@ -3854,7 +3854,7 @@ Json OServerHelper::PeakCutandValleyFillingDetails(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string EventCode = InData["EventCode"];
+	std::string EventCode = FIELDIFNULL(InData["EventCode"]);
 
 	std::string EventDetails = "Select EventCode,EventStatus,EventType,PrepareTime,PriceTactic,TotolMoney,TotolPlan,TotalComplete,StartDate,EndDate From VppEvent Where EventCode = '" + EventCode + "';";
 	FMysqlResult EventDetailsResult = MaraidbConnector.Query(EventDetails);
@@ -3868,7 +3868,7 @@ Json OServerHelper::PeakCutandValleyFillingDetails(Json InData) {
 	{
 		Json Data;
 		Data["key"] = Keys[Index];
-		Data["value"] = EventDetailsResult.ResultIsNotNull()? (EventDetailsResult.DataTable[0][Index]+ Units[Index]) :"------";
+		Data["value"] = EventDetailsResult.ResultIsNotNull()? (EventDetailsResult.DataTable[0][Index]+ Units[Index]) : TCHAR_TO_UTF8("------");
 		Datas.push_back(Data);
 	}
 
@@ -3883,8 +3883,8 @@ Json OServerHelper::TheLatestPeakCuttingAndValleyFillingEvents(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult EventInfo = MaraidbConnector.Query(str(boost::format("SELECT EventCode,EventType,StartDate,EndDate,TotolPlan,TotalComplete,EventStatus FROM VppEvent WHERE StartDate >='%1%' AND EndDate <='%2%' Order By StartDate Desc;") % StartTime % EndTime));
 
@@ -3916,16 +3916,16 @@ Json OServerHelper::EB_TheLatestPeakCuttingAndValleyFillingEvents(Json InData)
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult EventInfo = MaraidbConnector.Query(str(boost::format("SELECT EventCode,EventType,StartDate,EndDate,TotolPlan,TotalComplete FROM VppEvent WHERE StartDate >='%1%' AND EndDate <='%2%';") % StartTime % EndTime));
 
-	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("事件编码") ,TCHAR_TO_UTF8("事件类型"),TCHAR_TO_UTF8("开始时间"),TCHAR_TO_UTF8("结束时间"),TCHAR_TO_UTF8("计划总量"),TCHAR_TO_UTF8("完成总量") };
+	std::vector<std::string > RowHeader = { TCHAR_TO_UTF8("事件编码"),TCHAR_TO_UTF8("事件类型"),TCHAR_TO_UTF8("开始时间"),TCHAR_TO_UTF8("结束时间"),TCHAR_TO_UTF8("计划总量"),TCHAR_TO_UTF8("完成总量") };
 	std::vector<std::string > RowWidth = { "22.66" ,"10.66","22.66","22.66","10.66","10.66" };
 
 	Json Table = FillTableJson(RowHeader, RowWidth, EventInfo.DataTable, 8);
-	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value",TCHAR_TO_UTF8("削峰事件")}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value","-----"}},{{"value","168.05"}} };
+	std::vector<Json> CurVector = { {{"value","XQXY201904280001"}},{{"value",TCHAR_TO_UTF8("削峰事件")}},{{"value","2019-04-27 13:00"}},{{"value","2019-04-28 14:00"}},{{"value",TCHAR_TO_UTF8("-----"}},{{"value","168.05"}} };
 	Table["data"].insert(Table["data"].begin(), CurVector);
 	std::vector<Json> Tables;
 	//Tables.push_back({ {"value",""},{"value",""},{"value",""},{"value",""},{"value",""},{"value",""} });
@@ -3949,9 +3949,9 @@ Json OServerHelper::EnergyUseTrendsThisMonth(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ElecMetID = InData["ElecMetID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::vector<Json> TableDatas;
 
@@ -4065,7 +4065,7 @@ Json OServerHelper::IndustryUserClassification(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	std::string ChildIndustryListCommand = "SELECT IndustryID,IndustryName FROM BaseIndustryInfo WHERE ParentID='' OR ISNULL(ParentID);";
 	FMysqlResult ChildIndustryList = MaraidbConnector.Query(ChildIndustryListCommand);
@@ -4094,7 +4094,7 @@ Json OServerHelper::EnergyMonitoring_EnterpriseProfile(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ElecMetID = InData["ElecMetID"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
 
 	std::string EnteIndustryCommand = "SELECT IndustryName FROM BaseIndustryInfo,BaseEnteElecMeterInfo WHERE BaseIndustryInfo.IndustryID=BaseEnteElecMeterInfo.IndustryID AND BaseEnteElecMeterInfo.ElecMetID='" + ElecMetID + "';";
 	FMysqlResult EnteIndustry = MaraidbConnector.Query(EnteIndustryCommand);
@@ -4106,11 +4106,11 @@ Json OServerHelper::EnergyMonitoring_EnterpriseProfile(Json InData) {
 	FMysqlResult EnteInfo = MaraidbConnector.Query(EnteInfoCommand);
 
 	std::vector<Json> Table;
-	Table.push_back("{\"name\": \"行业类型\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"所属区域\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"电压等级\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"运行容量\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"用电地址\", \"value\": \"----\" }"_json);
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"行业类型\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"所属区域\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"电压等级\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"运行容量\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"用电地址\", \"value\": \"----\" }")));
 
 	for (auto EnteIndustryRow : EnteIndustry.DataTable)
 		Table[0]["value"] = EnteIndustryRow[0];
@@ -4144,7 +4144,7 @@ Json OServerHelper::EnergyAnalyze_EnterpriseProfile(Json InData)
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string ElecMetID = InData["ElecMetID"];
+	std::string ElecMetID = FIELDIFNULL(InData["ElecMetID"]);
 
 	std::string EnteIndustryCommand = "SELECT IndustryName FROM BaseIndustryInfo,BaseEnteElecMeterInfo WHERE BaseIndustryInfo.IndustryID=BaseEnteElecMeterInfo.IndustryID AND BaseEnteElecMeterInfo.ElecMetID='" + ElecMetID + "';";
 	FMysqlResult EnteIndustry = MaraidbConnector.Query(EnteIndustryCommand);
@@ -4156,10 +4156,10 @@ Json OServerHelper::EnergyAnalyze_EnterpriseProfile(Json InData)
 	FMysqlResult EnteInfo = MaraidbConnector.Query(EnteInfoCommand);
 
 	std::vector<Json> Table;
-	Table.push_back("{\"name\": \"行业类型\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"所属区域\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"电压等级\", \"value\": \"----\" }"_json);
-	Table.push_back("{\"name\": \"入驻日期\", \"value\": \"----\" }"_json);
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"行业类型\", \"value\": \"----\" }")));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"所属区域\", \"value\": \"----\" }"));
+	Table.push_back(Json::parse(TCHAR_TO_UTF8("{\"name\": \"电压等级\", \"value\": \"----\" }")));
+	Table.push_back("{\"name\": \"入驻日期\", \"value\": \"----\" }")));
 
 	for (auto EnteIndustryRow : EnteIndustry.DataTable)
 		Table[0]["value"] = EnteIndustryRow[0];
@@ -4192,7 +4192,7 @@ Json OServerHelper::RegionUserClassification(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
 	std::string ChildRegionListCommand = "SELECT RegionID,RegionName FROM BaseRegionInfo WHERE BaseRegionInfo.ParentID='" + RegionID + "';";
 	FMysqlResult ChildRegionList = MaraidbConnector.Query(ChildRegionListCommand);
@@ -4245,9 +4245,9 @@ Json OServerHelper::EnergyMonitoring_RegionalOverview(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"];
+	std::string EndTime = FIELDIFNULL(InData["EndTime"];
 
 	FMysqlResult RegionArea = MaraidbConnector.Query(str(boost::format("SELECT SUM(Area) FROM BaseEnteInfo WHERE FIND_IN_SET(RegionID,GetChildrenRegion('%1%'));") % RegionID));
 	double Area = boost::lexical_cast<double>(RegionArea.DataTable[0][0]) / 1000000;
@@ -4269,19 +4269,19 @@ Json OServerHelper::EnergyMonitoring_RegionalOverview(Json InData) {
 									{{"name",TCHAR_TO_UTF8("所在区域")},{"unit",""},{"value",RegionInfoResult.DataTable[0][0]}},
 									{{"name",TCHAR_TO_UTF8("行业数量")},{"unit",TCHAR_TO_UTF8("类")},{"value",RegionIndustryCountResult.DataTable[0][0]}},
 									{{"name",TCHAR_TO_UTF8("接入企业数量")},{"unit",TCHAR_TO_UTF8("户")},{"value",RegionEnteCountResult.DataTable[0][0]}},
-									{{"name",TCHAR_TO_UTF8("面积")},{"unit","km²"},{"value",SaveDecimalPlaces(RegionInfoResult.DataTable[0][1])}},
+									{{"name",TCHAR_TO_UTF8("面积")},{"unit",TCHAR_TO_UTF8("km²")},{"value",SaveDecimalPlaces(RegionInfoResult.DataTable[0][1])}},
 								},
 								{
 									{{"name",TCHAR_TO_UTF8("上月清洁能源消纳率")},{"unit","%"},{"value","100"}},
 									{{"name",TCHAR_TO_UTF8("上月清洁能源占比")},{"unit","%"},{"value",SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][0])}},
-									{{"name",TCHAR_TO_UTF8("上月碳排放")},{"unit","万t"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][1]))}},
+									{{"name",TCHAR_TO_UTF8("上月碳排放")},{"unit",TCHAR_TO_UTF8("万t")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][1]))}},
 									{{"name",TCHAR_TO_UTF8("上月经济增加值")},{"unit",TCHAR_TO_UTF8("万元")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][2]))}},
 								},
 								{
-									{{"name",TCHAR_TO_UTF8("上月能耗总量")},{"unit","万tce"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][3]))}},
-									{{"name",TCHAR_TO_UTF8("上月度电经济增加值")},{"unit","万元/kW·h"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][4]))}},
-									{{"name",TCHAR_TO_UTF8("上月万元产值能耗")},{"unit","tce/万"},{"value",FillPlaceholderIfNull(SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][5]))}},
-									{{"name",TCHAR_TO_UTF8("上月单位建筑面积能耗")},{"unit","tce/km²"},{"value",FillPlaceholderIfNull(ConvertToTenThousand(GetEnergyConsumptionUnitArea(RegionEnergyEfficiencyResult.DataTable[0][3],std::to_string(Area))))}},
+									{{"name",TCHAR_TO_UTF8("上月能耗总量")},{"unit",TCHAR_TO_UTF8("万tce")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][3]))}},
+									{{"name",TCHAR_TO_UTF8("上月度电经济增加值")},{"unit",TCHAR_TO_UTF8("万元/kW·h")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(RegionEnergyEfficiencyResult.DataTable[0][4]))}},
+									{{"name",TCHAR_TO_UTF8("上月万元产值能耗")},{"unit",TCHAR_TO_UTF8("tce/万")},{"value",FillPlaceholderIfNull(SaveDecimalPlaces(RegionEnergyEfficiencyResult.DataTable[0][5]))}},
+									{{"name",TCHAR_TO_UTF8("上月单位建筑面积能耗")},{"unit",TCHAR_TO_UTF8("tce/km²")},{"value",FillPlaceholderIfNull(ConvertToTenThousand(GetEnergyConsumptionUnitArea(RegionEnergyEfficiencyResult.DataTable[0][3],std::to_string(Area))))}},
 								},
 
 							}
@@ -4315,9 +4315,9 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheMonth(Json InData) {
 
 	std::vector<std::string> Unit;
 	Unit.push_back("(tce)");
-	Unit.push_back("(kW·h)");
-	Unit.push_back("(m³)");
-	Unit.push_back("(m³)");
+	Unit.push_back(TCHAR_TO_UTF8("(kW·h)"));
+	Unit.push_back(TCHAR_TO_UTF8("(m³)"));
+	Unit.push_back(TCHAR_TO_UTF8("(m³)"));
 
 	std::vector<std::string> CategoryName;
 	CategoryName.push_back(TCHAR_TO_UTF8("供"));
@@ -4343,9 +4343,9 @@ Json OServerHelper::ComparisonChartOfSupplyandDemandForTheMonth(Json InData) {
 	GradientColor.push_back("#8FC31F");
 	GradientColor.push_back("#00FBF2");
 
-	std::string RegionID = InData["RegionID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FMysqlResult RegionName = MaraidbConnector.Query(str(boost::format("SELECT RegionName FROM `BaseRegionInfo` WHERE RegionID='%1%';") % RegionID));
 
@@ -4471,7 +4471,7 @@ Json OServerHelper::PanoramicMonitoring_IndustryUserClassification(Json InData) 
 			for (std::vector<std::string> r2 : res2.DataTable) {
 				list["name"] = r2[0];
 				list["value"] = boost::lexical_cast<std::string>(boost::lexical_cast<int>(r1[1]) * 100 / num) + "%";
-				list["unit"] = "kW·h";
+				list["unit"] = TCHAR_TO_UTF8("kW·h");
 			}
 			data.push_back(list);
 		}
@@ -4534,7 +4534,7 @@ Json OServerHelper::PanoramicMonitoring_RegionalOverview(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string regionID = boost::lexical_cast<std::string>(InData["regionID"]);
+	std::string regionID = boost::lexical_cast<std::string>(FIELDIFNULL(InData["regionID"]));
 	Json tableData;
 	std::vector<Json> data;
 	Json dataJson;
@@ -4632,7 +4632,7 @@ Json OServerHelper::EnergyTrading_EnterpriseProfile(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string GoodsID = InData["GoodsID"];
+	std::string GoodsID = FIELDIFNULL(InData["GoodsID"]);
 	std::string ReportOrderServiceListCommand = "SELECT EnteEvalvate.PrvdName,EnteEvalvate.ContractScore As StarNum,(100-EnteEvalvate.ContractScore) As NoStarNum,EnteEvalvate.EnteAddress As EnteAddress,EnteEvalvate.CommunicateAddress AS PostalAdddress,EnteEvalvate.ServiceScope\
 												FROM EnteEvalvate, GoodsInfo\
 												WHERE EnteEvalvate.EnteID = GoodsInfo.EnteID\
@@ -4642,7 +4642,7 @@ Json OServerHelper::EnergyTrading_EnterpriseProfile(Json InData) {
 	std::vector<Json> RowData;
 	for (auto ReportOrderServiceListRow : ReportOrderServiceList.DataTable)
 	{
-		RowData.push_back("{\"value\":\"企业简介\"}"_json);
+		RowData.push_back(Json::parse(TCHAR_TO_UTF8("{\"value\":\"企业简介\"}")));
 		for (auto Value : ReportOrderServiceListRow)
 		{
 			Json CurValue;
@@ -4660,9 +4660,9 @@ Json OServerHelper::CommodityOrderQuantityCurve(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string GoodsID = InData["GoodsID"];
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string GoodsID = FIELDIFNULL(InData["GoodsID"]);
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	FXLabelRangCofig Config = FXLabelRangCofig(1, true, true, false, '-', EXLabelStepDateIterator::Month);
 
@@ -4712,19 +4712,19 @@ Json OServerHelper::ProductDetailsList(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"编号\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"名称\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"类型\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"企业名称\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"参考价\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"创建时间\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"商品评分（0-5）\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"状态\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"商品ID\",\"width\":\"464\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"编号\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"名称\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"类型\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业名称\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"参考价\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"创建时间\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"商品评分（0-5）\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"状态\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"商品ID\",\"width\":\"464\"}")));
 
 
 	std::vector<std::string> StatusList = { TCHAR_TO_UTF8("审批中"),TCHAR_TO_UTF8("已上架"),TCHAR_TO_UTF8("未通过"),TCHAR_TO_UTF8("已下架") };
@@ -4769,7 +4769,7 @@ Json OServerHelper::ProductDetailsList(Json InData) {
 			for (auto RowHeaderValue : RowHeader)
 			{
 				Json Data;
-				Data["value"] = "-----";
+				Data["value"] = TCHAR_TO_UTF8("-----");
 				Datas.push_back(Data);
 			}
 			TableDatas.push_back(Datas);
@@ -4791,7 +4791,7 @@ Json OServerHelper::ProductInformation(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string GoodsID = InData["GoodsID"];
+	std::string GoodsID = FIELDIFNULL(InData["GoodsID"]);
 
 	FMysqlResult GoodInfo = MaraidbConnector.Query(str(boost::format("SELECT GoodsName,GoodsType,GoodsPrice,ContactPerson,ContactPhone,GoodsDedtail,GoodsImgPath FROM GoodsInfo,EnteEvalvate WHERE GoodsInfo.GoodsID='%1%' AND GoodsInfo.EnteID=EnteEvalvate.EnteID;") % GoodsID));
 
@@ -4816,7 +4816,7 @@ Json OServerHelper::AbnormalEnterpriseProfile(Json InData) {
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
 
-	std::string ExceptionEventId = InData["ExceptionEventId"];
+	std::string ExceptionEventId = FIELDIFNULL(InData["ExceptionEventId"]);
 
 	FMysqlResult ElecMetIDResult = MaraidbConnector.Query(str(boost::format("SELECT ElecMetID FROM AbnormalEnergyEvent WHERE ExceptionEventId='%1%';") % ExceptionEventId));
 
@@ -4857,7 +4857,7 @@ Json OServerHelper::DemandSide(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string DemandID = boost::lexical_cast<std::string>(InData["DemandID"]);
+	std::string DemandID = boost::lexical_cast<std::string>(FIELDIFNULL(InData["DemandID"]));
 	Json tableData;
 	Json data;
 
@@ -4881,8 +4881,8 @@ Json OServerHelper::ListOfDetailedRequirements(Json InData) {
 	FMariadbConnectInfo MariadbConnectInfo(MARIADB_IP, MARIADB_USER, MARIADB_PASSWD, MARIADB_DATABASE, MARIADB_PORT);
 	OMaraidbConnector MaraidbConnector(MariadbConnectInfo);
 	MaraidbConnector.Connect();
-	std::string StartTime = InData["StartTime"];
-	std::string EndTime = InData["EndTime"];
+	std::string StartTime = FIELDIFNULL(InData["StartTime"]);
+	std::string EndTime = FIELDIFNULL(InData["EndTime"]);
 	//std::string RegionID = InData["RegionID"];
 	std::string DemandStatusCountCommand = "SELECT DemandInfo.FlowStatus,COUNT(DemandInfo.FlowStatus) As Number FROM DemandInfo\
 										WHERE DemandInfo.PublishDate BETWEEN '" + StartTime + "' and '" + EndTime + "'\
@@ -4891,14 +4891,14 @@ Json OServerHelper::ListOfDetailedRequirements(Json InData) {
 	FMysqlResult DemandStatusCountList = MaraidbConnector.Query(DemandStatusCountCommand);
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"编号\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"名称\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"类型\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"企业名称\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"预算\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"意向金\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"发布时间\",\"width\":\"464\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"有效时间\",\"width\":\"464\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"编号\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"名称\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"类型\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"企业名称\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预算\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"意向金\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"464\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"有效时间\",\"width\":\"464\"}")));
 	std::vector<std::string> StatusList = { TCHAR_TO_UTF8("待付款"),TCHAR_TO_UTF8("审核中"),TCHAR_TO_UTF8("已发布"),TCHAR_TO_UTF8("未通过"),TCHAR_TO_UTF8("已关闭"),TCHAR_TO_UTF8("已发起合同") };
 
 	std::vector<Json> FinalData;
@@ -4975,17 +4975,17 @@ Json OServerHelper::ShelvingDemandList(Json InData) {
 	MaraidbConnector.Connect();
 
 	std::vector<Json> RowHeader;
-	RowHeader.push_back("{\"headerName\":\"需求编号\",\"width\":\"14.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"需求名称\",\"width\":\"24.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"需求类型\",\"width\":\"10.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"发布时间\",\"width\":\"14.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"预算金额\",\"width\":\"12.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"发布企业\",\"width\":\"12.27\"}"_json);
-	RowHeader.push_back("{\"headerName\":\"浏览次数\",\"width\":\"12.27\"}"_json);
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"需求编号\",\"width\":\"14.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"需求名称\",\"width\":\"24.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"需求类型\",\"width\":\"10.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布时间\",\"width\":\"14.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"预算金额\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"发布企业\",\"width\":\"12.27\"}")));
+	RowHeader.push_back(Json::parse(TCHAR_TO_UTF8("{\"headerName\":\"浏览次数\",\"width\":\"12.27\"}")));
 
-	std::string RegionID = InData["RegionID"];
+	std::string RegionID = FIELDIFNULL(InData["RegionID"]);
 
-	std::string DemandListCommand = "SELECT DemandID,DemandName,DemandType,PublishDate,Budget,DemandInfo.EnteName,ViewNum FROM DemandInfo,BaseEnteInfo WHERE FlowStatus='审核中' AND BaseEnteInfo.EnteID=DemandInfo.EnteID AND FIND_IN_SET(BaseEnteInfo.RegionID,GetChildrenRegion('" + RegionID + "'))";
+	std::string DemandListCommand = TCHAR_TO_UTF8("SELECT DemandID,DemandName,DemandType,PublishDate,Budget,DemandInfo.EnteName,ViewNum FROM DemandInfo,BaseEnteInfo WHERE FlowStatus='审核中' AND BaseEnteInfo.EnteID=DemandInfo.EnteID AND FIND_IN_SET(BaseEnteInfo.RegionID,GetChildrenRegion('" + RegionID + "'))");
 	FMysqlResult DemandList = MaraidbConnector.Query(DemandListCommand);
 
 	std::vector<Json> TableDatas;
